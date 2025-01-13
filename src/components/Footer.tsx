@@ -1,6 +1,6 @@
 import React from 'react';
 import { Car, Facebook, Twitter, Instagram } from 'lucide-react';
-import logo from 'C:/Users/rahul/Desktop/logo.png';
+import logo from '../assets/logo.png';
 export default function Footer() {
   return (
     <footer className="bg-black">
