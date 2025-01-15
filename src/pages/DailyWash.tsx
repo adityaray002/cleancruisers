@@ -11,7 +11,8 @@ const packages = [
       "26 Days Exterior Cleaning (Dusting)",
       "Tire Cleaning",
       "Include 1 Foam Wash + Interior Cleaning + Polishing"
-    ]
+    ],
+    bookingMessage: `https://wa.me/918920230357?text=Hi%20CleanCruisers,%20I%20would%20like%20to%20book%20Daily%20Car%20Wash%20package%20for%20₹1000%20per%20month.`
   },
   {
     name: "Premium Daily Car Wash",
@@ -22,7 +23,8 @@ const packages = [
       "26 Days Exterior Cleaning (Dusting)",
       "Tire Cleaning",
       "Include 2 Foam Wash + Interior Cleaning + Polishing"
-    ]
+    ],
+    bookingMessage: `https://wa.me/918920230357?text=Hi%20CleanCruisers,%20I%20would%20like%20to%20book%20Premium%20Daily%20Car%20Wash%20package%20for%20₹1200%20per%20month.`
   }
 ];
 
@@ -54,7 +56,7 @@ export default function DailyWash() {
                   </li>
                 ))}
               </ul>
-             <a href='https://wa.me/918920230357'> <button className="mt-8 w-full bg-green-500 text-white py-3 px-4 rounded-md hover:bg-green-600">
+             <a href= {pkg.bookingMessage}> <button className="mt-8 w-full bg-green-500 text-white py-3 px-4 rounded-md hover:bg-green-600">
                Book Now
               </button></a>
             </div>

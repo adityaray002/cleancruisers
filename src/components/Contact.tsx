@@ -27,10 +27,16 @@ export default function Contact() {
           <p className="mt-4 text-xl text-gray-600">
             Book your car wash service or reach out with any questions
           </p>
+          <a href= "https://wa.me/918920230357?text=Hi%20CleanCruisers,%20I%20would%20like%20to%20book%20know%20more%20about%20your%20services."><button
+            type="submit"
+            className="mt-4 bg-green-500 text-white py-2 px-4 rounded-md hover:bg-green-600 transition-colors duration-200">
+              Book Now!
+            </button>
+            </a>
         </div>
 
-        <div className="mt-20 grid grid-cols-1 md:grid-cols-2 gap-12">
-          <div>
+        <div className="mt-20 grid grid-cols-1 md:grid-cols-1 gap-12">
+          {/* <div>
             <form onSubmit={handleSubmit} className="space-y-6">
               <div>
                 <label htmlFor="name" className="block text-sm font-medium text-gray-700">
@@ -128,18 +134,18 @@ export default function Contact() {
                 Submit Request
               </button>
             </form>
-          </div>
+          </div> */}
 
           <div className="bg-black rounded-lg p-8 text-white">
             <h3 className="text-2xl font-bold mb-6">Contact Information</h3>
             <div className="space-y-6">
               <div className="flex items-center">
                 <Phone className="h-6 w-6 text-green-500" />
-                <span className="ml-4">+1 (555) 123-4567</span>
+                <span className="ml-4">+918920230357</span>
               </div>
               <div className="flex items-center">
                 <Mail className="h-6 w-6 text-green-500" />
-                <span className="ml-4">contact@cleancruisers.in</span>
+                <span className="ml-4">cleancruisers.in@gmail.com</span>
               </div>
               <div className="flex items-center">
                 <MapPin className="h-6 w-6 text-green-500" />

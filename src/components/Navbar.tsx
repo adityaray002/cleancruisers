@@ -18,9 +18,10 @@ export default function Navbar() {
             <a href="#home" className="text-gray-300 hover:text-green-500">Home</a>
             <a href="#services" className="text-gray-300 hover:text-green-500">Services</a>
             <a href="#contact" className="text-gray-300 hover:text-green-500">Contact</a>
-            <button className="bg-green-500 text-white px-4 py-2 rounded-md hover:bg-green-600">
+            <a href= "https://wa.me/918920230357?text=Hi%20CleanCruisers,%20I%20would%20like%20to%20book%20know%20more%20about%20your%20services."><button className="bg-green-500 text-white px-4 py-2 rounded-md hover:bg-green-600">
               Book Now
             </button>
+            </a>
           </div>
 
           <div className="md:hidden flex items-center">
@@ -37,9 +38,10 @@ export default function Navbar() {
             <a href="#home" className="text-gray-300 block px-3 py-2 hover:text-green-500">Home</a>
             <a href="#services" className="text-gray-300 block px-3 py-2 hover:text-green-500">Services</a>
             <a href="#contact" className="text-gray-300 block px-3 py-2 hover:text-green-500">Contact</a>
-            <button className="bg-green-500 text-white px-4 py-2 rounded-md hover:bg-green-600 w-full mt-2">
+            <a href= "https://wa.me/918920230357?text=Hi%20CleanCruisers,%20I%20would%20like%20to%20book%20know%20more%20about%20your%20services."><button className="bg-green-500 text-white px-4 py-2 rounded-md hover:bg-green-600">
               Book Now
             </button>
+            </a>
           </div>
         </div>
       )}

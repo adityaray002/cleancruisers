@@ -13,11 +13,12 @@ const packages = [
       "pH Neutral Shampoo Cleaning",
       "Tire Cleaning & Polish",
      
-    ]
+    ],
+    bookingMessage: `https://wa.me/918920230357?text=Hi%20CleanCruisers,%20I%20would%20like%20to%20book%20Complete%20Bike%20Spa%20package%20for%20₹200%20per%20wash.`
   }
-  
-  
+    
 ];
+
 
 export default function CarSpa() {
     useEffect(() => {
@@ -51,7 +52,7 @@ export default function CarSpa() {
                   </li>
                 ))}
               </ul>
-              <a href='https://wa.me/918920230357'> <button className="mt-8 w-full bg-green-500 text-white py-3 px-4 rounded-md hover:bg-green-600">
+              <a href= {pkg.bookingMessage} > <button className="mt-8 w-full bg-green-500 text-white py-3 px-4 rounded-md hover:bg-green-600">
                 Book Now
               </button></a>
             </div>

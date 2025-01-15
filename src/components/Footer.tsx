@@ -26,18 +26,18 @@ export default function Footer() {
             </ul>
           </div>
           
-          <div>
-            <h3 className="text-white font-semibold mb-4">Follow Us</h3>
+          <div className="flex space-x-2">
+            <h3 className="text-white font-semibold mb-4">Follow Us on</h3> <a href="https://www.instagram.com/cleancruisers.in/?hl=en" className="text-gray-400 hover:text-green-500">
+                <Instagram className="h-6 w-6" />
+              </a>
             <div className="flex space-x-4">
-              <a href="#" className="text-gray-400 hover:text-green-500">
+              {/* <a href="#" className="text-gray-400 hover:text-green-500">
                 <Facebook className="h-6 w-6" />
               </a>
               <a href="#" className="text-gray-400 hover:text-green-500">
                 <Twitter className="h-6 w-6" />
-              </a>
-              <a href="#" className="text-gray-400 hover:text-green-500">
-                <Instagram className="h-6 w-6" />
-              </a>
+              </a> */}
+              
             </div>
           </div>
         </div>

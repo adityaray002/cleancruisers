@@ -16,7 +16,8 @@ const packages = [
       "Interior Vacuum Cleaning",
       "Interior Black Part Polishing",
       "Engine Cleaning & Polishing"
-    ]
+    ],
+    bookingMessage: `https://wa.me/918920230357?text=Hi%20CleanCruisers,%20I%20would%20like%20to%20book%20Premium%20Car%20Wash%20(Hatchback)%20package%20for%20₹400%20per%20wash.`
   },
   {
     name: "Premium Car Wash (Sedan)",
@@ -32,7 +33,8 @@ const packages = [
       "Interior Vacuum Cleaning",
       "Interior Black Part Polishing",
       "Engine Cleaning & Polishing"
-    ]
+    ],
+    bookingMessage: `https://wa.me/918920230357?text=Hi%20CleanCruisers,%20I%20would%20like%20to%20book%20Premium%20Car%20Wash%20(Sedan)%20package%20for%20₹450%20per%20wash.`
   },
   {
     name: "Premium Car Wash (SUV)",
@@ -48,7 +50,8 @@ const packages = [
       "Interior Vacuum Cleaning",
       "Interior Black Part Polishing",
       "Engine Cleaning & Polishing"
-    ]
+    ],
+    bookingMessage: `https://wa.me/918920230357?text=Hi%20CleanCruisers,%20I%20would%20like%20to%20book%20Premium%20Car%20Wash%20(SUV)%20package%20for%20₹550%20per%20wash.`
   }
 ];
 
@@ -84,7 +87,7 @@ export default function PremiumWash() {
                   </li>
                 ))}
               </ul>
-              <a href='https://wa.me/918920230357'> <button className="mt-8 w-full bg-green-500 text-white py-3 px-4 rounded-md hover:bg-green-600">
+              <a href= {pkg.bookingMessage}> <button className="mt-8 w-full bg-green-500 text-white py-3 px-4 rounded-md hover:bg-green-600">
                 Book Now
               </button></a>
             </div>

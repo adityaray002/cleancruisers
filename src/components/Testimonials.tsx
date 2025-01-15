@@ -5,14 +5,14 @@ const testimonials = [
   {
     name: 'Shivam Pandey',
     role: 'Regular Customer',
-    image: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=facearea&facepad=2&w=256&h=256&q=80',
+    image: 'https://images.unsplash.com/photo-1534339480783-6816b68be29c?auto=format&fit=facearea&facepad=2&w=256&h=256&q=80',
     content: 'The attention to detail is amazing. My car looks brand new every time!',
     rating: 5
   },
   {
     name: 'Shweta Roy',
     role: 'Regular Customer',
-    image: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=facearea&facepad=2&w=256&h=256&q=80',
+    image: 'https://images.unsplash.com/photo-1624610262404-e6530e871c17?auto=format&fit=facearea&facepad=2&w=256&h=256&q=80',
     content: 'Professional service at my doorstep. Couldn\'t ask for more!',
     rating: 5
   }
