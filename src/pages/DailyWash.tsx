@@ -4,7 +4,7 @@ import React, { useEffect } from 'react';
 const packages = [
   {
     name: "Daily Car Wash",
-    price: "1000",
+    price: "799",
     duration: "per month",
     features: [
       "Washing at Door Step",
@@ -12,11 +12,11 @@ const packages = [
       "Tire Cleaning",
       "Include 1 Foam Wash + Interior Cleaning + Polishing"
     ],
-    bookingMessage: `https://wa.me/918920230357?text=Hi%20CleanCruisers,%20I%20would%20like%20to%20book%20Daily%20Car%20Wash%20package%20for%20₹1000%20per%20month.`
+    bookingMessage: `https://wa.me/918920230357?text=Hi%20CleanCruisers,%20I%20would%20like%20to%20book%20Daily%20Car%20Wash%20package%20for%20₹799%20per%20month.`
   },
   {
     name: "Premium Daily Car Wash",
-    price: "1200",
+    price: "999",
     duration: "per month",
     features: [
       "Washing at Door Step",
@@ -24,7 +24,7 @@ const packages = [
       "Tire Cleaning",
       "Include 2 Foam Wash + Interior Cleaning + Polishing"
     ],
-    bookingMessage: `https://wa.me/918920230357?text=Hi%20CleanCruisers,%20I%20would%20like%20to%20book%20Premium%20Daily%20Car%20Wash%20package%20for%20₹1200%20per%20month.`
+    bookingMessage: `https://wa.me/918920230357?text=Hi%20CleanCruisers,%20I%20would%20like%20to%20book%20Premium%20Daily%20Car%20Wash%20package%20for%20₹999%20per%20month.`
   }
 ];
 
