@@ -1,107 +1,72 @@
 
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
+import { Calendar, Clock } from "lucide-react";
 
-const TimeSelection = () => {
-  const days = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
-  const times = ["09:00", "10:00", "11:00", "13:00", "14:00", "15:00", "16:00", "17:00", "18:00"];
-  
+interface TimeSelectionProps {
+  selectedTime: string;
+  onTimeSelect: (time: string) => void;
+}
+
+const TimeSelection = ({ selectedTime, onTimeSelect }: TimeSelectionProps) => {
+  const timeSlots = [
+    "9:00 AM", "10:00 AM", "11:00 AM", "12:00 PM",
+    "1:00 PM", "2:00 PM", "3:00 PM", "4:00 PM", "5:00 PM"
+  ];
+
+  const dates = [
+    { date: "Today", day: "15 Jun" },
+    { date: "Tomorrow", day: "16 Jun" },
+    { date: "Day After", day: "17 Jun" }
+  ];
+
   return (
-    <div>
-      <Card className="bg-gray-800/80 border-gray-700">
-        <CardContent className="p-4 md:p-8">
-          {/* Mobile View */}
-          <div className="md:hidden">
-            <div className="grid grid-cols-3 gap-1 mb-4">
-              {days.slice(0, 3).map(day => (
-                <div 
-                  key={day} 
-                  className={`p-2 text-center font-semibold text-xs ${
-                    day === "Tuesday" ? "bg-green-400 text-black" : "bg-gray-700 text-white"
-                  }`}
-                >
-                  {day.slice(0, 3)}
-                </div>
-              ))}
-            </div>
-            <div className="grid grid-cols-3 gap-1 mb-4">
-              {days.slice(3).map(day => (
-                <div 
-                  key={day} 
-                  className={`p-2 text-center font-semibold text-xs ${
-                    day === "Tuesday" ? "bg-green-400 text-black" : "bg-gray-700 text-white"
-                  }`}
-                >
-                  {day.slice(0, 3)}
-                </div>
-              ))}
-            </div>
-            
-            <div className="grid grid-cols-3 gap-2 mb-6">
-              {times.map(time => (
-                <div 
-                  key={time} 
-                  className={`p-3 text-center cursor-pointer transition-colors text-sm ${
-                    time === "09:00" 
-                      ? "bg-green-400 text-black" 
-                      : "bg-gray-600 hover:bg-gray-500 text-white"
-                  }`}
-                >
-                  {time}
-                </div>
-              ))}
-            </div>
-          </div>
-
-          {/* Desktop View */}
-          <div className="hidden md:block">
-            <div className="grid grid-cols-7 gap-1 mb-4">
-              {/* Header */}
-              <div></div>
-              {days.map(day => (
-                <div 
-                  key={day} 
-                  className={`p-2 lg:p-3 text-center font-semibold text-sm lg:text-base ${
-                    day === "Tuesday" ? "bg-green-400 text-black" : "bg-gray-700 text-white"
-                  }`}
-                >
-                  {day}
-                </div>
-              ))}
-              
-              {/* Time slots */}
-              {times.map(time => (
-                <div key={time} className="contents">
-                  <div className="p-2 lg:p-3 bg-gray-700 text-white text-center font-medium text-sm lg:text-base">
-                    {time}
+    <div className="max-w-4xl mx-auto">
+      <div className="grid md:grid-cols-2 gap-6">
+        {/* Date Selection */}
+        <div>
+          <h3 className="text-lg font-semibold mb-4 flex items-center">
+            <Calendar className="mr-2 h-5 w-5 text-green-400" />
+            Select Date
+          </h3>
+          <div className="space-y-3">
+            {dates.map((dateOption, index) => (
+              <Card key={index} className="bg-gray-800 border-gray-600 hover:border-green-400 cursor-pointer">
+                <CardContent className="p-4">
+                  <div className="flex justify-between items-center">
+                    <span className="font-medium">{dateOption.date}</span>
+                    <span className="text-gray-400">{dateOption.day}</span>
                   </div>
-                  {days.map(day => (
-                    <div 
-                      key={`${day}-${time}`} 
-                      className={`p-2 lg:p-3 text-center cursor-pointer transition-colors text-sm lg:text-base ${
-                        day === "Tuesday" && time === "09:00" 
-                          ? "bg-green-400 text-black" 
-                          : "bg-gray-600 hover:bg-gray-500 text-white"
-                      }`}
-                    >
-                      {time}
-                    </div>
-                  ))}
-                </div>
-              ))}
-            </div>
+                </CardContent>
+              </Card>
+            ))}
           </div>
-          
-          <div className="text-center">
-            <Button 
-              size="lg"
-              className="bg-green-400 hover:bg-green-500 text-black font-semibold px-8 md:px-12 h-12 w-full sm:w-auto"
-            >
-              BOOK
-            </Button>
+        </div>
+
+        {/* Time Selection */}
+        <div>
+          <h3 className="text-lg font-semibold mb-4 flex items-center">
+            <Clock className="mr-2 h-5 w-5 text-green-400" />
+            Select Time
+          </h3>
+          <div className="grid grid-cols-3 gap-2">
+            {timeSlots.map((time) => (
+              <Button
+                key={time}
+                variant={selectedTime === time ? "default" : "outline"}
+                className={`text-sm ${
+                  selectedTime === time
+                    ? "bg-green-400 hover:bg-green-500 text-black"
+                    : "border-gray-600 text-gray-300 hover:bg-gray-700"
+                }`}
+                onClick={() => onTimeSelect(time)}
+              >
+                {time}
+              </Button>
+            ))}
           </div>
-        </CardContent>
-      </Card>
+        </div>
+      </div>
     </div>
   );
 };

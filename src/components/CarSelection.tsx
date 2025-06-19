@@ -1,3 +1,4 @@
+
 import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { ArrowLeft, ArrowRight } from "lucide-react";
@@ -8,7 +9,7 @@ interface CarSelectionProps {
 }
 
 const CarSelection = ({ selectedCar, onCarSelect }: CarSelectionProps) => {
-  const carTypes = ["Sedan", "SUV", "Hatchback", "Luxury"];
+  const carTypes = ["Hatchback", "Sedan", "SUV", "Luxury"];
   const carImages: Record<string, string> = {
     Sedan: "/sedan.png",
     SUV: "/suv.png",

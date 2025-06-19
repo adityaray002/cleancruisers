@@ -42,14 +42,15 @@ const carPricing: Record<string, Record<string, number>> = {
   }
 };
 
+// Updated prices
 const additionalServicesPricing: Record<string, number> = {
   "rubbing": 1299,
-  "3m-wax": 399,
-  "dry-cleaning": 599,
+  "3m-wax": 299,
+  "dry-cleaning": 999,
   "rubbing-wax": 1499,
-  "full-package": 1999,
+  "full-package": 2299,
   "rubbing-dry": 1599,
-  "wax-dry": 999,
+  "wax-dry": 1299,
   "air-freshener": 149
 };
 

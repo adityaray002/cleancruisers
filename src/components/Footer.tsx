@@ -1,10 +1,18 @@
+
 import React from "react";
-import { FaFacebookF, FaInstagram, FaWhatsapp, FaXTwitter } from "react-icons/fa6";
-import Logo from "/LOGOFINAL.png"; // Adjust this based on your project structure
+import { FaFacebookF, FaInstagram, FaWhatsapp } from "react-icons/fa6";
+import Logo from "/LOGOFINAL.png";
 
 const Footer = () => {
+  const scrollToSection = (sectionId: string) => {
+    const element = document.getElementById(sectionId);
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
   return (
-    <footer className="bg-black text-white py-10 px-4 md:px-10">
+    <footer id="contact" className="bg-black text-white py-10 px-4 md:px-10">
       <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-10">
 
         {/* Logo & Social */}
@@ -18,7 +26,6 @@ const Footer = () => {
             <a href="https://www.instagram.com/cleancruisers.in?igsh=MTNtbnI1bWl0ZWoyYQ==" className="text-gray-400 hover:text-green-400"><FaInstagram /></a>
             <a href="https://www.facebook.com/share/1EUVLn1QoN/" className="text-gray-400 hover:text-green-400"><FaFacebookF /></a>
             <a href="https://wa.me/918920230357" className="text-gray-400 hover:text-green-400"><FaWhatsapp /></a>
-            {/* <a href="#" className="text-gray-400 hover:text-green-400"><FaXTwitter /></a> */}
           </div>
         </div>
 
@@ -26,10 +33,10 @@ const Footer = () => {
         <div>
           <h4 className="text-green-400 font-semibold mb-4 text-base">Pages</h4>
           <ul className="space-y-2">
-            <li><a href="#home" className="text-gray-400 hover:text-white text-sm">Home</a></li>
-            <li><a href="#booking" className="text-gray-400 hover:text-white text-sm">Book a Wash</a></li>
-            <li><a href="#about" className="text-gray-400 hover:text-white text-sm">About Us</a></li>
-            <li><a href="#contact" className="text-gray-400 hover:text-white text-sm">Contact</a></li>
+            <li><button onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })} className="text-gray-400 hover:text-white text-sm">Home</button></li>
+            <li><button onClick={() => scrollToSection('services')} className="text-gray-400 hover:text-white text-sm">Booking</button></li>
+            <li><button onClick={() => scrollToSection('about')} className="text-gray-400 hover:text-white text-sm">About Us</button></li>
+            <li><button onClick={() => scrollToSection('contact')} className="text-gray-400 hover:text-white text-sm">Contact</button></li>
           </ul>
         </div>
 
@@ -37,10 +44,12 @@ const Footer = () => {
         <div>
           <h4 className="text-green-400 font-semibold mb-4 text-base">Services</h4>
           <ul className="space-y-2">
-            <li className="text-gray-400 text-sm">Daily Premium Car Wash</li>
-            <li className="text-gray-400 text-sm">Premium Doorstep Car Wash</li>
-            <li className="text-gray-400 text-sm">Interior Detailing</li>
-            <li className="text-gray-400 text-sm">Exterior Polishing</li>
+            <li><a href="/monthly-pricing" className="text-gray-400 hover:text-white text-sm">Monthly Premium Car Wash</a></li>
+            <li><button onClick={() => scrollToSection('services')} className="text-gray-400 hover:text-white text-sm">Premium Doorstep Car Wash</button></li>
+            <li><button onClick={() => {
+              sessionStorage.setItem('selectedServiceType', 'premium-addons');
+              window.location.href = '/booking';
+            }} className="text-gray-400 hover:text-white text-sm">Premium Add‑Ons</button></li>
           </ul>
         </div>
 
