@@ -57,31 +57,9 @@ const ServicesSection = ({ onScrollToPricing }: ServicesSectionProps) => {
         { icon: Shield, text: "Long-lasting protection" },
         { icon: Clock, text: "2-3 hours" }
       ],
-      popular: false
+      popular: true
     },
-    {
-      id: "monthly",
-      icon: "🏠",
-      title: "Monthly Doorstep Service",
-      subtitle: "Daily car wash convenience",
-      description: "Professional car wash at your doorstep every day with flexible monthly plans. Perfect for busy professionals who want their car always clean.",
-      priceRange: "₹799 - ₹1199",
-      originalPrice: "₹1500",
-      savings: "Save ₹301+",
-      features: [
-        "26 Days Exterior Cleaning",
-        "1 Foam Wash + Interior Cleaning",
-        "Tire Cleaning & Dressing",
-        "At Your Doorstep Daily",
-        "Eco-friendly Products"
-      ],
-      highlights: [
-        { icon: Clock, text: "Same time daily" },
-        { icon: MapPin, text: "Available in Dwarka Mor, Nawada, Uttam Nagar" },
-        { icon: Shield, text: "100% Safe & Insured" }
-      ],
-      popular: false
-    }
+    
   ];
 
   const handleServiceClick = (service: any) => {
@@ -107,7 +85,7 @@ const ServicesSection = ({ onScrollToPricing }: ServicesSectionProps) => {
           <div className="w-20 h-1 bg-green-400 mx-auto"></div>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-[repeat(auto-fit,_minmax(320px,_1fr))] gap-8 mb-12 justify-items-center">
           {services.map((service, index) => (
             <Card 
               key={index} 
@@ -127,7 +105,7 @@ const ServicesSection = ({ onScrollToPricing }: ServicesSectionProps) => {
                 </div>
               )}
               
-              <CardContent className="p-6 text-center h-full flex flex-col">
+              <CardContent className="p-6 text-center h-full flex flex-col ">
                 <div className="text-4xl mb-4">{service.icon}</div>
                 
                 <h3 className="text-green-400 font-bold text-lg mb-1">{service.title}</h3>

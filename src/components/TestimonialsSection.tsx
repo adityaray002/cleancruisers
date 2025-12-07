@@ -11,7 +11,7 @@ const testimonials = [
     fallback: "PS",
   },
   {
-    name: "Rohit Mehra",
+    name: "Rohit",
     content:
       "Very professional and punctual team. They arrived on time and did a thorough job without cutting corners. Great value for money and hassle-free experience. Will definitely book again.",
     image: "/avatars/rohit.jpg",
