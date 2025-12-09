@@ -1,24 +1,19 @@
 
 import { useState } from "react";
-import { Button } from "@/components/ui/button";
-import { ShoppingCart, User, ArrowLeft, ArrowRight } from "lucide-react";
-import { Card, CardContent } from "@/components/ui/card";
-import { Badge } from "@/components/ui/badge";
 import Header from "@/components/Header";
 import Cart from "@/components/Cart";
 import HeroSection from "@/components/HeroSection";
 import ServicesSection from "@/components/ServicesSection";
 import AboutSection from "@/components/AboutSection";
+import WhoWeAre from "@/components/WhoWeAre";
 import TestimonialsSection from "@/components/TestimonialsSection";
 import ContactSection from "@/components/ContactSection";
 import Footer from "@/components/Footer";
 import SocialIcons from "@/components/SocialIcons";
-import WhoWeAre from "@/components/WhoWeAre";
+import { PhoneCall } from "lucide-react";
 
 const Index = () => {
   const [cartOpen, setCartOpen] = useState(false);
-  const [currentSlide, setCurrentSlide] = useState(2);
-  const totalSlides = 10;
 
   return (
     <div className="min-h-screen bg-black text-white relative h-[755px]" style={{ backgroundColor: "#1E1E1E" }}>
@@ -26,8 +21,6 @@ const Index = () => {
       <div 
         className="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-80 w-full "
         style={{
-         // backgroundImage: "url('https://images.unsplash.com/photo-1558618666-fcd25c85cd64?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2669&q=80')"
-         
           backgroundImage: "url('/MainViewWashing.png')"
         }}
       />
@@ -40,14 +33,12 @@ const Index = () => {
         <Header onCartOpen={() => setCartOpen(true)} />
         
         <main>
-          <HeroSection 
-            // currentSlide={currentSlide}
-            // totalSlides={totalSlides}
-            // onSlideChange={setCurrentSlide}
-          />
+          <HeroSection />
           <ServicesSection />
-          <AboutSection />
-          <WhoWeAre/>
+          <div id="about">
+            <AboutSection />
+            <WhoWeAre/>
+          </div>
           <TestimonialsSection />
           <ContactSection />
         </main>
@@ -58,6 +49,15 @@ const Index = () => {
         {/* Cart Overlay */}
         <Cart isOpen={cartOpen} onClose={() => setCartOpen(false)} />
       </div>
+      {/* Floating phone call button */}
+      <a
+        href="tel:8920230357"
+        className="fixed bottom-20 right-6 z-50 bg-green-400 hover:bg-green-500 shadow-lg rounded-full p-4 flex items-center transition-transform active:scale-95"
+        style={{ boxShadow: '0 2px 16px rgba(0,255,100,0.20)' }}
+        aria-label="Call us"
+      >
+        <PhoneCall className="w-6 h-6 text-black" />
+      </a>
     </div>
   );
 };

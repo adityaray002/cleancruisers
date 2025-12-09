@@ -1,6 +1,8 @@
+
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { ArrowLeft, ArrowRight } from "lucide-react";
+import { useEffect, useState } from "react";
 
 interface PricingPlansProps {
   selectedPlan: string;
@@ -9,63 +11,84 @@ interface PricingPlansProps {
 }
 
 const OneTimePricingPlans = ({ selectedPlan, onPlanSelect, selectedCar }: PricingPlansProps) => {
-  const getPlansForCar = (carType: string) => {
-    const basePlans = {
-      "Sedan": [
-        { name: "exterior wash + interior wash", label: "Exterior + Interior Wash", price: 599 },
-        { name: "exterior wash only", label: "Exterior Wash Only", price: 399 },
-        { name: "interior wash only", label: "Interior Deep Clean", price: 299 },
-        { name: "waterless", label: "Waterless", price: 349 }
-      ],
-      "SUV": [
-        { name: "exterior wash + interior wash", label: "Exterior + Interior Wash", price: 699 },
-        { name: "exterior wash only", label: "Exterior Wash Only", price: 499 },
-        { name: "interior wash only", label: "Interior Deep Clean", price: 349 },
-        { name: "waterless", label: "Waterless", price: 399 }
-      ],
-      "Hatchback": [
-        { name: "exterior wash + interior wash", label: "Exterior + Interior Wash", price: 499 },
-        { name: "exterior wash only", label: "Exterior Wash Only", price: 349 },
-        { name: "interior wash only", label: "Interior Deep Clean", price: 299 },
-        { name: "waterless", label: "Waterless", price: 349 }
-      ],
-      "Luxury": [
-        { name: "exterior wash + interior wash", label: "Exterior + Interior Wash", price: 699 },
-        { name: "exterior wash only", label: "Exterior Wash Only", price: 499 },
-        { name: "interior wash only", label: "Interior Deep Clean", price: 349 },
-        { name: "waterless", label: "Waterless", price: 399 }
-      ]
+  const [serviceType, setServiceType] = useState("");
+
+  useEffect(() => {
+    const type = sessionStorage.getItem('selectedServiceType') || "";
+    setServiceType(type);
+  }, []);
+
+  const getPlansForCar = (carType: string, serviceType: string) => {
+    // Base pricing for different car types (subtract ₹1 from all prices)
+    const basePricing = {
+      "Sedan": { base: 399, premium: 599 },
+      "SUV": { base: 499, premium: 699 },
+      "Hatchback": { base: 349, premium: 499 },
+      "Luxury": { base: 499, premium: 699 }
     };
 
-    const standardFeatures = [
-      "Foam Wash",
-      "Tyre Dressing",
-      "Interior Cleaning + Vaccum",
-      "Exterior Black Part Polish",
-      "Microfibre Cloth",
-      "Interior Black Part Polishing",
-      "Footmat Clean",
-      "Air Freshner"
-    ];
+    const pricing = basePricing[carType as keyof typeof basePricing] || basePricing["Sedan"];
 
-    const waterlessFeatures = [
-      "Exterior Shampooing",
-      "Exterior Polish",
-      "Tyre Dressing",
-      "Exterior Black Part Polish",
-      "Microfibre Cloth"
+    // Default one-time packages
+    return [
+      {
+        name: "exterior wash + interior wash",
+        label: "Exterior + Interior Wash",
+        price: pricing.premium,
+        currency: "₹",
+        features: [
+          "Foam Wash",
+          "Tyre Dressing",
+          "Interior Cleaning + Vacuum",
+          "Exterior Black Part Polish",
+          "Microfibre Cloth",
+          "Interior Black Part Polishing",
+          "Footmat Clean",
+          "Air Freshener",
+          "Dashboard Polish",
+          "Exterior Body Polish",
+          "Dicky Cleaning",
+        ],
+        highlighted: true,
+        showNote: true,
+      },
+      {
+        name: "exterior wash only",
+        label: "Exterior Wash Only",
+        price: pricing.base,
+        currency: "₹",
+        features: [
+          "Foam Wash",
+          "Tyre Dressing",
+          "Exterior Black Part Polish",
+          "Exterior Body Polish",
+          "Air Freshener",
+        ],
+        highlighted: false,
+        showNote: true,
+      },
+      {
+        name: "interior wash only",
+        label: "Interior Deep Clean",
+        price: pricing.base - 100,
+        currency: "₹",
+        features: [
+          "Interior Cleaning + Vacuum",
+          "Microfibre Cloth",
+          "Interior Black Part Polishing",
+          "Footmat Clean",
+          "Air Freshener",
+          "Dashboard Polish",
+          "Seats Cleaning",
+          "Dicky Cleaning",
+        ],
+        highlighted: false,
+        showNote: true,
+      },
     ];
-
-    return basePlans[carType as keyof typeof basePlans]?.map(plan => ({
-      ...plan,
-      currency: "₹",
-      features: plan.name === "waterless" ? waterlessFeatures : standardFeatures,
-      highlighted: false,
-      showNote: plan.name !== "waterless"
-    })) || [];
   };
 
-  const plans = getPlansForCar(selectedCar);
+  const plans = getPlansForCar(selectedCar, serviceType);
 
   return (
     <div>
@@ -88,7 +111,7 @@ const OneTimePricingPlans = ({ selectedPlan, onPlanSelect, selectedCar }: Pricin
                 <div className="text-center mb-3">
                   <span className="text-sm font-bold text-white">{plan.currency}</span>
                   <span className="text-xl font-bold text-white">{plan.price}</span>
-                  <span className="text-xs text-gray-400">/wash</span>
+                  <span className="text-xs text-gray-400">/service</span>
                 </div>
 
                 <h3 className="text-green-400 font-semibold text-xs text-center mb-3">
@@ -148,7 +171,7 @@ const OneTimePricingPlans = ({ selectedPlan, onPlanSelect, selectedCar }: Pricin
                 <div className="text-center mb-4">
                   <span className="text-xl lg:text-2xl font-bold text-white">{plan.currency}</span>
                   <span className="text-3xl lg:text-4xl font-bold text-white">{plan.price}</span>
-                  <span className="text-gray-400">/wash</span>
+                  <span className="text-gray-400">/service</span>
                 </div>
 
                 <h3 className="text-green-400 font-semibold text-base lg:text-lg text-center mb-4">
