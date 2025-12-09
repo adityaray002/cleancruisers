@@ -7,7 +7,7 @@ import { useState } from "react";
 
 // 🎬 CHANGE THIS YOUTUBE VIDEO ID TO UPDATE THE VIDEO
 // Extract the ID from YouTube URL: https://www.youtube.com/watch?v=VIDEO_ID
-const YOUTUBE_VIDEO_ID = "dQw4w9WgXcQ";
+const YOUTUBE_VIDEO_ID = "k-Y2ProxU78";
 
 const HeroSection = () => {
   const navigate = useNavigate();
