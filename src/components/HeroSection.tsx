@@ -7,7 +7,15 @@ import { useState } from "react";
 
 // 🎬 CHANGE THIS YOUTUBE VIDEO ID TO UPDATE THE VIDEO
 // Extract the ID from YouTube URL: https://www.youtube.com/watch?v=VIDEO_ID
-const YOUTUBE_VIDEO_ID = "k-Y2ProxU78";
+const YOUTUBE_VIDEO_ID = "PdN3DUTm3So";
+
+const CUSTOM_THUMBNAIL_URL = "";
+
+  const getThumbnailUrl = () => {
+    if (CUSTOM_THUMBNAIL_URL) return CUSTOM_THUMBNAIL_URL;
+    // maxresdefault provides HD quality, fallback to sddefault for shorts
+    return `https://img.youtube.com/vi/${YOUTUBE_VIDEO_ID}/maxresdefault.jpg`;
+  };
 
 const HeroSection = () => {
   const navigate = useNavigate();
