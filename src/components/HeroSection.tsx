@@ -22,10 +22,10 @@ const HeroSection = () => {
   const [isPlaying, setIsPlaying] = useState(false);
 
   return (
-    <section className="bg-black min-h-screen flex items-center px-4 py-20 md:px-6 md:py-20">
+    <section className="bg-black min-h-screen flex items-center px-4 py-24 md:px-6 md:py-20">
       <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 items-center w-full">
         {/* Text Section */}
-        <div className="flex flex-col justify-center space-y-6">
+        <div className="flex flex-col justify-center space-y-4">
           <motion.h1
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
