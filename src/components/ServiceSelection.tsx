@@ -17,7 +17,7 @@ const getServicesForCarType = (carType: string) => {
         image: "/Rubbing1.jpg",
         title: "Rubbing + Exterior Foam Wash",
         description: "A deep cleaning and polish that removes dullness, scratches, and oxidation from your car's paint. Followed by a thick foam wash that gives a shiny, fresh look.",
-        price: "₹1599",
+        price: "₹1299",
         details: "Paint surface rubbing (polishing), Thick foam exterior wash. Good for cars with light scratches, dull paint, or that need a shine restoration."
       },
       {
@@ -33,7 +33,7 @@ const getServicesForCarType = (carType: string) => {
         image: "/rubbingwax.png",
         title: "Rubbing + 3M Wax + Exterior Foam Wash",
         description: "A complete exterior treatment with rubbing, wax, and foam wash.",
-        price: "₹1699",
+        price: "₹1449",
         details: "Surface rubbing/polish, 3M wax coating, Foam wash. Great for scratch removal and shine."
       },
       {
@@ -41,7 +41,7 @@ const getServicesForCarType = (carType: string) => {
         image: "/RubbingWaxDryclean.png",
         title: "Rubbing + 3M Wax + Dry Cleaning + Exterior Foam Wash",
         description: "Complete car care – inside and out.",
-        price: "₹2499",
+        price: "₹1999",
         details: "Rubbing polish, 3M wax, Interior dry cleaning (seats, mats, roof, dashboard), Foam wash. Ideal for full car makeover."
       },
       {
@@ -49,7 +49,7 @@ const getServicesForCarType = (carType: string) => {
         image: "/RubbingDryclean1.png",
         title: "Rubbing + Dry Cleaning + Exterior Foam Wash",
         description: "Exterior polish + full interior dry cleaning.",
-        price: "₹2199",
+        price: "₹1799",
         details: "Rubbing, Interior dry clean, Foam wash. For fresh, clean car experience."
       },
       {
@@ -57,7 +57,7 @@ const getServicesForCarType = (carType: string) => {
         image: "/WaxDryClean.png",
         title: "Dry Cleaning + 3M Wax + Exterior Foam Wash",
         description: "Balanced inside-out care.",
-        price: "₹1499",
+        price: "₹1199",
         details: "Interior dry clean, 3M wax, Foam wash. Best for regular upkeep."
       },
       {
@@ -65,7 +65,7 @@ const getServicesForCarType = (carType: string) => {
         image: "/dryclean2.png",
         title: "Dry Cleaning",
         description: "Deep interior cleaning for seats, mats, roof, and dashboard.",
-        price: "₹999",
+        price: "₹799",
         details: "Complete interior dry cleaning service for a fresh cabin experience."
       },
       {
@@ -83,7 +83,7 @@ const getServicesForCarType = (carType: string) => {
         image: "/Rubbing1.jpg",
         title: "Rubbing + Exterior Foam Wash",
         description: "A deep cleaning and polish that removes dullness, scratches, and oxidation from your car's paint. Followed by a thick foam wash that gives a shiny, fresh look.",
-        price: "₹1599",
+        price: "₹1299",
         details: "Paint surface rubbing (polishing), Thick foam exterior wash. Good for cars with light scratches, dull paint, or that need a shine restoration."
       },
       {
@@ -99,7 +99,7 @@ const getServicesForCarType = (carType: string) => {
         image: "/rubbingwax.png",
         title: "Rubbing + 3M Wax + Exterior Foam Wash",
         description: "A complete exterior treatment with rubbing, wax, and foam wash.",
-        price: "₹1699",
+        price: "₹1449",
         details: "Surface rubbing/polish, 3M wax coating, Foam wash. Great for scratch removal and shine."
       },
       {
@@ -107,7 +107,7 @@ const getServicesForCarType = (carType: string) => {
         image: "/RubbingWaxDryclean.png",
         title: "Rubbing + 3M Wax + Dry Cleaning + Exterior Foam Wash",
         description: "Complete car care – inside and out.",
-        price: "₹2499",
+        price: "₹1999",
         details: "Rubbing polish, 3M wax, Interior dry cleaning (seats, mats, roof, dashboard), Foam wash. Ideal for full car makeover."
       },
       {
@@ -115,7 +115,7 @@ const getServicesForCarType = (carType: string) => {
         image: "/RubbingDryclean1.png",
         title: "Rubbing + Dry Cleaning + Exterior Foam Wash",
         description: "Exterior polish + full interior dry cleaning.",
-        price: "₹2199",
+        price: "₹1799",
         details: "Rubbing, Interior dry clean, Foam wash. For fresh, clean car experience."
       },
       {
@@ -123,7 +123,7 @@ const getServicesForCarType = (carType: string) => {
         image: "/WaxDryClean.png",
         title: "Dry Cleaning + 3M Wax + Exterior Foam Wash",
         description: "Balanced inside-out care.",
-        price: "₹1499",
+        price: "₹1199",
         details: "Interior dry clean, 3M wax, Foam wash. Best for regular upkeep."
       },
       {
@@ -131,7 +131,7 @@ const getServicesForCarType = (carType: string) => {
         image: "/dryclean2.png",
         title: "Dry Cleaning",
         description: "Deep interior cleaning for seats, mats, roof, and dashboard.",
-        price: "₹999",
+        price: "₹799",
         details: "Complete interior dry cleaning service for a fresh cabin experience."
       },
       {
@@ -149,7 +149,7 @@ const getServicesForCarType = (carType: string) => {
         image: "/Rubbing1.jpg",
         title: "Rubbing + Exterior Foam Wash",
         description: "A deep cleaning and polish that removes dullness, scratches, and oxidation from your car's paint. Followed by a thick foam wash that gives a shiny, fresh look.",
-        price: "₹1799",
+        price: "₹1499",
         details: "Paint surface rubbing (polishing), Thick foam exterior wash. Good for cars with light scratches, dull paint, or that need a shine restoration."
       },
       {
@@ -157,7 +157,7 @@ const getServicesForCarType = (carType: string) => {
         image: "/3M1.jpg",
         title: "3M Wax + Exterior Foam Wash",
         description: "A high-quality wax polish by 3M for paint protection and shine, combined with a professional foam wash.",
-        price: "₹749",
+        price: "₹699",
         details: "3M Wax Polish, Exterior foam wash. Perfect for regular maintenance and shine boost."
       },
       {
@@ -165,7 +165,7 @@ const getServicesForCarType = (carType: string) => {
         image: "/rubbingwax.png",
         title: "Rubbing + 3M Wax + Exterior Foam Wash",
         description: "A complete exterior treatment with rubbing, wax, and foam wash.",
-        price: "₹1899",
+        price: "₹1599",
         details: "Surface rubbing/polish, 3M wax coating, Foam wash. Great for scratch removal and shine."
       },
       {
@@ -173,7 +173,7 @@ const getServicesForCarType = (carType: string) => {
         image: "/RubbingWaxDryclean.png",
         title: "Rubbing + 3M Wax + Dry Cleaning + Exterior Foam Wash",
         description: "Complete car care – inside and out.",
-        price: "₹2699",
+        price: "₹2199",
         details: "Rubbing polish, 3M wax, Interior dry cleaning (seats, mats, roof, dashboard), Foam wash. Ideal for full car makeover."
       },
       {
@@ -181,7 +181,7 @@ const getServicesForCarType = (carType: string) => {
         image: "/RubbingDryclean1.png",
         title: "Rubbing + Dry Cleaning + Exterior Foam Wash",
         description: "Exterior polish + full interior dry cleaning.",
-        price: "₹2399",
+        price: "₹1899",
         details: "Rubbing, Interior dry clean, Foam wash. For fresh, clean car experience."
       },
       {
@@ -189,7 +189,7 @@ const getServicesForCarType = (carType: string) => {
         image: "/WaxDryClean.png",
         title: "Dry Cleaning + 3M Wax + Exterior Foam Wash",
         description: "Balanced inside-out care.",
-        price: "₹1699",
+        price: "₹1499",
         details: "Interior dry clean, 3M wax, Foam wash. Best for regular upkeep."
       },
       {
@@ -197,7 +197,7 @@ const getServicesForCarType = (carType: string) => {
         image: "/dryclean2.png",
         title: "Dry Cleaning",
         description: "Deep interior cleaning for seats, mats, roof, and dashboard.",
-        price: "₹1099",
+        price: "₹899",
         details: "Complete interior dry cleaning service for a fresh cabin experience."
       },
       {
@@ -215,7 +215,7 @@ const getServicesForCarType = (carType: string) => {
         image: "/Rubbing1.jpg",
         title: "Rubbing + Exterior Foam Wash",
         description: "A deep cleaning and polish that removes dullness, scratches, and oxidation from your car's paint. Followed by a thick foam wash that gives a shiny, fresh look.",
-        price: "₹1899",
+        price: "₹1499",
         details: "Paint surface rubbing (polishing), Thick foam exterior wash. Good for cars with light scratches, dull paint, or that need a shine restoration."
       },
       {
@@ -223,7 +223,7 @@ const getServicesForCarType = (carType: string) => {
         image: "/3M1.jpg",
         title: "3M Wax + Exterior Foam Wash",
         description: "A high-quality wax polish by 3M for paint protection and shine, combined with a professional foam wash.",
-        price: "₹949",
+        price: "₹699",
         details: "3M Wax Polish, Exterior foam wash. Perfect for regular maintenance and shine boost."
       },
       {
@@ -231,7 +231,7 @@ const getServicesForCarType = (carType: string) => {
         image: "/rubbingwax.png",
         title: "Rubbing + 3M Wax + Exterior Foam Wash",
         description: "A complete exterior treatment with rubbing, wax, and foam wash.",
-        price: "₹1999",
+        price: "₹1599",
         details: "Surface rubbing/polish, 3M wax coating, Foam wash. Great for scratch removal and shine."
       },
       {
@@ -239,7 +239,7 @@ const getServicesForCarType = (carType: string) => {
         image: "/RubbingWaxDryclean.png",
         title: "Rubbing + 3M Wax + Dry Cleaning + Exterior Foam Wash",
         description: "Complete car care – inside and out.",
-        price: "₹2799",
+        price: "₹2199",
         details: "Rubbing polish, 3M wax, Interior dry cleaning (seats, mats, roof, dashboard), Foam wash. Ideal for full car makeover."
       },
       {
@@ -247,7 +247,7 @@ const getServicesForCarType = (carType: string) => {
         image: "/RubbingDryclean1.png",
         title: "Rubbing + Dry Cleaning + Exterior Foam Wash",
         description: "Exterior polish + full interior dry cleaning.",
-        price: "₹2499",
+        price: "₹1899",
         details: "Rubbing, Interior dry clean, Foam wash. For fresh, clean car experience."
       },
       {
@@ -255,7 +255,7 @@ const getServicesForCarType = (carType: string) => {
         image: "/WaxDryClean.png",
         title: "Dry Cleaning + 3M Wax + Exterior Foam Wash",
         description: "Balanced inside-out care.",
-        price: "₹1799",
+        price: "₹1499",
         details: "Interior dry clean, 3M wax, Foam wash. Best for regular upkeep."
       },
       {
@@ -263,7 +263,7 @@ const getServicesForCarType = (carType: string) => {
         image: "/dryclean2.png",
         title: "Dry Cleaning",
         description: "Deep interior cleaning for seats, mats, roof, and dashboard.",
-        price: "₹1099",
+        price: "₹899",
         details: "Complete interior dry cleaning service for a fresh cabin experience."
       },
       {

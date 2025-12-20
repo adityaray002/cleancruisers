@@ -21,10 +21,10 @@ const OneTimePricingPlans = ({ selectedPlan, onPlanSelect, selectedCar }: Pricin
   const getPlansForCar = (carType: string, serviceType: string) => {
     // Base pricing for different car types (subtract ₹1 from all prices)
     const basePricing = {
-      "Sedan": { base: 399, premium: 599 },
-      "SUV": { base: 499, premium: 699 },
-      "Hatchback": { base: 349, premium: 499 },
-      "Luxury": { base: 499, premium: 699 }
+      "Sedan": { base: 349, premium: 499 },
+      "SUV": { base: 399, premium: 549 },
+      "Hatchback": { base: 349, premium: 449 },
+      "Luxury": { base: 399, premium: 549 }
     };
 
     const pricing = basePricing[carType as keyof typeof basePricing] || basePricing["Sedan"];
