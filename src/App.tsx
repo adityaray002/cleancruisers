@@ -44,7 +44,7 @@ const App = () => (
             <Route path="/monthly-pricing" element={<MonthlyPricing />} />
             <Route path="/blog" element={<Blog />} />
             <Route path="/blog/:id" element={<BlogPost />} />
-            <Route path="*" element={<Navigate to="/" replace />} />
+           <Route path="*" element={<NotFound />} />
           </Routes>
         </BrowserRouter>
       </TooltipProvider>
