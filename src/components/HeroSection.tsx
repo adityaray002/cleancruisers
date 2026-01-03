@@ -2,7 +2,7 @@
 import { Button } from "@/components/ui/button";
 import { useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
-import { Play, Sparkles } from "lucide-react";
+import { Phone, Play, Sparkles } from "lucide-react";
 import { useState } from "react";
 
 // 🎬 CHANGE THIS YOUTUBE VIDEO ID TO UPDATE THE VIDEO
@@ -21,11 +21,15 @@ const HeroSection = () => {
   const navigate = useNavigate();
   const [isPlaying, setIsPlaying] = useState(false);
 
+  const handleCall = () => {
+    window.location.href = "tel:+918920230357";
+  };
+
   return (
     <section className="bg-black min-h-screen flex items-center px-4 py-24 md:px-6 md:py-20">
       <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 items-center w-full">
         {/* Text Section */}
-        <div className="flex flex-col justify-center space-y-4">
+        {/* <div className="flex flex-col justify-center space-y-4">
           <motion.h1
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
@@ -47,8 +51,77 @@ const HeroSection = () => {
           >
             We deliver expert car detailing services at your location — fast, eco-friendly, and convenient.
           </motion.p>
-        </div>
+        </div> */}
+ {/* Text Section - Shows SECOND on mobile */}
+        <div className="flex flex-col justify-center space-y-4 ">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+          >
+            {/* Badge */}
+            <div className="inline-flex items-center gap-2 bg-green-500/10 border border-green-500/30 rounded-full px-3 py-1.5 sm:px-4 sm:py-2 mb-4 sm:mb-5">
+              <div className="w-2 h-2 bg-green-400 rounded-full animate-pulse" />
+              <span className="text-green-400 text-xs sm:text-sm font-medium">#1 Doorstep Car Wash in Delhi NCR</span>
+            </div>
 
+            <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-extrabold leading-tight tracking-tight">
+              <span className="block bg-gradient-to-r from-green-400 via-green-500 to-green-600 bg-clip-text text-transparent">
+                Premium
+              </span>
+              <span className="text-white">Car Wash at Your </span>
+              <span className="text-green-400 relative">
+                Doorstep
+                <svg className="absolute -bottom-1 left-0 w-full h-2 text-green-500/30" viewBox="0 0 200 8">
+                  <path d="M0 7 Q50 0 100 7 Q150 14 200 7" stroke="currentColor" strokeWidth="3" fill="none" />
+                </svg>
+              </span>
+            </h1>
+          </motion.div>
+
+          <motion.p
+            initial={{ opacity: 0, y: 15 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.15, duration: 0.5 }}
+            className="text-sm sm:text-base md:text-lg text-gray-300 max-w-md mx-auto lg:mx-0 leading-relaxed"
+          >
+            We deliver expert car detailing services at your location — fast, eco-friendly, and convenient.
+          </motion.p>
+
+          {/* Features Pills */}
+          <motion.div
+            initial={{ opacity: 0, y: 15 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.2, duration: 0.5 }}
+            className="flex flex-wrap lg:justify-start gap-2 sm:gap-3"
+          >
+            {['✓ Same Day Service', '✓ Eco-Friendly', '✓ 100% Satisfaction'].map((feature, index) => (
+              <span 
+                key={index}
+                className="text-[11px] sm:text-xs text-gray-400 bg-white/5 border border-white/10 px-2.5 py-1 sm:px-3 sm:py-1.5 rounded-full"
+              >
+                {feature}
+              </span>
+            ))}
+          </motion.div>
+
+          {/* CTA Button */}
+          <motion.div
+            initial={{ opacity: 0, y: 15 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.25, duration: 0.5 }}
+            className="pt-2 sm:pt-3"
+          >
+            <button
+              onClick={handleCall}
+              className="inline-flex items-center justify-center gap-2 sm:gap-2.5 bg-gradient-to-r from-green-500 to-green-600 hover:from-green-400 hover:to-green-500 text-black font-bold text-sm sm:text-base px-6 py-3 sm:px-8 sm:py-4 rounded-full shadow-lg shadow-green-500/30 active:scale-95 transition-all duration-200"
+            >
+              <Phone className="w-4 h-4 sm:w-5 sm:h-5" />
+              <span>Call Now to Book</span>
+            </button>
+            <p className="text-gray-500 text-[10px] sm:text-xs mt-2">Available 7 days a week</p>
+          </motion.div>
+        </div>
         {/* Video Section */}
         <motion.div
           initial={{ opacity: 0, scale: 0.9 }}
@@ -142,6 +215,7 @@ const HeroSection = () => {
             </motion.div>
           </div>
         </motion.div>
+
       </div>
     </section>
   );

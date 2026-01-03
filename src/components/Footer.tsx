@@ -34,8 +34,9 @@ const Footer = () => {
           <h4 className="text-green-400 font-semibold mb-4 text-base">Pages</h4>
           <ul className="space-y-2">
             <li><button onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })} className="text-gray-400 hover:text-white text-sm">Home</button></li>
-            <li><button onClick={() => scrollToSection('services')} className="text-gray-400 hover:text-white text-sm">Booking</button></li>
+            <li><a href="/booking" className="text-gray-400 hover:text-white text-sm">Booking</a></li>
             <li><button onClick={() => scrollToSection('about')} className="text-gray-400 hover:text-white text-sm">About Us</button></li>
+            <li><a href="/blog" className="text-gray-400 hover:text-white text-sm">Blog</a></li>
             <li><button onClick={() => scrollToSection('contact')} className="text-gray-400 hover:text-white text-sm">Contact</button></li>
           </ul>
         </div>
@@ -44,7 +45,6 @@ const Footer = () => {
         <div>
           <h4 className="text-green-400 font-semibold mb-4 text-base">Services</h4>
           <ul className="space-y-2">
-            <li><a href="/monthly-pricing" className="text-gray-400 hover:text-white text-sm">Monthly Premium Car Wash</a></li>
             <li><button onClick={() => scrollToSection('services')} className="text-gray-400 hover:text-white text-sm">Premium Doorstep Car Wash</button></li>
             <li><button onClick={() => {
               sessionStorage.setItem('selectedServiceType', 'premium-addons');

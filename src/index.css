@@ -34,6 +34,11 @@
 
     --radius: 0.5rem;
 
+        /* Brand colors */
+    --brand: 142 76% 36%;
+    --brand-foreground: 0 0% 100%;
+    --brand-muted: 142 50% 90%;
+
     --sidebar-background: 0 0% 98%;
 
     --sidebar-foreground: 240 5.3% 26.1%;
