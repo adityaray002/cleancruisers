@@ -11,6 +11,7 @@ import ContactSection from "@/components/ContactSection";
 import Footer from "@/components/Footer";
 import SocialIcons from "@/components/SocialIcons";
 import { PhoneCall } from "lucide-react";
+import SeoContentSection from "@/components/SeoContentSection";
 
 const Index = () => {
   const [cartOpen, setCartOpen] = useState(false);
@@ -36,11 +37,13 @@ const Index = () => {
           <HeroSection />
           <ServicesSection />
           <div id="about">
-            <AboutSection />
-            <WhoWeAre/>
+            {/* <AboutSection />
+            <WhoWeAre/> */}
+            <SeoContentSection/>
           </div>
           <TestimonialsSection />
           <ContactSection />
+          
         </main>
         
         <Footer />
