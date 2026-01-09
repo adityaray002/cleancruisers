@@ -1,6 +1,6 @@
 
 import React from "react";
-import { FaFacebookF, FaInstagram, FaWhatsapp } from "react-icons/fa6";
+import { FaFacebookF, FaInstagram, FaLinkedin, FaWhatsapp } from "react-icons/fa6";
 import Logo from "/LOGOFINAL.png";
 
 const Footer = () => {
@@ -26,6 +26,7 @@ const Footer = () => {
             <a href="https://www.instagram.com/cleancruisers.in?igsh=MTNtbnI1bWl0ZWoyYQ==" className="text-gray-400 hover:text-green-400"><FaInstagram /></a>
             <a href="https://www.facebook.com/share/1EUVLn1QoN/" className="text-gray-400 hover:text-green-400"><FaFacebookF /></a>
             <a href="https://wa.me/918920230357" className="text-gray-400 hover:text-green-400"><FaWhatsapp /></a>
+            <a href="https://www.linkedin.com/company/cleancruisers/about/" className="text-gray-400 hover:text-green-400"><FaLinkedin /></a>
           </div>
         </div>
 
