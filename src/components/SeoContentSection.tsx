@@ -43,11 +43,29 @@ const SeoContentSection = () => {
   ];
 
   const areas = [
-    "Punjabi Bagh", "Rajouri Garden", "Paschim Vihar", "Janakpuri", 
-    "Vikaspuri", "Tilak Nagar", "Hari Nagar", "Subhash Nagar", 
-    "Kirti Nagar", "Moti Nagar", "Shivaji Enclave", "Tagore Garden", 
-    "Ramesh Nagar", "Mayapuri Phase", "Uttam Nagar", "Dwarka", 
-    "Najafgarh", "Nangloi"
+    // "Punjabi Bagh", "Rajouri Garden", "Paschim Vihar", "Janakpuri", 
+    // "Vikaspuri", "Tilak Nagar", "Hari Nagar", "Subhash Nagar", 
+    // "Kirti Nagar", "Moti Nagar", "Shivaji Enclave", "Tagore Garden", 
+    // "Ramesh Nagar", "Mayapuri Phase", "Uttam Nagar", "Dwarka", 
+    // "Najafgarh", "Nangloi"
+    { name: "Punjabi Bagh", link: null },
+    { name: "Rajouri Garden", link: null },
+    { name: "Paschim Vihar", link: null },
+    { name: "Janakpuri", link: null },
+    { name: "Vikaspuri", link: null },
+    { name: "Tilak Nagar", link: null },
+    { name: "Hari Nagar", link: null },
+    { name: "Subhash Nagar", link: null },
+    { name: "Kirti Nagar", link: null },
+    { name: "Moti Nagar", link: null },
+    { name: "Shivaji Enclave", link: null },
+    { name: "Tagore Garden", link: null },
+    { name: "Ramesh Nagar", link: null },
+    { name: "Mayapuri Phase", link: null },
+    { name: "Uttam Nagar", link: null },
+    { name: "Dwarka", link: "/car-wash-in-dwarka" },
+    { name: "Najafgarh", link: null },
+    { name: "Nangloi", link: null }
   ];
 
   const containerVariants = {
@@ -267,23 +285,42 @@ const SeoContentSection = () => {
             className="flex flex-wrap justify-center gap-2 sm:gap-3 mb-8"
           >
             {areas.map((area, index) => (
-              <motion.span 
-                key={index}
-                variants={itemVariants}
-                whileHover={{ scale: 1.05, y: -2 }}
-                className="px-4 py-2 bg-gray-900/60 backdrop-blur-sm border border-gray-800 rounded-full text-gray-300 text-xs sm:text-sm hover:border-green-500/40 hover:text-green-400 transition-all cursor-default"
-              >
-                {area}
-              </motion.span>
+              // <motion.span 
+              //   key={index}
+              //   variants={itemVariants}
+              //   whileHover={{ scale: 1.05, y: -2 }}
+              //   className="px-4 py-2 bg-gray-900/60 backdrop-blur-sm border border-gray-800 rounded-full text-gray-300 text-xs sm:text-sm hover:border-green-500/40 hover:text-green-400 transition-all cursor-default"
+              // >
+              //   {area}
+              // </motion.span>
+                area.link ? (
+                <motion.a 
+                  key={index}
+                  href={area.link}
+                  variants={itemVariants}
+                  whileHover={{ scale: 1.05, y: -2 }}
+                  className="px-4 py-2 bg-green-500/10 backdrop-blur-sm border border-green-500/30 rounded-full text-green-400 text-xs sm:text-sm hover:border-green-400 hover:bg-green-500/20 transition-all cursor-pointer font-medium"
+                >
+                  {area.name}
+                </motion.a>
+              ) : (
+                <motion.span 
+                  key={index}
+                  variants={itemVariants}
+                  whileHover={{ scale: 1.05, y: -2 }}
+                  className="px-4 py-2 bg-gray-900/60 backdrop-blur-sm border border-gray-800 rounded-full text-gray-300 text-xs sm:text-sm hover:border-green-500/40 hover:text-green-400 transition-all cursor-default"
+                >
+                  {area.name}
+                </motion.span>
+              )
             ))}
           </motion.div>
           
-          <p className="text-center text-gray-500 text-sm">
-            Our services also extend to car wash in <span className="text-green-400 font-medium">Dwarka</span>, <span className="text-green-400 font-medium"> Najafgarh</span>, and  <span className="text-green-400 font-medium"> Nangloi</span> – making CleanCruisers a dependable choice across West Delhi and nearby areas.
-            {/* Also serving <span className="text-green-400 font-medium">Dwarka</span>, 
+         <p className="text-center text-gray-500 text-sm">
+            Also serving <a href="/car-wash-in-dwarka" className="text-green-400 font-medium hover:underline">Dwarka</a>, 
             <span className="text-green-400 font-medium"> Najafgarh</span>, and 
             <span className="text-green-400 font-medium"> Nangloi</span> – 
-            making us a dependable choice across West Delhi. */}
+            making us a dependable choice across West Delhi.
           </p>
         </motion.div>
 
