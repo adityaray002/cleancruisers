@@ -19,6 +19,8 @@ import {
 } from "lucide-react";
 import { motion } from "framer-motion";
 
+console.log("CarWashDwarka rendered");
+
 const CarWashDwarka = () => {
   const navigate = useNavigate();
 
@@ -65,7 +67,7 @@ const CarWashDwarka = () => {
       </Helmet>
 
 
-      <Header />
+      
 
       {/* Hero Section */}
       <section className="relative py-20 md:py-28 px-4 overflow-hidden" style={{ backgroundColor: "#0a0f0f" }}>
