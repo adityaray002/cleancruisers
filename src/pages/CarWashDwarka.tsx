@@ -53,10 +53,17 @@ const CarWashDwarka = () => {
     <div className="min-h-screen bg-black text-white">
       <Helmet>
         <title>Car Wash in Dwarka West Delhi | Doorstep Car Cleaning</title>
-        <meta name="description" content="Looking for a Professional car wash in Dwarka, West Delhi? Clean Cruisers offers doorstep car cleaning near you. Book today for easy and reliable service."/>
-        <meta name="keywords" content="car wash in Dwarka, car wash near me Dwarka, car cleaning Dwarka Delhi, doorstep car wash Dwarka, car wash at home Dwarka, Clean Cruisers"/>
+        <meta
+          name="description"
+          content="Looking for a Professional car wash in Dwarka, West Delhi? Clean Cruisers offers doorstep car cleaning near you. Book today for easy and reliable service."
+        />
+        <meta
+          name="keywords"
+          content="car wash in Dwarka, car wash near me Dwarka, car cleaning Dwarka Delhi, doorstep car wash Dwarka, car wash at home Dwarka, Clean Cruisers"
+        />
         <link rel="canonical" href="https://cleancruisers.in/car-wash-in-dwarka" />
       </Helmet>
+
 
       <Header />
 
