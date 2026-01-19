@@ -418,14 +418,14 @@ const Booking = () => {
                   <MessageCircle className="mr-2 h-4 w-4" />
                   Book via WhatsApp
                 </Button>
-                <Button
+                {/* <Button
                   onClick={() => window.open("tel:+918920230357", "_blank")}
                   variant="outline"
                   className="border-green-400 text-green-400 hover:bg-green-400/10"
                 >
                   <Phone className="mr-2 h-4 w-4" />
                   Call
-                </Button>
+                </Button> */}
               </>
             ) : (
               <Button
