@@ -18,27 +18,27 @@ const serviceTypeLabels: Record<string, string> = {
 
 const carPricing: Record<string, Record<string, number>> = {
   "Sedan": {
-    "exterior wash + interior wash": 599,
-    "exterior wash only": 399,
-    "interior wash only": 299,
+    "exterior wash + interior wash": 499,
+    "exterior wash only": 349,
+    "interior wash only": 249,
     "waterless": 349
   },
   "SUV": {
-    "exterior wash + interior wash": 699,
-    "exterior wash only": 499,
-    "interior wash only": 349,
+    "exterior wash + interior wash": 549,
+    "exterior wash only": 399,
+    "interior wash only": 299,
     "waterless": 399
   },
   "Hatchback": {
-    "exterior wash + interior wash": 499,
+    "exterior wash + interior wash": 449,
     "exterior wash only": 349,
-    "interior wash only": 299,
+    "interior wash only": 249,
     "waterless": 349
   },
   "Luxury": {
-    "exterior wash + interior wash": 699,
-    "exterior wash only": 499,
-    "interior wash only": 349,
+    "exterior wash + interior wash": 549,
+    "exterior wash only": 399,
+    "interior wash only": 299,
     "waterless": 399
   }
 };

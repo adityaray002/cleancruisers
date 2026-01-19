@@ -63,7 +63,7 @@ const CarWashDwarka = () => {
           name="keywords"
           content="car wash in Dwarka, car wash near me Dwarka, car cleaning Dwarka Delhi, doorstep car wash Dwarka, car wash at home Dwarka, Clean Cruisers"
         />
-        <link rel="canonical" href="https://cleancruisers.in/car-wash-in-dwarka" />
+        <link href="https://cleancruisers.in/car-wash-in-dwarka" />
       </Helmet>
 
 
