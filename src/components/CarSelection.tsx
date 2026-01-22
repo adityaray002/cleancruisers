@@ -6,9 +6,10 @@ import { ArrowLeft, ArrowRight } from "lucide-react";
 interface CarSelectionProps {
   selectedCar: string;
   onCarSelect: (car: string) => void;
+  onAutoAdvance?: () => void;
 }
 
-const CarSelection = ({ selectedCar, onCarSelect }: CarSelectionProps) => {
+const CarSelection = ({ selectedCar, onCarSelect, onAutoAdvance }: CarSelectionProps) => {
   const carTypes = ["Hatchback", "Sedan", "SUV", "Luxury"];
   const carImages: Record<string, string> = {
     Sedan: "/sedan.png",
@@ -31,6 +32,11 @@ const CarSelection = ({ selectedCar, onCarSelect }: CarSelectionProps) => {
     setCurrentIndex((prevIndex) => (prevIndex === carTypes.length - 1 ? 0 : prevIndex + 1));
   };
 
+  const handleConfirmCar = () => {
+    onCarSelect(carTypes[currentIndex]);
+    setTimeout(() => onAutoAdvance?.(), 200);
+  };
+
   return (
     <div className="text-center">
       <div className="flex items-center justify-center space-x-4 md:space-x-8 mb-6 md:mb-8">
@@ -51,7 +57,7 @@ const CarSelection = ({ selectedCar, onCarSelect }: CarSelectionProps) => {
         </Button>
       </div>
 
-      <div className="grid grid-cols-2 md:flex md:justify-center gap-4 md:space-x-8 md:gap-0">
+   <div className="grid grid-cols-2 md:flex md:justify-center gap-4 md:space-x-8 md:gap-0 mb-6">
         {carTypes.map((car, index) => (
           <button
             key={car}
@@ -66,6 +72,13 @@ const CarSelection = ({ selectedCar, onCarSelect }: CarSelectionProps) => {
           </button>
         ))}
       </div>
+        {/* Confirm Button */}
+      <Button 
+        onClick={handleConfirmCar}
+        className="bg-green-400 hover:bg-green-500 text-black font-semibold px-8 py-3"
+      >
+        Select {carTypes[currentIndex]}
+      </Button>
     </div>
   );
 };

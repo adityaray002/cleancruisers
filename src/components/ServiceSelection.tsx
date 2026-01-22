@@ -1,12 +1,13 @@
 
 import { Button } from "@/components/ui/button";
 import ServiceDetails from "./ServiceDetails";
-
+import { ArrowRight } from "lucide-react";
 interface ServiceSelectionProps {
   selectedServices: string[];
   onServicesChange: (services: string[]) => void;
   isPremiumAddons?: boolean;
   selectedCar?: string;
+  onAutoAdvance?: () => void;
 }
 
 const getServicesForCarType = (carType: string) => {
@@ -284,7 +285,8 @@ const ServiceSelection = ({
   selectedServices,
   onServicesChange,
   isPremiumAddons,
-  selectedCar = "sedan"
+  selectedCar = "sedan",
+  onAutoAdvance
 }: ServiceSelectionProps) => {
   const services = getServicesForCarType(selectedCar);
 
@@ -322,6 +324,17 @@ const ServiceSelection = ({
           />
         ))}
       </div>
+      {selectedServices.length > 0 && (
+        <div className="flex justify-center mt-6">
+          <Button 
+            onClick={() => onAutoAdvance?.()}
+            className="bg-green-400 hover:bg-green-500 text-black font-semibold px-8 py-3"
+          >
+            Continue with {selectedServices.length} service{selectedServices.length > 1 ? 's' : ''}
+            <ArrowRight className="ml-2 h-4 w-4" />
+          </Button>
+        </div>
+      )}
     </div>
   );
 };

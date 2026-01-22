@@ -1,4 +1,4 @@
-import { ArrowRight, ArrowLeft, Phone, MessageCircle, RotateCcw } from "lucide-react";
+import { ArrowLeft, Phone, MessageCircle, RotateCcw } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import Header from "@/components/Header";
 import CarSelection from "@/components/CarSelection";
@@ -137,6 +137,7 @@ const Booking = () => {
         <ServiceTypeSelection
           selectedServiceType={selectedServiceType}
           onServiceTypeSelect={handleServiceTypeChange}
+           onAutoAdvance={nextStep}
         />
       );
     }
@@ -149,6 +150,7 @@ const Booking = () => {
             <CarSelection
               selectedCar={selectedCar}
               onCarSelect={setSelectedCar}
+                onAutoAdvance={nextStep}
             />
           );
         case 2:
@@ -158,6 +160,7 @@ const Booking = () => {
               onServicesChange={setSelectedServices}
               isPremiumAddons={true}
               selectedCar={selectedCar}
+                onAutoAdvance={nextStep}
             />
           );
         case 3:
@@ -165,6 +168,7 @@ const Booking = () => {
             <CustomerDetails
               customerDetails={customerDetails}
               onDetailsChange={setCustomerDetails}
+                onAutoAdvance={nextStep}
             />
           );
         case 4:
@@ -189,6 +193,7 @@ const Booking = () => {
             <CarSelection
               selectedCar={selectedCar}
               onCarSelect={setSelectedCar}
+                onAutoAdvance={nextStep}
             />
           );
         case 2:
@@ -197,6 +202,7 @@ const Booking = () => {
               selectedPlan={selectedPlan}
               onPlanSelect={setSelectedPlan}
               selectedCar={selectedCar}
+                onAutoAdvance={nextStep}
             />
           );
         case 3:
@@ -204,6 +210,7 @@ const Booking = () => {
             <CustomerDetails
               customerDetails={customerDetails}
               onDetailsChange={setCustomerDetails}
+                onAutoAdvance={nextStep}
             />
           );
         case 4:
@@ -396,7 +403,7 @@ const Booking = () => {
           </motion.div>
         </AnimatePresence>
 
-        {/* Navigation Buttons */}
+        {/* Navigation - Only show on final step or for going back */}
         <div className="flex justify-between items-center gap-4 pt-4 border-t border-gray-800">
           <Button
             variant="ghost"
@@ -407,7 +414,7 @@ const Booking = () => {
             {currentStep === 0 ? "Home" : "Back"}
           </Button>
 
-          <div className="flex gap-2">
+          {/* <div className="flex gap-2">
             {isLastStep ? (
               <>
                 <Button
@@ -418,14 +425,7 @@ const Booking = () => {
                   <MessageCircle className="mr-2 h-4 w-4" />
                   Book via WhatsApp
                 </Button>
-                {/* <Button
-                  onClick={() => window.open("tel:+918920230357", "_blank")}
-                  variant="outline"
-                  className="border-green-400 text-green-400 hover:bg-green-400/10"
-                >
-                  <Phone className="mr-2 h-4 w-4" />
-                  Call
-                </Button> */}
+               
               </>
             ) : (
               <Button
@@ -437,9 +437,29 @@ const Booking = () => {
                 <ArrowRight className="ml-2 h-4 w-4" />
               </Button>
             )}
-          </div>
+          </div> */}
         </div>
 
+          {isLastStep && (
+            <div className="flex gap-2">
+              <Button
+                onClick={handleBookNow}
+                className="bg-green-400 hover:bg-green-500 text-black font-semibold px-6"
+                disabled={!canProceed()}
+              >
+                <MessageCircle className="mr-2 h-4 w-4" />
+                Book via WhatsApp
+              </Button>
+              {/* <Button
+                onClick={() => window.open("tel:+918920230357", "_blank")}
+                variant="outline"
+                className="border-green-400 text-green-400 hover:bg-green-400/10"
+              >
+                <Phone className="mr-2 h-4 w-4" />
+                Call
+              </Button> */}
+            </div>
+          )}
         {/* Help Text */}
         <motion.div 
           initial={{ opacity: 0 }}

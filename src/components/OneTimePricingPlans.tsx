@@ -8,9 +8,10 @@ interface PricingPlansProps {
   selectedPlan: string;
   onPlanSelect: (plan: string) => void;
   selectedCar: string;
+   onAutoAdvance?: () => void;
 }
 
-const OneTimePricingPlans = ({ selectedPlan, onPlanSelect, selectedCar }: PricingPlansProps) => {
+const OneTimePricingPlans = ({ selectedPlan, onPlanSelect, selectedCar, onAutoAdvance }: PricingPlansProps) => {
   const [serviceType, setServiceType] = useState("");
 
   useEffect(() => {
@@ -105,7 +106,10 @@ const OneTimePricingPlans = ({ selectedPlan, onPlanSelect, selectedCar }: Pricin
                   ? 'bg-gray-700 border-green-400'
                   : 'bg-gray-800 border-gray-600 hover:border-gray-500'
               }`}
-              onClick={() => onPlanSelect(plan.name)}
+                onClick={() => {
+                onPlanSelect(plan.name);
+                setTimeout(() => onAutoAdvance?.(), 300);
+              }}
             >
               <CardContent className="p-3 flex flex-col h-full">
                 <div className="text-center mb-3">
@@ -165,7 +169,10 @@ const OneTimePricingPlans = ({ selectedPlan, onPlanSelect, selectedCar }: Pricin
                   ? 'bg-gray-700 border-green-400'
                   : 'bg-gray-800 border-gray-600 hover:border-gray-500'
               }`}
-              onClick={() => onPlanSelect(plan.name)}
+               onClick={() => {
+                onPlanSelect(plan.name);
+                setTimeout(() => onAutoAdvance?.(), 300);
+              }}
             >
               <CardContent className="p-4 lg:p-6 flex flex-col h-full">
                 <div className="text-center mb-4">

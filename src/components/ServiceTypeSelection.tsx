@@ -7,9 +7,10 @@ import { useNavigate } from "react-router-dom";
 interface ServiceTypeSelectionProps {
   selectedServiceType: string;
   onServiceTypeSelect: (type: string) => void;
+   onAutoAdvance?: () => void;
 }
 
-const ServiceTypeSelection = ({ selectedServiceType, onServiceTypeSelect }: ServiceTypeSelectionProps) => {
+const ServiceTypeSelection = ({ selectedServiceType, onServiceTypeSelect, onAutoAdvance }: ServiceTypeSelectionProps) => {
   // const serviceTypes = [
   //   {
   //     type: "monthly",
@@ -104,6 +105,9 @@ const ServiceTypeSelection = ({ selectedServiceType, onServiceTypeSelect }: Serv
       navigate('/monthly-pricing');
     } else {
       onServiceTypeSelect(type);
+       setTimeout(() => {
+        onAutoAdvance?.();
+      }, 300);
     }
   };
 
@@ -182,7 +186,7 @@ const ServiceTypeSelection = ({ selectedServiceType, onServiceTypeSelect }: Serv
       </div>
 
       {/* Selected indicator */}
-      {selectedServiceType && selectedServiceType !== "monthly" && (
+      {/* {selectedServiceType && selectedServiceType !== "monthly" && (
         <motion.div
           initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
@@ -195,7 +199,7 @@ const ServiceTypeSelection = ({ selectedServiceType, onServiceTypeSelect }: Serv
           </p>
           <p className="text-gray-500 text-xs mt-1">Click "Continue" to proceed</p>
         </motion.div>
-      )}
+      )} */}
     </div>
    
   );

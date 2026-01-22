@@ -101,8 +101,8 @@ const BookingProgress = ({ currentStep, totalSteps, selectedServiceType, complet
 
       {/* Mobile Progress - Simplified */}
       <div className="md:hidden">
-        <div className="flex items-center justify-between mb-3">
-          <div className="flex items-center gap-2">
+        <div className="flex items-center justify-between">
+          <div className="flex items-center gap-3">
             <div className="w-10 h-10 rounded-full bg-green-400 flex items-center justify-center text-black font-bold">
               {currentStep}
             </div>
@@ -114,10 +114,10 @@ const BookingProgress = ({ currentStep, totalSteps, selectedServiceType, complet
           <span className="text-green-400 text-sm font-medium bg-green-400/10 px-3 py-1 rounded-full">
             {currentStep}/{totalSteps}
           </span>
-        </div>
+        {/* </div> */}
         
         {/* Progress dots */}
-        <div className="flex items-center gap-2 justify-center">
+        {/* <div className="flex items-center gap-2 justify-center">
           {steps.map((step) => {
             const status = getStepStatus(step.number);
             return (
@@ -132,7 +132,7 @@ const BookingProgress = ({ currentStep, totalSteps, selectedServiceType, complet
                 `}
               />
             );
-          })}
+          })} */}
         </div>
       </div>
     </div>
