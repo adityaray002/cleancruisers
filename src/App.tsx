@@ -12,6 +12,7 @@ import Blog from "./pages/Blog";
 import BlogPost from "./pages/BlogPost";
 import { HelmetProvider } from "react-helmet-async";
 import CarWashDwarka from "./pages/CarWashDwarka";
+import CarWashJanakpuri from "./pages/CarWashJanakpuri";
 const queryClient = new QueryClient();
 
 const App = () => (
@@ -45,6 +46,7 @@ const App = () => (
             <Route path="/blog" element={<Blog />} />
             <Route path="/blog/:id" element={<BlogPost />} />
              <Route path="/car-wash-in-dwarka" element={<CarWashDwarka />} />
+            <Route path="/car-wash-services-in-janakpuri" element={<CarWashJanakpuri />} />
            <Route path="*" element={<NotFound />} />
           </Routes>
         </BrowserRouter>
