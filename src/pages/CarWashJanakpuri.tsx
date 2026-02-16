@@ -68,7 +68,7 @@ const CarWashJanakpuri = () => {
   return (
     <div className="min-h-screen bg-black text-white">
       <Helmet>
-        <title>Car Wash Services in Janakpuri | CleanCruiser Delhi</title>
+        <title>Car Wash Services in Janakpuri | CleanCruisers Delhi</title>
         <meta name="description" content="Get reliable car wash services in Janakpuri by CleanCruisers. Affordable doorstep cleaning in West Delhi. Book your car wash today!" />
         <meta name="keywords" content="car wash in Janakpuri, car wash services Janakpuri, doorstep car wash Janakpuri, car cleaning Janakpuri West Delhi, monthly car wash Janakpuri, car detailing Janakpuri, CleanCruisers" />
         <link rel="canonical" href="https://cleancruisers.in/car-wash-services-in-janakpuri" />
@@ -106,7 +106,7 @@ const CarWashJanakpuri = () => {
 
             <p className="text-gray-400 text-base sm:text-lg max-w-3xl mx-auto leading-relaxed mb-8">
               Looking for reliable <span className="text-white font-medium">car wash services in Janakpuri</span> that save your time and deliver professional results? 
-              <span className="text-white font-medium"> CleanCruiser</span> brings premium doorstep car wash right to your home or office. 
+              <span className="text-white font-medium"> CleanCruisers</span> brings premium doorstep car wash right to your home or office. 
               No waiting. No queues. Just spotless shine at your convenience.
             </p>
 
