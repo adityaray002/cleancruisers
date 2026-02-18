@@ -5,7 +5,7 @@ import CarSelection from "@/components/CarSelection";
 import OneTimePricingPlans from "@/components/OneTimePricingPlans";
 import ServiceSelection from "@/components/ServiceSelection";
 import CustomerDetails from "@/components/CustomerDetails";
-
+import CompleteCarePlan from "@/components/CompleteCarePlan";
 import BookingProgress from "@/components/BookingProgress";
 import ServiceTypeSelection from "@/components/ServiceTypeSelection";
 import { Button } from "@/components/ui/button";
@@ -28,15 +28,28 @@ const Booking = () => {
   const navigate = useNavigate();
 
   // Check if service type was pre-selected from homepage
- useEffect(() => {
-  const params = new URLSearchParams(window.location.search);
-  const fromHome = params.get("from");
+//  useEffect(() => {
+//   const params = new URLSearchParams(window.location.search);
+//   const fromHome = params.get("from");
 
-  if (fromHome) {
-    sessionStorage.removeItem("selectedServiceType");
-    setCurrentStep(0);
-    setSelectedServiceType("");
-    setCompletedSteps([]);
+//   if (fromHome) {
+//     sessionStorage.removeItem("selectedServiceType");
+//     setCurrentStep(1);
+//     setSelectedServiceType("");
+//     setCompletedSteps([]);
+//   }
+// }, []);
+// Auto select service from Services page
+useEffect(() => {
+  const params = new URLSearchParams(window.location.search);
+  const serviceFromUrl = params.get("service");
+
+  if (serviceFromUrl) {
+    setSelectedServiceType(serviceFromUrl);
+    sessionStorage.setItem("selectedServiceType", serviceFromUrl);
+
+    // skip service selection step → go to car selection
+    setCurrentStep(1);
   }
 }, []);
 
@@ -48,7 +61,7 @@ const Booking = () => {
   // Determine flow based on service type
   const isPremiumAddons = selectedServiceType === "premium-addons";
   const isOneTime = selectedServiceType === "one-time" || selectedServiceType === "waterless";
-  
+    const isCompleteCare = selectedServiceType === "complete-care";
   // Total steps (excluding step 0 which is service type):
   // Premium addons: Car -> Add-ons -> Details -> Confirm (4 steps)
   // One-time: Car -> Package -> Details -> Confirm (4 steps)
@@ -65,6 +78,8 @@ const Booking = () => {
       return ["Service Type", "Car Type", "Select Add-ons", "Your Details", "Confirm Booking"];
     } else if (isOneTime) {
       return ["Service Type", "Car Type", "Choose Package", "Your Details", "Confirm Booking"];
+    }else if (isCompleteCare) {
+      return ["Service Type", "Car Type", "Package Details", "Your Details", "Confirm Booking"];
     }
     return ["Service Type", "Car Type", "Choose Package", "Your Details", "Confirm Booking"];
   };
@@ -119,7 +134,15 @@ const Booking = () => {
         case 4: return true;
         default: return false;
       }
-    } else {
+    } else if (isCompleteCare) {
+      switch (currentStep) {
+        case 1: return selectedCar !== "";
+        case 2: return true; // single package, always valid
+        case 3: return !!customerDetails.name;
+        case 4: return true;
+        default: return false;
+      }
+    }else {
       switch (currentStep) {
         case 1: return selectedCar !== "";
         case 2: return selectedPlan !== "";
@@ -143,89 +166,42 @@ const Booking = () => {
     }
 
     if (isPremiumAddons) {
-      // Premium Add-ons flow: Car -> Add-ons -> Details -> Confirm
+     
       switch (currentStep) {
         case 1:
-          return (
-            <CarSelection
-              selectedCar={selectedCar}
-              onCarSelect={setSelectedCar}
-                onAutoAdvance={nextStep}
-            />
-          );
+           return <CarSelection selectedCar={selectedCar} onCarSelect={setSelectedCar} onAutoAdvance={nextStep} />;
         case 2:
-          return (
-            <ServiceSelection
-              selectedServices={selectedServices}
-              onServicesChange={setSelectedServices}
-              isPremiumAddons={true}
-              selectedCar={selectedCar}
-                onAutoAdvance={nextStep}
-            />
-          );
+         return <ServiceSelection selectedServices={selectedServices} onServicesChange={setSelectedServices} isPremiumAddons={true} selectedCar={selectedCar} onAutoAdvance={nextStep} />;
         case 3:
-          return (
-            <CustomerDetails
-              customerDetails={customerDetails}
-              onDetailsChange={setCustomerDetails}
-                onAutoAdvance={nextStep}
-            />
-          );
+          return <CustomerDetails customerDetails={customerDetails} onDetailsChange={setCustomerDetails} onAutoAdvance={nextStep} />;
         case 4:
-          return (
-            <BookingSummary
-              selectedServiceType={selectedServiceType}
-              selectedCar={selectedCar}
-              selectedPlan={selectedPlan}
-              selectedServices={selectedServices}
-              customerName={customerDetails.name}
-              onEditStep={(step) => setCurrentStep(step)}
-            />
-          );
-        default:
-          return null;
+          return <BookingSummary selectedServiceType={selectedServiceType} selectedCar={selectedCar} selectedPlan={selectedPlan} selectedServices={selectedServices} customerName={customerDetails.name} onEditStep={(step) => setCurrentStep(step)} />;
+        default: return null;
+      }
+    } else if (isCompleteCare) {
+      switch (currentStep) {
+        case 1:
+          return <CarSelection selectedCar={selectedCar} onCarSelect={setSelectedCar} onAutoAdvance={nextStep} />;
+        case 2:
+          return <CompleteCarePlan selectedCar={selectedCar} onAutoAdvance={nextStep} />;
+        case 3:
+          return <CustomerDetails customerDetails={customerDetails} onDetailsChange={setCustomerDetails} onAutoAdvance={nextStep} />;
+        case 4:
+          return <BookingSummary selectedServiceType={selectedServiceType} selectedCar={selectedCar} selectedPlan="Complete Care Package" selectedServices={[]} customerName={customerDetails.name} onEditStep={(step) => setCurrentStep(step)} />;
+        default: return null;
       }
     } else {
       // One-time / Waterless flow: Car -> Package -> Details -> Confirm
       switch (currentStep) {
         case 1:
-          return (
-            <CarSelection
-              selectedCar={selectedCar}
-              onCarSelect={setSelectedCar}
-                onAutoAdvance={nextStep}
-            />
-          );
+         return <CarSelection selectedCar={selectedCar} onCarSelect={setSelectedCar} onAutoAdvance={nextStep} />;
         case 2:
-          return (
-            <OneTimePricingPlans
-              selectedPlan={selectedPlan}
-              onPlanSelect={setSelectedPlan}
-              selectedCar={selectedCar}
-                onAutoAdvance={nextStep}
-            />
-          );
+         return <OneTimePricingPlans selectedPlan={selectedPlan} onPlanSelect={setSelectedPlan} selectedCar={selectedCar} onAutoAdvance={nextStep} />;
         case 3:
-          return (
-            <CustomerDetails
-              customerDetails={customerDetails}
-              onDetailsChange={setCustomerDetails}
-                onAutoAdvance={nextStep}
-            />
-          );
+         return <CustomerDetails customerDetails={customerDetails} onDetailsChange={setCustomerDetails} onAutoAdvance={nextStep} />;
         case 4:
-          return (
-            <BookingSummary
-              selectedServiceType={selectedServiceType}
-              selectedCar={selectedCar}
-              selectedPlan={selectedPlan}
-              selectedServices={selectedServices}
-              customerName={customerDetails.name}
-              onEditStep={(step) => setCurrentStep(step)}
-            />
-          );
-        default:
-          return null;
+          return <BookingSummary selectedServiceType={selectedServiceType} selectedCar={selectedCar} selectedPlan={selectedPlan} selectedServices={selectedServices} customerName={customerDetails.name} onEditStep={(step) => setCurrentStep(step)} />;
+        default: return null;
       }
     }
   };
@@ -268,6 +244,19 @@ const Booking = () => {
         default:
           return { title: "", subtitle: "", tip: "" };
       }
+    }else if (isCompleteCare) {
+      switch (currentStep) {
+        case 1:
+          return { title: "Select Your Car Type", subtitle: "Choose your vehicle category for accurate pricing", tip: "Tip: Pricing varies based on car size" };
+        case 2:
+          return { title: "Complete Care Package", subtitle: "3 times premium washing with full detailing", tip: "Tip: This package includes everything your car needs" };
+        case 3:
+          return { title: "Your Details", subtitle: "We need your name to complete the booking", tip: "Tip: Enter the name for booking confirmation" };
+        case 4:
+          return { title: "Review Your Booking", subtitle: "Please confirm your selections before booking", tip: "Tip: You can edit any selection below" };
+        default:
+          return { title: "", subtitle: "", tip: "" };
+      }
     } else {
       switch (currentStep) {
         case 1:
@@ -302,14 +291,20 @@ const Booking = () => {
 
   const stepInfo = getStepInfo();
   const isLastStep = currentStep === 4;
-
+  const completeCarePricing: Record<string, number> = {
+    Hatchback: 1399, Sedan: 1499, SUV: 1599, Luxury: 1599,
+  };
   const handleBookNow = () => {
     const phone = "918920230357";
     let message = `Hello! I would like to book a car wash service.%0A`;
     message += `Name: ${customerDetails.name}%0A`;
-    message += `Service Type: ${selectedServiceType || "-"}%0A`;
+    message += `Service Type: ${getServiceTypeName(selectedServiceType)}%0A`;
     message += `Car Type: ${selectedCar || "-"}%0A`;
-    if (selectedPlan) {
+    if (isCompleteCare) {
+      const ccPrice = completeCarePricing[selectedCar] || 1399;
+      message += `Package: Complete Care (3x Premium Wash)%0A`;
+      message += `Price: ₹${ccPrice}%0A`;
+    }else if (selectedPlan) {
       message += `Plan: ${selectedPlan}%0A`;
     }
     if (selectedServices.length > 0) {
@@ -324,7 +319,7 @@ const Booking = () => {
       case 'one-time': return 'One-Time Premium Wash';
       case 'waterless': return 'Waterless Eco Clean';
       case 'premium-addons': return 'Premium Add-ons';
-      case 'monthly': return 'Monthly Subscription';
+     case 'complete-care': return 'Complete Care Package';
       default: return type;
     }
   };

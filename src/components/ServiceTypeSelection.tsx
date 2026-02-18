@@ -2,7 +2,7 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Sparkles, Star, Calendar, CheckCircle2 } from "lucide-react";
 import { motion } from "framer-motion";
-import { useNavigate } from "react-router-dom";
+
 
 interface ServiceTypeSelectionProps {
   selectedServiceType: string;
@@ -66,7 +66,6 @@ const ServiceTypeSelection = ({ selectedServiceType, onServiceTypeSelect, onAuto
   //       ))}
   //     </div>
 
-  const navigate = useNavigate();
 
   const serviceTypes = [
     {
@@ -96,19 +95,32 @@ const ServiceTypeSelection = ({ selectedServiceType, onServiceTypeSelect, onAuto
         "Long-lasting shine"
       ],
       priceRange: "₹149 - ₹2799"
-    },
+    }, {
+      
+      type: "complete-care",
+      title: "Complete Care Package",
+      description: "3 times premium washing with full interior & exterior detailing",
+      icon: Calendar,
+      color: "from-purple-500 to-pink-600",
+      features: [
+       
+        "3 premium washes",
+        "Interior + exterior cleaning",
+        "Tyre & black part polish",
+        "Free dustbin & air freshener"
+      ],
+      
+      priceRange: "₹1399 - ₹1599"
+    }
    
   ];
 
   const handleSelect = (type: string) => {
-    if (type === "monthly") {
-      navigate('/monthly-pricing');
-    } else {
-      onServiceTypeSelect(type);
-       setTimeout(() => {
-        onAutoAdvance?.();
-      }, 300);
-    }
+    onServiceTypeSelect(type);
+    // Auto-advance after a brief delay for visual feedback
+    setTimeout(() => {
+      onAutoAdvance?.();
+    }, 300);
   };
 
   return (
@@ -176,7 +188,7 @@ const ServiceTypeSelection = ({ selectedServiceType, onServiceTypeSelect, onAuto
                       handleSelect(service.type);
                     }}
                   >
-                    {service.type === "monthly" ? "View Plans" : isSelected ? '✓ Selected' : 'Select This Service'}
+                    {isSelected ? '✓ Selected' : 'Select This Service'}
                   </Button>
                 </CardContent>
               </Card>

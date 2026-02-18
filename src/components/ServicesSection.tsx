@@ -13,7 +13,9 @@ const ServicesSection = ({ onScrollToPricing }: ServicesSectionProps) => {
 
   const services = [
   
-    { icon: Sparkles,
+    { 
+      id: "one-time",
+      icon: Sparkles,
       title: "One-Time Premium Wash",
       tagline: "Deep clean when you need it",
       description: "Complete interior + exterior detailing at your doorstep",
@@ -47,6 +49,24 @@ const ServicesSection = ({ onScrollToPricing }: ServicesSectionProps) => {
       popular: false,
       color: "from-blue-500 to-indigo-600"
     },
+    {
+      id: "complete-care",
+      icon: Calendar,
+      title: "Complete Care Package",
+      tagline: "3x premium washing",
+      description: "Full interior & exterior detailing with polish, cleaning & freebies",
+      priceRange: "₹1399 - ₹1599",
+      duration: "1-2 hours × 3",
+      bestFor: "Regular deep clean with complete protection",
+      features: [
+        "3 premium washes included",
+        "Interior + exterior cleaning",
+        "Tyre & black part polish",
+        "Free dustbin & air freshener"
+      ],
+      popular: false,
+      color: "from-purple-500 to-pink-600"
+    },
     
   
     
@@ -79,13 +99,9 @@ const ServicesSection = ({ onScrollToPricing }: ServicesSectionProps) => {
     }
   ];
   const handleServiceClick = (service: any) => {
-    if (service.id === 'monthly') {
-      navigate('/monthly-pricing');
-      return;
-    } else {
-      sessionStorage.setItem('selectedServiceType', service.id);
-      navigate('/booking');
-    }
+    sessionStorage.setItem('selectedServiceType', service.id);
+    navigate(`/booking?service=${service.id}`);
+
   };
 
   return (
@@ -349,7 +365,7 @@ const ServicesSection = ({ onScrollToPricing }: ServicesSectionProps) => {
                         handleServiceClick(service);
                       }}
                     >
-                      {service.id === 'monthly' ? 'View Monthly Plans' : 'Book This Service'}
+                      Book This Service
                       <ArrowRight className="w-4 h-4 ml-2" />
                     </Button>
                   </CardContent>
