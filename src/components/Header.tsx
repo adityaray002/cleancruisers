@@ -105,7 +105,7 @@ const Header = ({ showNav = true, onCartOpen }: HeaderProps) => {
         {/* Logo */}
         <div className="flex items-center space-x-2 cursor-pointer" onClick={() => navigate('/')}>
           <img 
-            src="LOGOFINAL.png" 
+            src="/LOGOFINAL.png" 
             alt="CleanCruisers Logo" 
             className="h-10 w-10 sm:h-12 sm:w-12 md:h-14 md:w-14 object-contain rounded-full" 
           />
