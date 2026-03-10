@@ -53,8 +53,10 @@ const CarWashDwarka = () => {
 
   return (
     <div className="min-h-screen bg-black text-white">
+       
       <Helmet>
         <title>Car Wash in Dwarka West Delhi | Doorstep Car Cleaning</title>
+         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <meta
           name="description"
           content="Looking for a Professional car wash in Dwarka, West Delhi? Clean Cruisers offers doorstep car cleaning near you. Book today for easy and reliable service."
@@ -63,9 +65,41 @@ const CarWashDwarka = () => {
           name="keywords"
           content="car wash in Dwarka, car wash near me Dwarka, car cleaning Dwarka Delhi, doorstep car wash Dwarka, car wash at home Dwarka, Clean Cruisers"
         />
-        <link href="https://cleancruisers.in/car-wash-in-dwarka" />
+        <link rel="canonical" href="https://cleancruisers.in/car-wash-in-dwarka" />
+        <meta property="og:title" content="Car Wash in Dwarka | Doorstep Car Cleaning" />
+        <meta property="og:description" content="Professional doorstep car wash service in Dwarka, Delhi. Book CleanCruisers today." />
+        <meta property="og:url" content="https://cleancruisers.in/car-wash-in-dwarka" />
+        <meta property="og:type" content="website" />
+        <meta property="og:image" content="https://cleancruisers.in/LOGOFINAL.png" />
+
+         <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="Car Wash in Dwarka | Doorstep Car Cleaning" />
+        <meta name="twitter:description" content="Professional doorstep car wash service in Dwarka." />
+        <meta name="twitter:image" content="https://cleancruisers.in/LOGOFINAL.png" />
+
+       <script type="application/ld+json">
+          {`
+          {
+            "@context": "https://schema.org",
+            "@type": "LocalBusiness",
+            "name": "CleanCruisers",
+            "image": "https://cleancruisers.in/LOGOFINAL.png",
+            "url": "https://cleancruisers.in",
+            "telephone": "+918920230357",
+            "priceRange": "₹₹",
+            "areaServed": "Dwarka, Delhi",
+            "address": {
+              "@type": "PostalAddress",
+              "addressLocality": "Dwarka",
+              "addressRegion": "Delhi",
+              "addressCountry": "India"
+            }
+          }
+          `}
+        </script>
       </Helmet>
 
+      <Header />
 
       
 
