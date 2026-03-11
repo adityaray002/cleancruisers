@@ -70,7 +70,7 @@ const ServiceTypeSelection = ({ selectedServiceType, onServiceTypeSelect, onAuto
   const serviceTypes = [
     {
       type: "one-time",
-      title: "One-Time Premium Wash",
+      title: "CAR WASH & CARE",
       description: "Complete doorstep car wash with interior & exterior cleaning",
       icon: Sparkles,
       color: "from-green-500 to-emerald-600",
@@ -84,7 +84,7 @@ const ServiceTypeSelection = ({ selectedServiceType, onServiceTypeSelect, onAuto
     },
     {
       type: "premium-addons",
-      title: "Premium Add-ons",
+      title: "PREMIUM ADD-ONS",
       description: "Deep cleaning, paint rubbing, waxing & protection services",
       icon: Star,
       color: "from-blue-500 to-indigo-600",
@@ -98,7 +98,7 @@ const ServiceTypeSelection = ({ selectedServiceType, onServiceTypeSelect, onAuto
     }, {
       
       type: "complete-care",
-      title: "Complete Care Package",
+      title: "CAR WASH MONTHLY PACKAGE",
       description: "3 times premium washing with full interior & exterior detailing",
       icon: Calendar,
       color: "from-purple-500 to-pink-600",

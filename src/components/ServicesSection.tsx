@@ -16,7 +16,7 @@ const ServicesSection = ({ onScrollToPricing }: ServicesSectionProps) => {
     { 
       id: "one-time",
       icon: Sparkles,
-      title: "One-Time Premium Wash",
+      title: "CAR WASH & CARE",
       tagline: "Deep clean when you need it",
       description: "Complete interior + exterior detailing at your doorstep",
       priceRange: "₹299 - ₹699",
@@ -34,7 +34,7 @@ const ServicesSection = ({ onScrollToPricing }: ServicesSectionProps) => {
     {
       id: "premium-addons",
       icon: Star,
-      title: "Premium Add-ons",
+      title: "PREMIUM ADD-ONS",
       tagline: "Extra shine & protection",
       description: "Paint rubbing, waxing & deep interior cleaning",
       priceRange: "₹149 - ₹2799",
@@ -52,7 +52,7 @@ const ServicesSection = ({ onScrollToPricing }: ServicesSectionProps) => {
     {
       id: "complete-care",
       icon: Calendar,
-      title: "Complete Care Package",
+      title: "CAR WASH MONTHLY PACKAGE",
       tagline: "3x premium washing",
       description: "Full interior & exterior detailing with polish, cleaning & freebies",
       priceRange: "₹1399 - ₹1599",
