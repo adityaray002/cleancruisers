@@ -32,10 +32,10 @@ const BlogPost: React.FC = () => {
   return (
     <>
       <Helmet>
-        <title>{post.title} | CleanCruisers Blog</title>
-        <meta name="description" content={post.excerpt} />
-        <meta property="og:title" content={post.title} />
-        <meta property="og:description" content={post.excerpt} />
+        <title>{post.metaTitle || `${post.title} | CleanCruisers Blog`}</title>
+        <meta name="description" content={post.metaDescription || post.excerpt} />
+        <meta property="og:title" content={post.metaTitle || post.title} />
+        <meta property="og:description" content={post.metaDescription || post.excerpt} />
         <meta property="og:image" content={post.image} />
         <meta property="og:type" content="article" />
       </Helmet>
