@@ -7,7 +7,7 @@ import BlogCard from "@/components/BlogCard";
 import { getPostById, getRelatedPosts } from "@/data/blogPosts";
 import { Calendar, Clock, ArrowLeft, Share2, Facebook, Twitter } from "lucide-react";
 import { FaWhatsapp } from "react-icons/fa6";
-
+import ReactMarkdown from "react-markdown";
 const BlogPost: React.FC = () => {
   const { id } = useParams<{ id: string }>();
   const post = id ? getPostById(id) : undefined;
@@ -31,14 +31,18 @@ const BlogPost: React.FC = () => {
 
   return (
     <>
-      <Helmet>
-        <title>{post.metaTitle || `${post.title} | CleanCruisers Blog`}</title>
-        <meta name="description" content={post.metaDescription || post.excerpt} />
-        <meta property="og:title" content={post.metaTitle || post.title} />
-        <meta property="og:description" content={post.metaDescription || post.excerpt} />
-        <meta property="og:image" content={post.image} />
-        <meta property="og:type" content="article" />
-      </Helmet>
+     <Helmet>
+  <title>{post.metaTitle || post.title}</title>
+  <meta name="description" content={post.metaDescription || post.excerpt} />
+  <link rel="canonical" href={`https://cleancruisers.in/blog/${post.id}`} />
+
+  {/* Open Graph (for sharing) */}
+  <meta property="og:title" content={post.metaTitle || post.title} />
+  <meta property="og:description" content={post.metaDescription || post.excerpt} />
+  <meta property="og:image" content={`https://cleancruisers.in${post.image}`} />
+  <meta property="og:url" content={`https://cleancruisers.in/blog/${post.id}`} />
+  <meta property="og:type" content="article" />
+</Helmet>
 
       <div className="min-h-screen bg-neutral-950">
         <Header />
@@ -128,29 +132,37 @@ const BlogPost: React.FC = () => {
               </div>
 
               {/* Article Body */}
-              <div className="prose prose-invert prose-lg max-w-none prose-headings:text-white prose-headings:font-bold prose-h2:text-2xl prose-h2:mt-10 prose-h2:mb-4 prose-h3:text-xl prose-h3:mt-8 prose-h3:mb-3 prose-p:text-neutral-300 prose-p:leading-relaxed prose-strong:text-green-400 prose-ul:text-neutral-300 prose-li:marker:text-green-500">
-                {post.content.split('\n').map((line, index) => {
-                  if (line.startsWith('## ')) {
-                    return <h2 key={index} className="text-2xl font-bold text-white mt-10 mb-4">{line.replace('## ', '')}</h2>;
-                  }
-                  if (line.startsWith('### ')) {
-                    return <h3 key={index} className="text-xl font-semibold text-white mt-8 mb-3">{line.replace('### ', '')}</h3>;
-                  }
-                  if (line.startsWith('**') && line.endsWith('**')) {
-                    return <p key={index} className="font-semibold text-green-400 mt-4 mb-2">{line.replace(/\*\*/g, '')}</p>;
-                  }
-                  if (line.startsWith('- ')) {
-                    return <li key={index} className="text-neutral-300 ml-4">{line.replace('- ', '')}</li>;
-                  }
-                  if (line.startsWith('✅ ')) {
-                    return <p key={index} className="text-green-400 flex items-start gap-2"><span>✅</span>{line.replace('✅ ', '')}</p>;
-                  }
-                  if (line.trim() === '') {
-                    return null;
-                  }
-                  return <p key={index} className="text-neutral-300 leading-relaxed mb-4">{line}</p>;
-                })}
-              </div>
+            <div className="prose prose-invert prose-lg max-w-none">
+  <ReactMarkdown
+    components={{
+      p: ({ children }) => (
+        <p className="text-neutral-300 mb-4 leading-relaxed">{children}</p>
+      ),
+      h2: ({ children }) => (
+        <h2 className="text-white text-2xl font-bold mt-10 mb-4">{children}</h2>
+      ),
+      h3: ({ children }) => (
+        <h3 className="text-white text-xl font-semibold mt-8 mb-3">{children}</h3>
+      ),
+      strong: ({ children }) => (
+        <strong className="text-green-400 font-semibold">{children}</strong>
+      ),
+      li: ({ children }) => (
+        <li className="text-neutral-300 ml-4">{children}</li>
+      ),
+      a: ({ node, ...props }) => (
+        <a
+          {...props}
+          target="_blank"
+          rel="noopener noreferrer nofollow"
+          className="text-green-400 underline hover:text-green-300"
+        />
+      ),
+    }}
+  >
+    {post.content}
+  </ReactMarkdown>
+</div>
 
               {/* CTA Box */}
               <div className="mt-12 p-6 md:p-8 bg-gradient-to-br from-green-500/10 to-transparent border border-green-500/20 rounded-xl text-center">
