@@ -1,8 +1,15 @@
+// ✅ FIRST LINE
+if (!(Object as any).hasOwn) {
+  (Object as any).hasOwn = function (obj: any, prop: any) {
+    return Object.prototype.hasOwnProperty.call(obj, prop);
+  };
+}
 
 import ReactDOM from "react-dom/client";
 import App from "./App.tsx";
 import "./index.css";
 import { HelmetProvider } from "react-helmet-async";
+
 
 const root = document.getElementById("root");
 
