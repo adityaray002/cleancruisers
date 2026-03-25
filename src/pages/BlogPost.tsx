@@ -132,7 +132,7 @@ const BlogPost: React.FC = () => {
               </div>
 
               {/* Article Body */}
-            <div className="prose prose-invert prose-lg max-w-none">
+           <div className="prose prose-invert prose-lg max-w-none">
   <ReactMarkdown
     components={{
       p: ({ children }) => (
@@ -150,7 +150,9 @@ const BlogPost: React.FC = () => {
       li: ({ children }) => (
         <li className="text-neutral-300 ml-4">{children}</li>
       ),
-      a: ({ node, ...props }) => (
+
+      // ✅ FIXED LINK COMPONENT
+      a: ({ ...props }) => (
         <a
           {...props}
           target="_blank"
