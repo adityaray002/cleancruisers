@@ -118,7 +118,7 @@ Park your car in a safe place which protects from direct sunlight as it dries le
 
 Leather seats don’t need complicated care. They need regular attention. Simple cleaning and light conditioning can keep them in good condition for years.
 
-At CleanCruisers, while providing **[car wash service at home](https://xtorddesigns.com/)**, we focus on careful interior handling because seats are one of the most sensitive parts of the car. Clean looks are good, but maintained surfaces last longer.
+At CleanCruisers, while providing **[car wash service at home](https://cleancruisers.in/)**, we focus on careful interior handling because seats are one of the most sensitive parts of the car. Clean looks are good, but maintained surfaces last longer.
 
 
 ## FAQs
