@@ -3,6 +3,7 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { ArrowLeft, ArrowRight } from "lucide-react";
 import { useEffect, useState } from "react";
+import { getPlanPrice } from "@/lib/pricing";
 
 interface PricingPlansProps {
   selectedPlan: string;
@@ -20,22 +21,12 @@ const OneTimePricingPlans = ({ selectedPlan, onPlanSelect, selectedCar, onAutoAd
   }, []);
 
   const getPlansForCar = (carType: string, serviceType: string) => {
-    // Base pricing for different car types (subtract ₹1 from all prices)
-    const basePricing = {
-      "Sedan": { base: 349, premium: 499 },
-      "SUV": { base: 399, premium: 549 },
-      "Hatchback": { base: 349, premium: 449 },
-      "Luxury": { base: 399, premium: 549 }
-    };
-
-    const pricing = basePricing[carType as keyof typeof basePricing] || basePricing["Sedan"];
-
-    // Default one-time packages
+    // Prices come from shared pricing.ts — single source of truth
     return [
       {
         name: "exterior wash + interior wash",
         label: "Exterior + Interior Wash",
-        price: pricing.premium,
+        price: getPlanPrice(carType, "exterior wash + interior wash"),
         currency: "₹",
         features: [
           "Foam Wash",
@@ -56,7 +47,7 @@ const OneTimePricingPlans = ({ selectedPlan, onPlanSelect, selectedCar, onAutoAd
       {
         name: "exterior wash only",
         label: "Exterior Wash Only",
-        price: pricing.base,
+        price: getPlanPrice(carType, "exterior wash only"),
         currency: "₹",
         features: [
           "Foam Wash",
@@ -71,7 +62,7 @@ const OneTimePricingPlans = ({ selectedPlan, onPlanSelect, selectedCar, onAutoAd
       {
         name: "interior wash only",
         label: "Interior Deep Clean",
-        price: pricing.base - 100,
+        price: getPlanPrice(carType, "interior wash only"),
         currency: "₹",
         features: [
           "Interior Cleaning + Vacuum",

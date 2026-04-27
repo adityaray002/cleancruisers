@@ -1,5 +1,12 @@
+import React, { ReactNode } from "react";
+import { getPlanPrice, getAddonPrice, COMPLETE_CARE_PRICING } from "@/lib/pricing";
 
-import React from "react";
+const Row = ({ label, value }: { label: string; value: ReactNode }) => (
+  <div className="flex items-start justify-between gap-3">
+    <span className="text-sm text-gray-400 shrink-0">{label}</span>
+    <span className="text-sm text-white font-medium text-right">{value}</span>
+  </div>
+);
 
 interface BookingSummaryProps {
   selectedServiceType: string;
@@ -7,6 +14,9 @@ interface BookingSummaryProps {
   selectedPlan: string;
   selectedServices: string[];
   customerName: string;
+  customerPhone?: string;
+  customerLocation?: { lat: number; lng: number } | null;
+  customerLocationText?: string;
   onEditStep: (step: number) => void;
 }
 
@@ -14,93 +24,6 @@ const serviceTypeLabels: Record<string, string> = {
   "one-time": "One-time Wash",
   "monthly": "Monthly Wash",
   "daily-car-wash": "Daily Car Wash",
-};
-
-const carPricing: Record<string, Record<string, number>> = {
-  "Sedan": {
-    "exterior wash + interior wash": 599,
-    "exterior wash only": 399,
-    "interior wash only": 299,
-    "waterless": 349
-  },
-  "SUV": {
-    "exterior wash + interior wash": 699,
-    "exterior wash only": 499,
-    "interior wash only": 349,
-    "waterless": 399
-  },
-  "Hatchback": {
-    "exterior wash + interior wash": 499,
-    "exterior wash only": 349,
-    "interior wash only": 299,
-    "waterless": 349
-  },
-  "Luxury": {
-    "exterior wash + interior wash": 699,
-    "exterior wash only": 499,
-    "interior wash only": 349,
-    "waterless": 399
-  }
-};
-
-// Car-specific pricing for add-ons
-const getAddonPricing = (carType: string) => {
-  const baseCarType = carType.toLowerCase();
-  
-  if (baseCarType === "hatchback" || baseCarType === "sedan") {
-    return {
-      "rubbing-foam-hatchback": 1599,
-      "rubbing-foam-sedan": 1599,
-      "3m-wax-foam-hatchback": 649,
-      "3m-wax-foam-sedan": 649,
-      "rubbing-wax-foam-hatchback": 1699,
-      "rubbing-wax-foam-sedan": 1699,
-      "full-package-hatchback": 2499,
-      "full-package-sedan": 2499,
-      "rubbing-dry-foam-hatchback": 2199,
-      "rubbing-dry-foam-sedan": 2199,
-      "dry-wax-foam-hatchback": 1499,
-      "dry-wax-foam-sedan": 1499,
-      "dry-cleaning-hatchback": 999,
-      "dry-cleaning-sedan": 999,
-      "air-freshener-hatchback": 149,
-      "air-freshener-sedan": 149
-    };
-  } else if (baseCarType === "suv") {
-    return {
-      "rubbing-foam-suv": 1799,
-      "3m-wax-foam-suv": 749,
-      "rubbing-wax-foam-suv": 1899,
-      "full-package-suv": 2699,
-      "rubbing-dry-foam-suv": 2399,
-      "dry-wax-foam-suv": 1699,
-      "dry-cleaning-suv": 1099,
-      "air-freshener-suv": 149
-    };
-  } else if (baseCarType === "luxury") {
-    return {
-      "rubbing-foam-luxury": 1899,
-      "3m-wax-foam-luxury": 949,
-      "rubbing-wax-foam-luxury": 1999,
-      "full-package-luxury": 2799,
-      "rubbing-dry-foam-luxury": 2499,
-      "dry-wax-foam-luxury": 1799,
-      "dry-cleaning-luxury": 1099,
-      "air-freshener-luxury": 149
-    };
-  }
-  
-  // Fallback to sedan pricing
-  return {
-    "rubbing-foam-sedan": 1599,
-    "3m-wax-foam-sedan": 649,
-    "rubbing-wax-foam-sedan": 1699,
-    "full-package-sedan": 2499,
-    "rubbing-dry-foam-sedan": 2199,
-    "dry-wax-foam-sedan": 1499,
-    "dry-cleaning-sedan": 999,
-    "air-freshener-sedan": 149
-  };
 };
 
 const getServiceDisplayName = (serviceId: string) => {
@@ -148,6 +71,9 @@ const BookingSummary = ({
   selectedPlan,
   selectedServices,
   customerName,
+  customerPhone,
+  customerLocation,
+  customerLocationText,
   onEditStep,
 }: BookingSummaryProps) => {
   const calculateTotal = () => {
@@ -159,13 +85,12 @@ const BookingSummary = ({
     const normalizedPlan = selectedPlan?.toLowerCase().trim();
 
     if (normalizedCar && normalizedPlan) {
-      basePrice = carPricing[normalizedCar]?.[normalizedPlan] || 0;
+      basePrice = getPlanPrice(normalizedCar, normalizedPlan);
       total += basePrice;
     }
 
-    const addonPricing = getAddonPricing(selectedCar);
     selectedServices.forEach(serviceId => {
-      const servicePrice = addonPricing[serviceId] || 0;
+      const servicePrice = getAddonPrice(serviceId);
       addonsTotal += servicePrice;
       total += servicePrice;
     });
@@ -175,108 +100,107 @@ const BookingSummary = ({
 
   const { total, basePrice, addonsTotal } = calculateTotal();
 
+  const detailsStep = selectedServiceType === "premium-addons" ? 3 : 3;
+
   return (
-    <div className="p-6 bg-gray-900 rounded-lg text-white max-w-md mx-auto">
-      <h2 className="text-2xl font-semibold mb-4 text-green-400">Review and book now</h2>
+    <div className="max-w-md mx-auto space-y-3 text-white">
 
-      {selectedServiceType && (
-        <div className="mb-4">
-          <div className="flex justify-between items-center">
-            <span className="font-semibold">Service Type:</span>
-            <span>{serviceTypeLabels[selectedServiceType] || selectedServiceType}</span>
-            <button 
-              className="text-green-400 underline ml-2 text-sm"
-              onClick={() => onEditStep(1)}
-            >
-              Edit
-            </button>
-          </div>
+      {/* Header */}
+      <div className="text-center mb-2">
+        <div className="inline-flex items-center gap-2 bg-green-400/10 border border-green-400/30 rounded-full px-4 py-1.5 mb-1">
+          <span className="w-1.5 h-1.5 bg-green-400 rounded-full animate-pulse" />
+          <span className="text-green-400 text-sm font-medium">Review Your Booking</span>
         </div>
-      )}
+        <p className="text-gray-400 text-xs">Confirm everything looks right, then book via WhatsApp</p>
+      </div>
 
-      {(selectedServiceType === "one-time" || selectedServiceType === "daily-car-wash") && selectedCar && (
-        <div className="mb-4">
-          <div className="flex justify-between items-center">
-            <span className="font-semibold">Car Type:</span>
-            <span>{selectedCar}</span>
-            <button 
-              className="text-green-400 underline ml-2 text-sm"
-              onClick={() => onEditStep(2)}
-            >
-              Edit
-            </button>
-          </div>
+      {/* ── Service card ── */}
+      <div className="bg-gray-800/60 border border-gray-700 rounded-2xl overflow-hidden">
+        <div className="px-4 py-2.5 bg-gray-700/50 flex items-center justify-between">
+          <span className="text-xs font-semibold text-gray-300 uppercase tracking-wide">🧹 Service Details</span>
+          <button onClick={() => onEditStep(1)} className="text-green-400 text-xs hover:underline">Edit</button>
         </div>
-      )}
-
-      {selectedPlan && (
-        <div className="mb-4">
-          <div className="flex justify-between items-center">
-            <span className="font-semibold">Washing Plan:</span>
-            <span>{selectedPlan} — ₹{basePrice}</span>
-            <button 
-              className="text-green-400 underline ml-2 text-sm"
-              onClick={() => onEditStep(selectedServiceType === "one-time" ? 3 : 2)}
-            >
-              Edit
-            </button>
-          </div>
+        <div className="px-4 py-3 space-y-2.5">
+          <Row label="Service" value={serviceTypeLabels[selectedServiceType] || selectedServiceType} />
+          {selectedCar && <Row label="Car Type" value={selectedCar} />}
+          {selectedPlan && (
+            <Row label="Plan" value={
+              <span className="text-right">
+                {selectedPlan}
+                {basePrice > 0 && <span className="text-green-400 font-semibold ml-2">₹{basePrice}</span>}
+              </span>
+            } />
+          )}
         </div>
-      )}
 
-      {selectedServices.length > 0 && (
-        <div className="mb-4">
-          <div className="flex justify-between items-start mb-2">
-            <span className="font-semibold">Add-on Services:</span>
-            <button 
-              className="text-green-400 underline ml-2 text-sm"
-              onClick={() => onEditStep(selectedServiceType === "premium-addons" ? 2 : 4)}
-            >
-              Edit
-            </button>
+        {/* Add-ons */}
+        {selectedServices.length > 0 && (
+          <div className="border-t border-gray-700 px-4 py-3">
+            <div className="flex items-center justify-between mb-2">
+              <span className="text-xs text-gray-400 font-medium">Add-on Services</span>
+              <button onClick={() => onEditStep(selectedServiceType === "premium-addons" ? 2 : 4)}
+                className="text-green-400 text-xs hover:underline">Edit</button>
+            </div>
+            <div className="space-y-1.5">
+              {selectedServices.map((s) => {
+                const p = getAddonPrice(s);
+                return (
+                  <div key={s} className="flex justify-between items-center">
+                    <span className="text-sm text-gray-300">{getServiceDisplayName(s)}</span>
+                    <span className="text-green-400 text-sm font-semibold">₹{p}</span>
+                  </div>
+                );
+              })}
+            </div>
           </div>
-          <div className="bg-gray-800 rounded p-3 mb-2">
-            {selectedServices.map((service) => {
-              const addonPricing = getAddonPricing(selectedCar);
-              const servicePrice = addonPricing[service] || 0;
-              return (
-                <div key={service} className="flex justify-between items-center py-1">
-                  <span className="text-sm">{getServiceDisplayName(service)}</span>
-                  <span className="text-green-400 font-medium">₹{servicePrice}</span>
-                </div>
-              );
-            })}
-          </div>
-          <div className="flex justify-between items-center font-semibold">
-            <span>Add-ons Subtotal:</span>
-            <span className="text-green-400 text-lg">₹{addonsTotal}</span>
-          </div>
+        )}
+      </div>
+
+      {/* ── Customer card ── */}
+      <div className="bg-gray-800/60 border border-gray-700 rounded-2xl overflow-hidden">
+        <div className="px-4 py-2.5 bg-gray-700/50 flex items-center justify-between">
+          <span className="text-xs font-semibold text-gray-300 uppercase tracking-wide">👤 Your Details</span>
+          <button onClick={() => onEditStep(detailsStep)} className="text-green-400 text-xs hover:underline">Edit</button>
         </div>
-      )}
-
-      {customerName && (
-        <div className="mb-4">
-          <div className="flex justify-between items-center">
-            <span className="font-semibold">Customer Name:</span>
-            <span>{customerName}</span>
-            <button 
-              className="text-green-400 underline ml-2 text-sm"
-              onClick={() => onEditStep(selectedServiceType === "premium-addons" ? 3 : selectedServiceType === "one-time" ? 5 : 4)}
-            >
-              Edit
-            </button>
-          </div>
+        <div className="px-4 py-3 space-y-2.5">
+          {customerName  && <Row label="Name"   value={customerName} />}
+          {customerPhone && <Row label="Mobile" value={`+91 ${customerPhone}`} />}
+          {customerLocation ? (
+            <div className="flex items-center justify-between">
+              <span className="text-sm text-gray-400">Location</span>
+              <a
+                href={`https://maps.google.com/?q=${customerLocation.lat},${customerLocation.lng}`}
+                target="_blank" rel="noopener noreferrer"
+                className="text-green-400 text-sm font-medium hover:underline flex items-center gap-1"
+              >
+                📍 View on Maps ↗
+              </a>
+            </div>
+          ) : customerLocationText ? (
+            <Row label="Address" value={customerLocationText} />
+          ) : (
+            <div className="flex items-center justify-between">
+              <span className="text-sm text-gray-400">Location</span>
+              <span className="text-amber-400 text-xs">Not provided</span>
+            </div>
+          )}
         </div>
-      )}
+      </div>
 
+      {/* ── Total ── */}
       {total > 0 && (
-        <div className="border-t border-gray-700 pt-4 mt-4">
-          <div className="flex justify-between items-center">
-            <span className="font-bold text-xl">Total Amount:</span>
-            <span className="font-bold text-xl text-green-400">₹{total}</span>
+        <div className="bg-green-900/30 border border-green-500/40 rounded-2xl px-5 py-4 flex items-center justify-between">
+          <div>
+            <p className="text-gray-400 text-xs">Total Amount</p>
+            <p className="text-white font-bold text-2xl mt-0.5">₹{total}</p>
           </div>
+          <div className="text-3xl">💰</div>
         </div>
       )}
+
+      <p className="text-center text-gray-600 text-xs pb-1">
+        Clicking "Book via WhatsApp" will open WhatsApp with your details pre-filled
+      </p>
     </div>
   );
 };

@@ -12,6 +12,7 @@ import { Button } from "@/components/ui/button";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import BookingSummary from "@/components/BookingSummary";
+import { getPlanPrice, getAddonPrice, COMPLETE_CARE_PRICING } from "@/lib/pricing";
 
 const Booking = () => {
   const [currentStep, setCurrentStep] = useState(0); // Start at 0 for service type selection
@@ -21,8 +22,16 @@ const Booking = () => {
   const [selectedServiceType, setSelectedServiceType] = useState("");
   const [selectedPlan, setSelectedPlan] = useState("");
   const [selectedServices, setSelectedServices] = useState<string[]>([]);
-  const [customerDetails, setCustomerDetails] = useState({
+  const [customerDetails, setCustomerDetails] = useState<{
+    name: string;
+    phone: string;
+    location?: { lat: number; lng: number } | null;
+    locationText?: string;
+  }>({
     name: "",
+    phone: "",
+    location: null,
+    locationText: "",
   });
 
   const navigate = useNavigate();
@@ -126,27 +135,28 @@ useEffect(() => {
       return selectedServiceType !== "";
     }
     
+    const detailsValid = !!customerDetails.name.trim() && /^[6-9]\d{9}$/.test(customerDetails.phone);
     if (isPremiumAddons) {
       switch (currentStep) {
         case 1: return selectedCar !== "";
         case 2: return selectedServices.length > 0;
-        case 3: return !!customerDetails.name;
+        case 3: return detailsValid;
         case 4: return true;
         default: return false;
       }
     } else if (isCompleteCare) {
       switch (currentStep) {
         case 1: return selectedCar !== "";
-        case 2: return true; // single package, always valid
-        case 3: return !!customerDetails.name;
+        case 2: return true;
+        case 3: return detailsValid;
         case 4: return true;
         default: return false;
       }
-    }else {
+    } else {
       switch (currentStep) {
         case 1: return selectedCar !== "";
         case 2: return selectedPlan !== "";
-        case 3: return !!customerDetails.name;
+        case 3: return detailsValid;
         case 4: return true;
         default: return false;
       }
@@ -175,7 +185,7 @@ useEffect(() => {
         case 3:
           return <CustomerDetails customerDetails={customerDetails} onDetailsChange={setCustomerDetails} onAutoAdvance={nextStep} />;
         case 4:
-          return <BookingSummary selectedServiceType={selectedServiceType} selectedCar={selectedCar} selectedPlan={selectedPlan} selectedServices={selectedServices} customerName={customerDetails.name} onEditStep={(step) => setCurrentStep(step)} />;
+          return <BookingSummary selectedServiceType={selectedServiceType} selectedCar={selectedCar} selectedPlan={selectedPlan} selectedServices={selectedServices} customerName={customerDetails.name} customerPhone={customerDetails.phone} customerLocation={customerDetails.location} customerLocationText={customerDetails.locationText} onEditStep={(step) => setCurrentStep(step)} />;
         default: return null;
       }
     } else if (isCompleteCare) {
@@ -187,7 +197,7 @@ useEffect(() => {
         case 3:
           return <CustomerDetails customerDetails={customerDetails} onDetailsChange={setCustomerDetails} onAutoAdvance={nextStep} />;
         case 4:
-          return <BookingSummary selectedServiceType={selectedServiceType} selectedCar={selectedCar} selectedPlan="Complete Care Package" selectedServices={[]} customerName={customerDetails.name} onEditStep={(step) => setCurrentStep(step)} />;
+          return <BookingSummary selectedServiceType={selectedServiceType} selectedCar={selectedCar} selectedPlan="Complete Care Package" selectedServices={[]} customerName={customerDetails.name} customerPhone={customerDetails.phone} customerLocation={customerDetails.location} customerLocationText={customerDetails.locationText} onEditStep={(step) => setCurrentStep(step)} />;
         default: return null;
       }
     } else {
@@ -200,7 +210,7 @@ useEffect(() => {
         case 3:
          return <CustomerDetails customerDetails={customerDetails} onDetailsChange={setCustomerDetails} onAutoAdvance={nextStep} />;
         case 4:
-          return <BookingSummary selectedServiceType={selectedServiceType} selectedCar={selectedCar} selectedPlan={selectedPlan} selectedServices={selectedServices} customerName={customerDetails.name} onEditStep={(step) => setCurrentStep(step)} />;
+          return <BookingSummary selectedServiceType={selectedServiceType} selectedCar={selectedCar} selectedPlan={selectedPlan} selectedServices={selectedServices} customerName={customerDetails.name} customerPhone={customerDetails.phone} customerLocation={customerDetails.location} customerLocationText={customerDetails.locationText} onEditStep={(step) => setCurrentStep(step)} />;
         default: return null;
       }
     }
@@ -291,27 +301,46 @@ useEffect(() => {
 
   const stepInfo = getStepInfo();
   const isLastStep = currentStep === 4;
-  const completeCarePricing: Record<string, number> = {
-    Hatchback: 1399, Sedan: 1499, SUV: 1599, Luxury: 1599,
+
+  const calculateBookingPrice = (): number => {
+    if (isCompleteCare) return COMPLETE_CARE_PRICING[selectedCar] || 1399;
+    const base = getPlanPrice(selectedCar, selectedPlan?.toLowerCase().trim() || "");
+    const addons = selectedServices.reduce((sum, id) => sum + getAddonPrice(id), 0);
+    return base + addons;
   };
+
   const handleBookNow = () => {
-    const phone = "918920230357";
-    let message = `Hello! I would like to book a car wash service.%0A`;
-    message += `Name: ${customerDetails.name}%0A`;
-    message += `Service Type: ${getServiceTypeName(selectedServiceType)}%0A`;
-    message += `Car Type: ${selectedCar || "-"}%0A`;
+    const businessPhone = "918920230357";
+    const price = calculateBookingPrice();
+
+    let message = `🚗 *New Car Wash Booking Request*%0A`;
+    message += `━━━━━━━━━━━━━━━━━━%0A`;
+    message += `👤 *Name:* ${customerDetails.name}%0A`;
+    message += `📞 *Phone:* +91${customerDetails.phone}%0A`;
+    message += `━━━━━━━━━━━━━━━━━━%0A`;
+    message += `🧹 *Service:* ${getServiceTypeName(selectedServiceType)}%0A`;
+    message += `🚙 *Car Type:* ${selectedCar || "-"}%0A`;
     if (isCompleteCare) {
-      const ccPrice = completeCarePricing[selectedCar] || 1399;
-      message += `Package: Complete Care (3x Premium Wash)%0A`;
-      message += `Price: ₹${ccPrice}%0A`;
-    }else if (selectedPlan) {
-      message += `Plan: ${selectedPlan}%0A`;
+      message += `📦 *Package:* Complete Care (3× Premium Wash)%0A`;
+    } else if (selectedPlan) {
+      message += `📦 *Plan:* ${selectedPlan}%0A`;
     }
     if (selectedServices.length > 0) {
-      message += `Add-ons: ${selectedServices.join(", ")}%0A`;
+      message += `➕ *Add-ons:* ${selectedServices.join(", ")}%0A`;
     }
-    const whatsappUrl = `https://wa.me/${phone}?text=${message}`;
-    window.open(whatsappUrl, "_blank");
+    if (price > 0) {
+      message += `━━━━━━━━━━━━━━━━━━%0A`;
+      message += `💰 *Total: ₹${price}*%0A`;
+    }
+    if (customerDetails.location?.lat && customerDetails.location?.lng) {
+      message += `━━━━━━━━━━━━━━━━━━%0A`;
+      message += `📍 *Location:* https://maps.google.com/?q=${customerDetails.location.lat},${customerDetails.location.lng}%0A`;
+    } else if (customerDetails.locationText?.trim()) {
+      message += `━━━━━━━━━━━━━━━━━━%0A`;
+      message += `📍 *Address:* ${customerDetails.locationText.trim()}%0A`;
+    }
+
+    window.open(`https://wa.me/${businessPhone}?text=${message}`, "_blank");
   };
 
   const getServiceTypeName = (type: string) => {
@@ -368,7 +397,7 @@ useEffect(() => {
             selectedCar={selectedCar}
             selectedPlan={selectedPlan}
             selectedServices={selectedServices}
-            customerName={customerDetails.name}
+            customerName={customerDetails.name} customerPhone={customerDetails.phone} customerLocation={customerDetails.location} customerLocationText={customerDetails.locationText}
             selectedServiceType={selectedServiceType}
           />
         )} */}
