@@ -118,7 +118,7 @@ const BookingSummary = ({
       <div className="bg-gray-800/60 border border-gray-700 rounded-2xl overflow-hidden">
         <div className="px-4 py-2.5 bg-gray-700/50 flex items-center justify-between">
           <span className="text-xs font-semibold text-gray-300 uppercase tracking-wide">🧹 Service Details</span>
-          <button onClick={() => onEditStep(1)} className="text-green-400 text-xs hover:underline">Edit</button>
+          <button onClick={() => onEditStep(1)} className="text-green-400 text-xs hover:underline">Edit Car</button>
         </div>
         <div className="px-4 py-3 space-y-2.5">
           <Row label="Service" value={serviceTypeLabels[selectedServiceType] || selectedServiceType} />
@@ -139,7 +139,7 @@ const BookingSummary = ({
             <div className="flex items-center justify-between mb-2">
               <span className="text-xs text-gray-400 font-medium">Add-on Services</span>
               <button onClick={() => onEditStep(selectedServiceType === "premium-addons" ? 2 : 4)}
-                className="text-green-400 text-xs hover:underline">Edit</button>
+                className="text-green-400 text-xs hover:underline">Edit Add-ons</button>
             </div>
             <div className="space-y-1.5">
               {selectedServices.map((s) => {
@@ -160,7 +160,7 @@ const BookingSummary = ({
       <div className="bg-gray-800/60 border border-gray-700 rounded-2xl overflow-hidden">
         <div className="px-4 py-2.5 bg-gray-700/50 flex items-center justify-between">
           <span className="text-xs font-semibold text-gray-300 uppercase tracking-wide">👤 Your Details</span>
-          <button onClick={() => onEditStep(detailsStep)} className="text-green-400 text-xs hover:underline">Edit</button>
+          <button onClick={() => onEditStep(detailsStep)} className="text-green-400 text-xs hover:underline">Edit Details</button>
         </div>
         <div className="px-4 py-3 space-y-2.5">
           {customerName  && <Row label="Name"   value={customerName} />}

@@ -40,8 +40,8 @@ const CarSelection = ({ selectedCar, onCarSelect, onAutoAdvance }: CarSelectionP
   return (
     <div className="text-center">
       <div className="flex items-center justify-center space-x-4 md:space-x-8 mb-6 md:mb-8">
-        <Button onClick={handleLeft} variant="ghost" size="icon" className="text-green-400 h-8 w-8 md:h-10 md:w-10 flex-shrink-0">
-          <ArrowLeft className="h-4 w-4 md:h-6 md:w-6" />
+        <Button onClick={handleLeft} variant="ghost" size="icon" className="text-green-400 h-11 w-11 md:h-12 md:w-12 flex-shrink-0">
+          <ArrowLeft className="h-5 w-5 md:h-6 md:w-6" />
         </Button>
 
         <div className="w-64 h-32 md:w-96 md:h-48 flex items-center justify-center">
@@ -52,8 +52,8 @@ const CarSelection = ({ selectedCar, onCarSelect, onAutoAdvance }: CarSelectionP
           />
         </div>
 
-        <Button onClick={handleRight} variant="ghost" size="icon" className="text-green-400 h-8 w-8 md:h-10 md:w-10 flex-shrink-0">
-          <ArrowRight className="h-4 w-4 md:h-6 md:w-6" />
+        <Button onClick={handleRight} variant="ghost" size="icon" className="text-green-400 h-11 w-11 md:h-12 md:w-12 flex-shrink-0">
+          <ArrowRight className="h-5 w-5 md:h-6 md:w-6" />
         </Button>
       </div>
 

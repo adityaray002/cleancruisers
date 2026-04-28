@@ -86,7 +86,7 @@ const OneTimePricingPlans = ({ selectedPlan, onPlanSelect, selectedCar, onAutoAd
     <div>
       {/* Mobile View */}
       <div className="md:hidden">
-        <div className="grid grid-cols-2 gap-3">
+        <div className="grid grid-cols-1 gap-4">
           {plans.map((plan, index) => (
             <Card
               key={index}
@@ -102,40 +102,40 @@ const OneTimePricingPlans = ({ selectedPlan, onPlanSelect, selectedCar, onAutoAd
                 setTimeout(() => onAutoAdvance?.(), 300);
               }}
             >
-              <CardContent className="p-3 flex flex-col h-full">
+              <CardContent className="p-4 flex flex-col h-full">
                 <div className="text-center mb-3">
-                  <span className="text-sm font-bold text-white">{plan.currency}</span>
-                  <span className="text-xl font-bold text-white">{plan.price}</span>
-                  <span className="text-xs text-gray-400">/service</span>
+                  <span className="text-base font-bold text-white">{plan.currency}</span>
+                  <span className="text-3xl font-bold text-white">{plan.price}</span>
+                  <span className="text-sm text-gray-400">/service</span>
                 </div>
 
-                <h3 className="text-green-400 font-semibold text-xs text-center mb-3">
+                <h3 className="text-green-400 font-semibold text-base text-center mb-3">
                   {plan.label}
                 </h3>
 
-                <div className="space-y-1 mb-3 flex-grow">
+                <div className="space-y-2 mb-3 flex-grow">
                   {plan.features.map((feature, i) => (
-                    <div key={i} className="flex items-center text-xs text-gray-300">
-                      <span className="text-green-400 mr-1 text-xs">✓</span>
-                      <span className="text-xs leading-tight">{feature}</span>
+                    <div key={i} className="flex items-center text-sm text-gray-300">
+                      <span className="text-green-400 mr-2 text-sm">✓</span>
+                      <span className="text-sm leading-snug">{feature}</span>
                     </div>
                   ))}
                 </div>
 
                 {plan.showNote && (
-                  <div className="text-xs text-yellow-400 mb-2 text-center">
+                  <div className="text-xs text-yellow-400 mb-3 text-center">
                     Note: Power socket and water required
                   </div>
                 )}
 
                 <Button
-                  className={`w-full text-xs py-1 h-8 mt-auto ${
+                  className={`w-full text-sm py-2 h-10 mt-auto font-semibold ${
                     selectedPlan === plan.name
                       ? 'bg-green-400 hover:bg-green-500 text-black'
                       : 'bg-gray-600 hover:bg-gray-500 text-white'
                   }`}
                 >
-                  {selectedPlan === plan.name ? 'Selected' : 'Select'}
+                  {selectedPlan === plan.name ? '✓ Selected' : 'Select This Plan'}
                 </Button>
               </CardContent>
             </Card>

@@ -13,6 +13,7 @@ import SocialIcons from "@/components/SocialIcons";
 import { PhoneCall } from "lucide-react";
 import SeoContentSection from "@/components/SeoContentSection";
 import FaqSection from "@/components/FaqSection";
+import StickyBookNow from "@/components/StickyBookNow";
 
 const Index = () => {
   const [cartOpen, setCartOpen] = useState(false);
@@ -54,15 +55,17 @@ const Index = () => {
         {/* Cart Overlay */}
         <Cart isOpen={cartOpen} onClose={() => setCartOpen(false)} />
       </div>
-      {/* Floating phone call button */}
+      {/* Floating phone call button — sits above sticky bar on mobile */}
       <a
         href="tel:8920230357"
-        className="fixed bottom-20 right-6 z-50 bg-green-400 hover:bg-green-500 shadow-lg rounded-full p-4 flex items-center transition-transform active:scale-95"
+        className="fixed bottom-24 right-6 z-50 lg:bottom-6 bg-green-400 hover:bg-green-500 shadow-lg rounded-full p-4 flex items-center transition-transform active:scale-95"
         style={{ boxShadow: '0 2px 16px rgba(0,255,100,0.20)' }}
         aria-label="Call us"
       >
         <PhoneCall className="w-6 h-6 text-black" />
       </a>
+      {/* Sticky Book Now bar — mobile only, hidden on desktop */}
+      <StickyBookNow />
     </div>
   );
 };

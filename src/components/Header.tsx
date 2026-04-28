@@ -59,7 +59,7 @@
 
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
-import { Phone, Menu, X } from "lucide-react";
+import { Phone, Menu, X, CalendarCheck } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
 
@@ -123,11 +123,20 @@ const Header = ({ showNav = true, onCartOpen }: HeaderProps) => {
           </nav>
         )}
 
-        {/* Right Side - Call Button + Mobile Menu */}
+        {/* Right Side - Buttons + Mobile Menu */}
         <div className="flex items-center gap-2 sm:gap-3">
+          {/* Book Online Button - desktop only */}
+          <button
+            onClick={() => navigate('/booking')}
+            className="hidden lg:flex items-center gap-1.5 bg-green-400 hover:bg-green-500 text-black font-semibold text-sm px-4 py-2 rounded-md transition-colors"
+          >
+            <CalendarCheck className="h-4 w-4" />
+            Book Online
+          </button>
+
           {/* Call Now Button */}
           <a href="tel:8920230357">
-            <Button className="bg-green-400 hover:bg-green-500 text-black font-semibold flex items-center gap-1.5 sm:gap-2 text-xs sm:text-sm px-3 py-2 sm:px-4 sm:py-2 h-auto">
+            <Button className="bg-transparent border border-green-400 hover:bg-green-400/10 text-green-400 font-semibold flex items-center gap-1.5 sm:gap-2 text-xs sm:text-sm px-3 py-2 sm:px-4 sm:py-2 h-auto">
               <Phone className="h-3.5 w-3.5 sm:h-4 sm:w-4" />
               <span className="hidden sm:inline">Call Now</span>
               <span className="sm:hidden">Call</span>

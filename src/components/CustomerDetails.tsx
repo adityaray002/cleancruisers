@@ -2,7 +2,7 @@ import { useState } from "react";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Button } from "@/components/ui/button";
-import { ArrowRight, MapPin, Loader2, X, Phone, User } from "lucide-react";
+import { ArrowRight, MapPin, Loader2, X, Phone, User, CheckCircle2 } from "lucide-react";
 
 interface Location { lat: number; lng: number; }
 
@@ -65,6 +65,7 @@ const CustomerDetails = ({ customerDetails, onDetailsChange, onAutoAdvance }: Cu
           placeholder="Enter your full name"
           value={customerDetails.name}
           onChange={(e) => update("name", e.target.value)}
+          autoComplete="name"
           className="bg-gray-800 border-gray-600 text-white placeholder-gray-500 focus:border-green-400 h-11 rounded-xl"
         />
       </div>
@@ -81,10 +82,18 @@ const CustomerDetails = ({ customerDetails, onDetailsChange, onAutoAdvance }: Cu
             placeholder="9876543210"
             value={customerDetails.phone}
             onChange={(e) => update("phone", e.target.value.replace(/\D/g, "").slice(0, 10))}
-            className="bg-gray-800 border-gray-600 text-white placeholder-gray-500 focus:border-green-400 h-11 rounded-xl pl-11"
+            autoComplete="tel"
+            className={`bg-gray-800 text-white placeholder-gray-500 h-11 rounded-xl pl-11 pr-10 transition-colors ${
+              /^[6-9]\d{9}$/.test(customerDetails.phone)
+                ? "border-green-400 focus:border-green-400"
+                : "border-gray-600 focus:border-green-400"
+            }`}
             maxLength={10}
             inputMode="numeric"
           />
+          {/^[6-9]\d{9}$/.test(customerDetails.phone) && (
+            <CheckCircle2 className="absolute right-3 top-1/2 -translate-y-1/2 w-4 h-4 text-green-400" />
+          )}
         </div>
         {customerDetails.phone && !/^[6-9]\d{9}$/.test(customerDetails.phone) && (
           <p className="text-amber-400 text-xs mt-1">Enter a valid 10-digit Indian mobile number</p>
@@ -158,6 +167,7 @@ const CustomerDetails = ({ customerDetails, onDetailsChange, onAutoAdvance }: Cu
               placeholder="e.g. Near Metro Gate, Sector 15, Dwarka, New Delhi"
               value={customerDetails.locationText || ""}
               onChange={(e) => update("locationText", e.target.value)}
+              autoComplete="street-address"
               className="bg-gray-800 border-gray-600 text-white placeholder-gray-500 focus:border-green-400 h-11 rounded-xl"
             />
           </>
