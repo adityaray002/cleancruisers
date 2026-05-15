@@ -86,7 +86,7 @@ const CarWashDwarka = () => {
             "image": "https://cleancruisers.in/LOGOFINAL.png",
             "url": "https://cleancruisers.in",
             "telephone": "+918920230357",
-            "priceRange": "₹₹",
+            "priceRange": "₹399 - ₹2999",
             "areaServed": "Dwarka, Delhi",
             "address": {
               "@type": "PostalAddress",
