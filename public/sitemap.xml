@@ -1,1 +1,90 @@
-<?xml version="1.0" encoding="UTF-8"?><urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:news="http://www.google.com/schemas/sitemap-news/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1" xmlns:video="http://www.google.com/schemas/sitemap-video/1.1"><url><loc>https://cleancruisers.in/</loc><changefreq>weekly</changefreq><priority>0.8</priority></url><url><loc>https://cleancruisers.in/car-wash-in-dwarka</loc><changefreq>weekly</changefreq><priority>0.8</priority></url><url><loc>https://cleancruisers.in/blog</loc><changefreq>weekly</changefreq><priority>0.8</priority></url><url><loc>https://cleancruisers.in/blog/why-doorstep-car-wash-is-future</loc><changefreq>weekly</changefreq><priority>0.8</priority></url><url><loc>https://cleancruisers.in/blog/top-5-car-wash-service-providers-in-dwarka</loc><changefreq>weekly</changefreq><priority>0.8</priority></url><url><loc>https://cleancruisers.in/blog/complete-guide-to-car-wax-protection</loc><changefreq>weekly</changefreq><priority>0.8</priority></url><url><loc>https://cleancruisers.in/blog/interior-car-cleaning-tips</loc><changefreq>weekly</changefreq><priority>0.8</priority></url><url><loc>https://cleancruisers.in/blog/monsoon-car-care-guide</loc><changefreq>weekly</changefreq><priority>0.8</priority></url><url><loc>https://cleancruisers.in/blog/benefits-of-regular-car-washing</loc><changefreq>weekly</changefreq><priority>0.8</priority></url><url><loc>https://cleancruisers.in/blog/choosing-right-car-wash-service</loc><changefreq>weekly</changefreq><priority>0.8</priority></url></urlset>
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:xhtml="http://www.w3.org/1999/xhtml"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
+
+  <url>
+    <loc>https://cleancruisers.in/</loc>
+    <lastmod>2025-05-15</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+  </url>
+
+  <url>
+    <loc>https://cleancruisers.in/car-wash-in-dwarka</loc>
+    <lastmod>2025-05-15</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <url>
+    <loc>https://cleancruisers.in/car-wash-services-in-janakpuri</loc>
+    <lastmod>2025-05-15</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <url>
+    <loc>https://cleancruisers.in/monthly-pricing</loc>
+    <lastmod>2025-05-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://cleancruisers.in/blog</loc>
+    <lastmod>2025-05-15</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://cleancruisers.in/blog/why-doorstep-car-wash-is-future</loc>
+    <lastmod>2025-05-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://cleancruisers.in/blog/top-5-car-wash-service-providers-in-dwarka</loc>
+    <lastmod>2025-05-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://cleancruisers.in/blog/complete-guide-to-car-wax-protection</loc>
+    <lastmod>2025-05-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://cleancruisers.in/blog/interior-car-cleaning-tips</loc>
+    <lastmod>2025-05-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://cleancruisers.in/blog/monsoon-car-care-guide</loc>
+    <lastmod>2025-05-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://cleancruisers.in/blog/benefits-of-regular-car-washing</loc>
+    <lastmod>2025-05-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://cleancruisers.in/blog/choosing-right-car-wash-service</loc>
+    <lastmod>2025-05-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+</urlset>
