@@ -22,7 +22,7 @@ export const getPlanPrice = (car: string, plan: string): number => {
   const p = plan.toLowerCase().trim();
   if (p === "exterior wash + interior wash") return b.premium;
   if (p === "exterior wash only")            return b.base;
-  if (p === "interior wash only")            return b.base - 100;
+  if (p === "interior wash only")            return b.base;
   if (p === "waterless")                     return b.base;
   return 0;
 };
@@ -34,7 +34,7 @@ export const PLAN_PRICING: Record<string, Record<string, number>> = Object.fromE
     {
       "exterior wash + interior wash": CAR_BASE[car].premium,
       "exterior wash only":            CAR_BASE[car].base,
-      "interior wash only":            CAR_BASE[car].base - 100,
+      "interior wash only":            CAR_BASE[car].base,
       "waterless":                     CAR_BASE[car].base,
     },
   ])
