@@ -340,6 +340,36 @@ useEffect(() => {
       message += `📍 *Address:* ${customerDetails.locationText.trim()}%0A`;
     }
 
+    // Auto-create lead in admin panel (fire and forget — doesn't block WhatsApp)
+    const serviceInterest = [
+      getServiceTypeName(selectedServiceType),
+      selectedCar ? `${selectedCar} car` : "",
+      isCompleteCare ? "Complete Care (3× Premium Wash)" : selectedPlan ? `Plan: ${selectedPlan}` : "",
+      selectedServices.length > 0 ? `Add-ons: ${selectedServices.join(", ")}` : "",
+    ].filter(Boolean).join(" | ");
+
+    const locationNote = customerDetails.location?.lat
+      ? `GPS: https://maps.google.com/?q=${customerDetails.location.lat},${customerDetails.location.lng}`
+      : customerDetails.locationText?.trim()
+        ? `Address: ${customerDetails.locationText.trim()}`
+        : "";
+
+    const BOOKING_API = import.meta.env.VITE_BOOKING_API_URL || "http://localhost:5000";
+    fetch(`${BOOKING_API}/api/leads/website`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        "x-api-key": "sofa_website_lead_2024",
+      },
+      body: JSON.stringify({
+        name: customerDetails.name,
+        phone: customerDetails.phone,
+        serviceInterest,
+        quotedAmount: price,
+        notes: locationNote,
+      }),
+    }).catch(() => {});
+
     window.open(`https://wa.me/${businessPhone}?text=${message}`, "_blank");
   };
 
