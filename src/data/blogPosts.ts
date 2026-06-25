@@ -1897,7 +1897,7 @@ The best time to apply wax or protection is:
 
 ### Our Premium Wax Services
 
-CleanCruisers offers professional wax application as part of our premium add-ons. Our rubbing and wax treatment includes:
+CleanCruisers offers professional wax application as part of our complete car care. Our rubbing and wax treatment includes:
 - Deep cleaning
 - Paint decontamination
 - Premium wax application

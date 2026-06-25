@@ -377,7 +377,7 @@ useEffect(() => {
     switch (type) {
       case 'one-time': return 'One-Time Premium Wash';
       case 'waterless': return 'Waterless Eco Clean';
-      case 'premium-addons': return 'Premium Add-ons';
+      case 'premium-addons': return 'Complete Car Care';
      case 'complete-care': return 'Complete Care Package';
       default: return type;
     }

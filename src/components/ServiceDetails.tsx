@@ -5,7 +5,7 @@ interface ServiceDetailsProps {
   title: string;
   price: string;
   description: string;
-  details: string;
+  details: string | string[];
   selected: boolean;
   image: string;
   onSelect: () => void;
@@ -60,10 +60,26 @@ const ServiceDetails = ({
         </div>
 
         <div className="mb-2">
-          <label className="block text-xs font-bold text-gray-400 mb-0.5">
+          {/* <label className="block text-xs font-bold text-gray-400 mb-0.5">
             What's included / Good for whom?
-          </label>
-          <p className="text-gray-300 text-xs leading-tight">{details}</p>
+          </label> */}
+          <div className="mb-2">
+  <label className="block text-xs font-bold text-gray-400 mb-1">
+    What's Included?
+  </label>
+
+  {Array.isArray(details) ? (
+    <ul className="list-disc list-inside text-gray-300 text-xs space-y-1 leading-relaxed">
+      {details.map((item, index) => (
+        <li key={index}>{item}</li>
+      ))}
+    </ul>
+  ) : (
+    <p className="text-gray-300 text-xs leading-relaxed">
+      {details}
+    </p>
+  )}
+</div>
         </div>
 
         <div className="flex flex-1 items-end justify-end">

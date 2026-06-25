@@ -28,7 +28,7 @@ const testimonials = [
   {
     name: "Ananya Verma",
     location: "Janakpuri",
-    service: "Premium Add-Ons",
+    service: "Complete Car Care",
     content:
       "Consistently amazing service! I've been using CleanCruisers for a few months now and my car has never looked better. Their team is polite, efficient, and very reliable.",
     rating: 5,

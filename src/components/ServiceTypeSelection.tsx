@@ -84,7 +84,7 @@ const ServiceTypeSelection = ({ selectedServiceType, onServiceTypeSelect, onAuto
     },
     {
       type: "premium-addons",
-      title: "PREMIUM ADD-ONS",
+      title: "COMPLETE CAR CARE",
       description: "Deep cleaning, paint rubbing, waxing & protection services",
       icon: Star,
       color: "from-blue-500 to-indigo-600",

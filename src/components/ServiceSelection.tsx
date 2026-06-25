@@ -17,9 +17,17 @@ const getServicesForCarType = (carType: string) => {
         id: "rubbing-foam-hatchback",
         image: "/Rubbing1.jpg",
         title: "Rubbing + Exterior Foam Wash",
-        description: "A deep cleaning and polish that removes dullness, scratches, and oxidation from your car's paint. Followed by a thick foam wash that gives a shiny, fresh look.",
+        description:
+          "A deep paint restoration service that removes oxidation, light scratches, and dullness, followed by a premium foam wash for a glossy finish.",
         price: "₹1299",
-        details: "Paint surface rubbing (polishing), Thick foam exterior wash. Good for cars with light scratches, dull paint, or that need a shine restoration."
+        details: [
+          "Full Body Rubbing & Buffing (Rotary Machine)",
+          "Exterior Foam Shampoo Wash",
+          "High-Pressure Water Wash",
+          "Alloy Wheel & Tyre Cleaning",
+          "Tyre Polishing",
+          "Exterior Black Part Polishing"
+        ]
       },
       {
         id: "3m-wax-foam-hatchback",
@@ -27,7 +35,14 @@ const getServicesForCarType = (carType: string) => {
         title: "3M Wax + Exterior Foam Wash",
         description: "A high-quality wax polish by 3M for paint protection and shine, combined with a professional foam wash.",
         price: "₹649",
-        details: "3M Wax Polish, Exterior foam wash. Perfect for regular maintenance and shine boost."
+        details: [
+          "3M Wax Polish",
+          "Exterior Foam Shampoo Wash",
+          "High-Pressure Water Wash",
+          "Alloy Wheel & Tyre Cleaning",
+          "Tyre Polishing",
+          "Exterior Black Part Polishing"
+        ]
       },
       {
         id: "rubbing-wax-foam-hatchback",
@@ -35,7 +50,15 @@ const getServicesForCarType = (carType: string) => {
         title: "Rubbing + 3M Wax + Exterior Foam Wash",
         description: "A complete exterior treatment with rubbing, wax, and foam wash.",
         price: "₹1449",
-        details: "Surface rubbing/polish, 3M wax coating, Foam wash. Great for scratch removal and shine."
+        details: [
+         "Full Body Rubbing & Buffing (Rotary Machine)",
+          "3M Wax Polish",
+          "Exterior Foam Shampoo Wash",
+          "High-Pressure Water Wash",
+          "Alloy Wheel & Tyre Cleaning",
+          "Tyre Polishing",
+          "Exterior Black Part Polishing"
+        ]
       },
       {
         id: "full-package-hatchback",
@@ -43,7 +66,21 @@ const getServicesForCarType = (carType: string) => {
         title: "Rubbing + 3M Wax + Dry Cleaning + Exterior Foam Wash",
         description: "Complete car care – inside and out.",
         price: "₹1999",
-        details: "Rubbing polish, 3M wax, Interior dry cleaning (seats, mats, roof, dashboard), Foam wash. Ideal for full car makeover."
+        details: [
+          "Full Body Rubbing & Buffing (Rotary Machine)",
+          "3M Wax Polish",
+          "Exterior Foam Shampoo Wash",
+          "High-Pressure Water Wash",
+          "Alloy Wheel & Tyre Cleaning",
+          "Tyre Polishing",
+          "Exterior Black Part Polishing",
+          "Car Interior Dashboard Cleaning & Polishing",
+          "Deep Clean & Shampoo Of Car Seats(Upholstery) Floor Mats , Seat Belts Cleaning , Roof Cleaning , Door Cleaning & Polishing",
+          "Car Interior Vacuum Cleaning & Floor Deep Cleaning",
+          "Boot (Diggi) Cleaning & Polishing",
+          "polishing All Plastic Parts",
+          "AC Vents Dry Dusting"
+        ]
       },
       {
         id: "rubbing-dry-foam-hatchback",
@@ -51,7 +88,20 @@ const getServicesForCarType = (carType: string) => {
         title: "Rubbing + Dry Cleaning + Exterior Foam Wash",
         description: "Exterior polish + full interior dry cleaning.",
         price: "₹1799",
-        details: "Rubbing, Interior dry clean, Foam wash. For fresh, clean car experience."
+        details: [
+          "Full Body Rubbing & Buffing (Rotary Machine)",
+          "Exterior Foam Shampoo Wash",
+          "High-Pressure Water Wash",
+          "Alloy Wheel & Tyre Cleaning",
+          "Tyre Polishing",
+          "Exterior Black Part Polishing",
+          "Car Interior Dashboard Cleaning & Polishing",
+          "Deep Clean & Shampoo Of Car Seats(Upholstery) Floor Mats , Seat Belts Cleaning , Roof Cleaning , Door Cleaning & Polishing",
+          "Car Interior Vacuum Cleaning & Floor Deep Cleaning",
+          "Boot (Diggi) Cleaning & Polishing",
+          "polishing All Plastic Parts",
+          "AC Vents Dry Dusting"
+        ]
       },
       {
         id: "dry-wax-foam-hatchback",
@@ -59,7 +109,14 @@ const getServicesForCarType = (carType: string) => {
         title: "Dry Cleaning + 3M Wax + Exterior Foam Wash",
         description: "Balanced inside-out care.",
         price: "₹1199",
-        details: "Interior dry clean, 3M wax, Foam wash. Best for regular upkeep."
+       details: [
+          "Car Interior Dashboard Cleaning & Polishing",
+          "Deep Clean & Shampoo Of Car Seats(Upholstery) Floor Mats , Seat Belts Cleaning , Roof Cleaning , Door Cleaning & Polishing",
+          "Car Interior Vacuum Cleaning & Floor Deep Cleaning",
+          "Boot (Diggi) Cleaning & Polishing",
+          "polishing All Plastic Parts",
+          "AC Vents Dry Dusting"
+        ]
       },
       {
         id: "dry-cleaning-hatchback",
@@ -67,7 +124,14 @@ const getServicesForCarType = (carType: string) => {
         title: "Dry Cleaning",
         description: "Deep interior cleaning for seats, mats, roof, and dashboard.",
         price: "₹799",
-        details: "Complete interior dry cleaning service for a fresh cabin experience."
+        details: [
+          "Car Interior Dashboard Cleaning & Polishing",
+          "Deep Clean & Shampoo Of Car Seats(Upholstery) Floor Mats , Seat Belts Cleaning , Roof Cleaning , Door Cleaning & Polishing",
+          "Car Interior Vacuum Cleaning & Floor Deep Cleaning",
+          "Boot (Diggi) Cleaning & Polishing",
+          "polishing All Plastic Parts",
+          "AC Vents Dry Dusting"
+        ]
       },
       {
         id: "air-freshener-hatchback",
@@ -75,7 +139,10 @@ const getServicesForCarType = (carType: string) => {
         title: "Air Freshener",
         description: "Keeps your car smelling fresh and inviting after every drive.",
         price: "₹149",
-        details: "Long-lasting fragrance for a pleasant driving experience."
+        details: [
+          "Premium Long-Lasting Fragrance",
+          "Keeps Cabin Fresh & Pleasant"
+        ]
       }
     ],
     "sedan": [
@@ -85,7 +152,14 @@ const getServicesForCarType = (carType: string) => {
         title: "Rubbing + Exterior Foam Wash",
         description: "A deep cleaning and polish that removes dullness, scratches, and oxidation from your car's paint. Followed by a thick foam wash that gives a shiny, fresh look.",
         price: "₹1299",
-        details: "Paint surface rubbing (polishing), Thick foam exterior wash. Good for cars with light scratches, dull paint, or that need a shine restoration."
+       details: [
+        "Full Body Rubbing & Buffing (Rotary Machine)",
+        "Exterior Foam Shampoo Wash",
+        "High-Pressure Water Wash",
+        "Alloy Wheel & Tyre Cleaning",
+        "Tyre Polishing",
+        "Exterior Black Part Polishing"
+      ]
       },
       {
         id: "3m-wax-foam-sedan",
@@ -93,7 +167,14 @@ const getServicesForCarType = (carType: string) => {
         title: "3M Wax + Exterior Foam Wash",
         description: "A high-quality wax polish by 3M for paint protection and shine, combined with a professional foam wash.",
         price: "₹649",
-        details: "3M Wax Polish, Exterior foam wash. Perfect for regular maintenance and shine boost."
+        details: [
+          "3M Wax Polish",
+          "Exterior Foam Shampoo Wash",
+          "High-Pressure Water Wash",
+          "Alloy Wheel & Tyre Cleaning",
+          "Tyre Polishing",
+          "Exterior Black Part Polishing"
+        ]
       },
       {
         id: "rubbing-wax-foam-sedan",
@@ -101,7 +182,15 @@ const getServicesForCarType = (carType: string) => {
         title: "Rubbing + 3M Wax + Exterior Foam Wash",
         description: "A complete exterior treatment with rubbing, wax, and foam wash.",
         price: "₹1449",
-        details: "Surface rubbing/polish, 3M wax coating, Foam wash. Great for scratch removal and shine."
+        details: [
+          "Full Body Rubbing & Buffing (Rotary Machine)",
+          "3M Wax Polish",
+          "Exterior Foam Shampoo Wash",
+          "High-Pressure Water Wash",
+          "Alloy Wheel & Tyre Cleaning",
+          "Tyre Polishing",
+          "Exterior Black Part Polishing"
+        ]
       },
       {
         id: "full-package-sedan",
@@ -109,7 +198,25 @@ const getServicesForCarType = (carType: string) => {
         title: "Rubbing + 3M Wax + Dry Cleaning + Exterior Foam Wash",
         description: "Complete car care – inside and out.",
         price: "₹1999",
-        details: "Rubbing polish, 3M wax, Interior dry cleaning (seats, mats, roof, dashboard), Foam wash. Ideal for full car makeover."
+        details: [
+          "Full Body Rubbing & Buffing (Rotary Machine)",
+          "3M Wax Polish",
+          "Exterior Foam Shampoo Wash",
+          "High-Pressure Water Wash",
+          "Alloy Wheel & Tyre Cleaning",
+          "Tyre Polishing",
+          "Exterior Black Part Polishing",
+          "Car Interior Dashboard Cleaning & Polishing",
+          "Deep Clean & Shampoo Of Car Seats (Upholstery)",
+          "Floor Mats Cleaning",
+          "Seat Belts Cleaning",
+          "Roof Cleaning",
+          "Door Cleaning & Polishing",
+          "Car Interior Vacuum Cleaning & Floor Deep Cleaning",
+          "Boot (Diggi) Cleaning & Polishing",
+          "Polishing All Plastic Parts",
+          "AC Vents Dry Dusting"
+        ]
       },
       {
         id: "rubbing-dry-foam-sedan",
@@ -117,7 +224,24 @@ const getServicesForCarType = (carType: string) => {
         title: "Rubbing + Dry Cleaning + Exterior Foam Wash",
         description: "Exterior polish + full interior dry cleaning.",
         price: "₹1799",
-        details: "Rubbing, Interior dry clean, Foam wash. For fresh, clean car experience."
+        details: [
+          "Full Body Rubbing & Buffing (Rotary Machine)",
+          "Exterior Foam Shampoo Wash",
+          "High-Pressure Water Wash",
+          "Alloy Wheel & Tyre Cleaning",
+          "Tyre Polishing",
+          "Exterior Black Part Polishing",
+          "Car Interior Dashboard Cleaning & Polishing",
+          "Deep Clean & Shampoo Of Car Seats (Upholstery)",
+          "Floor Mats Cleaning",
+          "Seat Belts Cleaning",
+          "Roof Cleaning",
+          "Door Cleaning & Polishing",
+          "Car Interior Vacuum Cleaning & Floor Deep Cleaning",
+          "Boot (Diggi) Cleaning & Polishing",
+          "Polishing All Plastic Parts",
+          "AC Vents Dry Dusting"
+        ]
       },
       {
         id: "dry-wax-foam-sedan",
@@ -125,7 +249,19 @@ const getServicesForCarType = (carType: string) => {
         title: "Dry Cleaning + 3M Wax + Exterior Foam Wash",
         description: "Balanced inside-out care.",
         price: "₹1199",
-        details: "Interior dry clean, 3M wax, Foam wash. Best for regular upkeep."
+        details: [
+          "3M Wax Polish",
+          "Car Interior Dashboard Cleaning & Polishing",
+          "Deep Clean & Shampoo Of Car Seats (Upholstery)",
+          "Floor Mats Cleaning",
+          "Seat Belts Cleaning",
+          "Roof Cleaning",
+          "Door Cleaning & Polishing",
+          "Car Interior Vacuum Cleaning & Floor Deep Cleaning",
+          "Boot (Diggi) Cleaning & Polishing",
+          "Polishing All Plastic Parts",
+          "AC Vents Dry Dusting"
+        ]
       },
       {
         id: "dry-cleaning-sedan",
@@ -133,7 +269,18 @@ const getServicesForCarType = (carType: string) => {
         title: "Dry Cleaning",
         description: "Deep interior cleaning for seats, mats, roof, and dashboard.",
         price: "₹799",
-        details: "Complete interior dry cleaning service for a fresh cabin experience."
+        details: [
+          "Car Interior Dashboard Cleaning & Polishing",
+          "Deep Clean & Shampoo Of Car Seats (Upholstery)",
+          "Floor Mats Cleaning",
+          "Seat Belts Cleaning",
+          "Roof Cleaning",
+          "Door Cleaning & Polishing",
+          "Car Interior Vacuum Cleaning & Floor Deep Cleaning",
+          "Boot (Diggi) Cleaning & Polishing",
+          "Polishing All Plastic Parts",
+          "AC Vents Dry Dusting"
+        ]
       },
       {
         id: "air-freshener-sedan",
@@ -141,7 +288,10 @@ const getServicesForCarType = (carType: string) => {
         title: "Air Freshener",
         description: "Keeps your car smelling fresh and inviting after every drive.",
         price: "₹149",
-        details: "Long-lasting fragrance for a pleasant driving experience."
+        details: [
+          "Premium Long-Lasting Fragrance",
+          "Keeps Cabin Fresh & Pleasant"
+        ]
       }
     ],
     "suv": [
@@ -151,7 +301,14 @@ const getServicesForCarType = (carType: string) => {
         title: "Rubbing + Exterior Foam Wash",
         description: "A deep cleaning and polish that removes dullness, scratches, and oxidation from your car's paint. Followed by a thick foam wash that gives a shiny, fresh look.",
         price: "₹1499",
-        details: "Paint surface rubbing (polishing), Thick foam exterior wash. Good for cars with light scratches, dull paint, or that need a shine restoration."
+        details: [
+          "Full Body Rubbing & Buffing (Rotary Machine)",
+          "Exterior Foam Shampoo Wash",
+          "High-Pressure Water Wash",
+          "Alloy Wheel & Tyre Cleaning",
+          "Tyre Polishing",
+          "Exterior Black Part Polishing"
+        ]
       },
       {
         id: "3m-wax-foam-suv",
@@ -159,7 +316,14 @@ const getServicesForCarType = (carType: string) => {
         title: "3M Wax + Exterior Foam Wash",
         description: "A high-quality wax polish by 3M for paint protection and shine, combined with a professional foam wash.",
         price: "₹699",
-        details: "3M Wax Polish, Exterior foam wash. Perfect for regular maintenance and shine boost."
+        details: [
+          "3M Wax Polish",
+          "Exterior Foam Shampoo Wash",
+          "High-Pressure Water Wash",
+          "Alloy Wheel & Tyre Cleaning",
+          "Tyre Polishing",
+          "Exterior Black Part Polishing"
+        ]
       },
       {
         id: "rubbing-wax-foam-suv",
@@ -167,7 +331,15 @@ const getServicesForCarType = (carType: string) => {
         title: "Rubbing + 3M Wax + Exterior Foam Wash",
         description: "A complete exterior treatment with rubbing, wax, and foam wash.",
         price: "₹1599",
-        details: "Surface rubbing/polish, 3M wax coating, Foam wash. Great for scratch removal and shine."
+        details: [
+          "Full Body Rubbing & Buffing (Rotary Machine)",
+          "3M Wax Polish",
+          "Exterior Foam Shampoo Wash",
+          "High-Pressure Water Wash",
+          "Alloy Wheel & Tyre Cleaning",
+          "Tyre Polishing",
+          "Exterior Black Part Polishing"
+        ]
       },
       {
         id: "full-package-suv",
@@ -175,7 +347,25 @@ const getServicesForCarType = (carType: string) => {
         title: "Rubbing + 3M Wax + Dry Cleaning + Exterior Foam Wash",
         description: "Complete car care – inside and out.",
         price: "₹2199",
-        details: "Rubbing polish, 3M wax, Interior dry cleaning (seats, mats, roof, dashboard), Foam wash. Ideal for full car makeover."
+        details: [
+          "Full Body Rubbing & Buffing (Rotary Machine)",
+          "3M Wax Polish",
+          "Exterior Foam Shampoo Wash",
+          "High-Pressure Water Wash",
+          "Alloy Wheel & Tyre Cleaning",
+          "Tyre Polishing",
+          "Exterior Black Part Polishing",
+          "Car Interior Dashboard Cleaning & Polishing",
+          "Deep Clean & Shampoo Of Car Seats (Upholstery)",
+          "Floor Mats Cleaning",
+          "Seat Belts Cleaning",
+          "Roof Cleaning",
+          "Door Cleaning & Polishing",
+          "Car Interior Vacuum Cleaning & Floor Deep Cleaning",
+          "Boot (Diggi) Cleaning & Polishing",
+          "Polishing All Plastic Parts",
+          "AC Vents Dry Dusting"
+        ]
       },
       {
         id: "rubbing-dry-foam-suv",
@@ -183,7 +373,24 @@ const getServicesForCarType = (carType: string) => {
         title: "Rubbing + Dry Cleaning + Exterior Foam Wash",
         description: "Exterior polish + full interior dry cleaning.",
         price: "₹1899",
-        details: "Rubbing, Interior dry clean, Foam wash. For fresh, clean car experience."
+        details: [
+          "Full Body Rubbing & Buffing (Rotary Machine)",
+          "Exterior Foam Shampoo Wash",
+          "High-Pressure Water Wash",
+          "Alloy Wheel & Tyre Cleaning",
+          "Tyre Polishing",
+          "Exterior Black Part Polishing",
+          "Car Interior Dashboard Cleaning & Polishing",
+          "Deep Clean & Shampoo Of Car Seats (Upholstery)",
+          "Floor Mats Cleaning",
+          "Seat Belts Cleaning",
+          "Roof Cleaning",
+          "Door Cleaning & Polishing",
+          "Car Interior Vacuum Cleaning & Floor Deep Cleaning",
+          "Boot (Diggi) Cleaning & Polishing",
+          "Polishing All Plastic Parts",
+          "AC Vents Dry Dusting"
+        ]
       },
       {
         id: "dry-wax-foam-suv",
@@ -191,7 +398,19 @@ const getServicesForCarType = (carType: string) => {
         title: "Dry Cleaning + 3M Wax + Exterior Foam Wash",
         description: "Balanced inside-out care.",
         price: "₹1499",
-        details: "Interior dry clean, 3M wax, Foam wash. Best for regular upkeep."
+        details: [
+          "3M Wax Polish",
+          "Car Interior Dashboard Cleaning & Polishing",
+          "Deep Clean & Shampoo Of Car Seats (Upholstery)",
+          "Floor Mats Cleaning",
+          "Seat Belts Cleaning",
+          "Roof Cleaning",
+          "Door Cleaning & Polishing",
+          "Car Interior Vacuum Cleaning & Floor Deep Cleaning",
+          "Boot (Diggi) Cleaning & Polishing",
+          "Polishing All Plastic Parts",
+          "AC Vents Dry Dusting"
+        ]
       },
       {
         id: "dry-cleaning-suv",
@@ -199,7 +418,18 @@ const getServicesForCarType = (carType: string) => {
         title: "Dry Cleaning",
         description: "Deep interior cleaning for seats, mats, roof, and dashboard.",
         price: "₹899",
-        details: "Complete interior dry cleaning service for a fresh cabin experience."
+        details: [
+          "Car Interior Dashboard Cleaning & Polishing",
+          "Deep Clean & Shampoo Of Car Seats (Upholstery)",
+          "Floor Mats Cleaning",
+          "Seat Belts Cleaning",
+          "Roof Cleaning",
+          "Door Cleaning & Polishing",
+          "Car Interior Vacuum Cleaning & Floor Deep Cleaning",
+          "Boot (Diggi) Cleaning & Polishing",
+          "Polishing All Plastic Parts",
+          "AC Vents Dry Dusting"
+        ]
       },
       {
         id: "air-freshener-suv",
@@ -207,7 +437,10 @@ const getServicesForCarType = (carType: string) => {
         title: "Air Freshener",
         description: "Keeps your car smelling fresh and inviting after every drive.",
         price: "₹149",
-        details: "Long-lasting fragrance for a pleasant driving experience."
+        details: [
+          "Premium Long-Lasting Fragrance",
+          "Keeps Cabin Fresh & Pleasant"
+        ]
       }
     ],
     "luxury": [
@@ -217,7 +450,14 @@ const getServicesForCarType = (carType: string) => {
         title: "Rubbing + Exterior Foam Wash",
         description: "A deep cleaning and polish that removes dullness, scratches, and oxidation from your car's paint. Followed by a thick foam wash that gives a shiny, fresh look.",
         price: "₹1499",
-        details: "Paint surface rubbing (polishing), Thick foam exterior wash. Good for cars with light scratches, dull paint, or that need a shine restoration."
+        details: [
+          "Full Body Rubbing & Buffing (Rotary Machine)",
+          "Exterior Foam Shampoo Wash",
+          "High-Pressure Water Wash",
+          "Alloy Wheel & Tyre Cleaning",
+          "Tyre Polishing",
+          "Exterior Black Part Polishing"
+        ]
       },
       {
         id: "3m-wax-foam-luxury",
@@ -225,7 +465,14 @@ const getServicesForCarType = (carType: string) => {
         title: "3M Wax + Exterior Foam Wash",
         description: "A high-quality wax polish by 3M for paint protection and shine, combined with a professional foam wash.",
         price: "₹699",
-        details: "3M Wax Polish, Exterior foam wash. Perfect for regular maintenance and shine boost."
+        details: [
+          "3M Wax Polish",
+          "Exterior Foam Shampoo Wash",
+          "High-Pressure Water Wash",
+          "Alloy Wheel & Tyre Cleaning",
+          "Tyre Polishing",
+          "Exterior Black Part Polishing"
+        ]
       },
       {
         id: "rubbing-wax-foam-luxury",
@@ -233,7 +480,15 @@ const getServicesForCarType = (carType: string) => {
         title: "Rubbing + 3M Wax + Exterior Foam Wash",
         description: "A complete exterior treatment with rubbing, wax, and foam wash.",
         price: "₹1599",
-        details: "Surface rubbing/polish, 3M wax coating, Foam wash. Great for scratch removal and shine."
+        details: [
+          "Full Body Rubbing & Buffing (Rotary Machine)",
+          "3M Wax Polish",
+          "Exterior Foam Shampoo Wash",
+          "High-Pressure Water Wash",
+          "Alloy Wheel & Tyre Cleaning",
+          "Tyre Polishing",
+          "Exterior Black Part Polishing"
+        ]
       },
       {
         id: "full-package-luxury",
@@ -241,7 +496,25 @@ const getServicesForCarType = (carType: string) => {
         title: "Rubbing + 3M Wax + Dry Cleaning + Exterior Foam Wash",
         description: "Complete car care – inside and out.",
         price: "₹2199",
-        details: "Rubbing polish, 3M wax, Interior dry cleaning (seats, mats, roof, dashboard), Foam wash. Ideal for full car makeover."
+        details: [
+          "Full Body Rubbing & Buffing (Rotary Machine)",
+          "3M Wax Polish",
+          "Exterior Foam Shampoo Wash",
+          "High-Pressure Water Wash",
+          "Alloy Wheel & Tyre Cleaning",
+          "Tyre Polishing",
+          "Exterior Black Part Polishing",
+          "Car Interior Dashboard Cleaning & Polishing",
+          "Deep Clean & Shampoo Of Car Seats (Upholstery)",
+          "Floor Mats Cleaning",
+          "Seat Belts Cleaning",
+          "Roof Cleaning",
+          "Door Cleaning & Polishing",
+          "Car Interior Vacuum Cleaning & Floor Deep Cleaning",
+          "Boot (Diggi) Cleaning & Polishing",
+          "Polishing All Plastic Parts",
+          "AC Vents Dry Dusting"
+        ]
       },
       {
         id: "rubbing-dry-foam-luxury",
@@ -249,7 +522,24 @@ const getServicesForCarType = (carType: string) => {
         title: "Rubbing + Dry Cleaning + Exterior Foam Wash",
         description: "Exterior polish + full interior dry cleaning.",
         price: "₹1899",
-        details: "Rubbing, Interior dry clean, Foam wash. For fresh, clean car experience."
+        details: [
+          "Full Body Rubbing & Buffing (Rotary Machine)",
+          "Exterior Foam Shampoo Wash",
+          "High-Pressure Water Wash",
+          "Alloy Wheel & Tyre Cleaning",
+          "Tyre Polishing",
+          "Exterior Black Part Polishing",
+          "Car Interior Dashboard Cleaning & Polishing",
+          "Deep Clean & Shampoo Of Car Seats (Upholstery)",
+          "Floor Mats Cleaning",
+          "Seat Belts Cleaning",
+          "Roof Cleaning",
+          "Door Cleaning & Polishing",
+          "Car Interior Vacuum Cleaning & Floor Deep Cleaning",
+          "Boot (Diggi) Cleaning & Polishing",
+          "Polishing All Plastic Parts",
+          "AC Vents Dry Dusting"
+        ]
       },
       {
         id: "dry-wax-foam-luxury",
@@ -257,7 +547,19 @@ const getServicesForCarType = (carType: string) => {
         title: "Dry Cleaning + 3M Wax + Exterior Foam Wash",
         description: "Balanced inside-out care.",
         price: "₹1499",
-        details: "Interior dry clean, 3M wax, Foam wash. Best for regular upkeep."
+        details: [
+          "3M Wax Polish",
+          "Car Interior Dashboard Cleaning & Polishing",
+          "Deep Clean & Shampoo Of Car Seats (Upholstery)",
+          "Floor Mats Cleaning",
+          "Seat Belts Cleaning",
+          "Roof Cleaning",
+          "Door Cleaning & Polishing",
+          "Car Interior Vacuum Cleaning & Floor Deep Cleaning",
+          "Boot (Diggi) Cleaning & Polishing",
+          "Polishing All Plastic Parts",
+          "AC Vents Dry Dusting"
+        ]
       },
       {
         id: "dry-cleaning-luxury",
@@ -265,7 +567,18 @@ const getServicesForCarType = (carType: string) => {
         title: "Dry Cleaning",
         description: "Deep interior cleaning for seats, mats, roof, and dashboard.",
         price: "₹899",
-        details: "Complete interior dry cleaning service for a fresh cabin experience."
+        details: [
+          "Car Interior Dashboard Cleaning & Polishing",
+          "Deep Clean & Shampoo Of Car Seats (Upholstery)",
+          "Floor Mats Cleaning",
+          "Seat Belts Cleaning",
+          "Roof Cleaning",
+          "Door Cleaning & Polishing",
+          "Car Interior Vacuum Cleaning & Floor Deep Cleaning",
+          "Boot (Diggi) Cleaning & Polishing",
+          "Polishing All Plastic Parts",
+          "AC Vents Dry Dusting"
+        ]
       },
       {
         id: "air-freshener-luxury",
@@ -273,7 +586,10 @@ const getServicesForCarType = (carType: string) => {
         title: "Air Freshener",
         description: "Keeps your car smelling fresh and inviting after every drive.",
         price: "₹149",
-        details: "Long-lasting fragrance for a pleasant driving experience."
+        details: [
+          "Premium Long-Lasting Fragrance",
+          "Keeps Cabin Fresh & Pleasant"
+        ]
       }
     ]
   };

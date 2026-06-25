@@ -50,7 +50,7 @@ const Footer = () => {
             <li><button onClick={() => {
               sessionStorage.setItem('selectedServiceType', 'premium-addons');
               window.location.href = '/booking';
-            }} className="text-gray-400 hover:text-white text-sm">Premium Add‑Ons</button></li>
+            }} className="text-gray-400 hover:text-white text-sm">Complete Car Care</button></li>
           </ul>
         </div>
 

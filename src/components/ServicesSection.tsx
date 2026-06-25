@@ -34,7 +34,7 @@ const ServicesSection = ({ onScrollToPricing }: ServicesSectionProps) => {
     {
       id: "premium-addons",
       icon: Star,
-      title: "PREMIUM ADD-ONS",
+      title: "COMPLETE CAR CARE",
       tagline: "Extra shine & protection",
       description: "Paint rubbing, waxing & deep interior cleaning",
       priceRange: "₹149 - ₹2799",

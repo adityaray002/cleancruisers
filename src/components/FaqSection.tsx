@@ -13,12 +13,12 @@ const faqs = [
   },
   {
     q: "What is the price for a doorstep car wash in Delhi?",
-    a: "Our prices start at ₹299 for a basic exterior wash for hatchbacks and go up to ₹699 for SUVs. Premium add-ons like rubbing, polishing, and waxing start at ₹149. Our monthly packages (3 washes) start at ₹1,399 – the most affordable regular car care option in West Delhi.",
+    a: "Our prices start at ₹299 for a basic exterior wash for hatchbacks and go up to ₹699 for SUVs. Complete car care services like rubbing, polishing, and waxing start at ₹149. Our monthly packages (3 washes) start at ₹1,399 – the most affordable regular car care option in West Delhi.",
   },
   ,
   {
     q: "How long does  car wash take at my doorstep?",
-    a: "A standard car wash & care service takes 1–2 hours depending on car size and service type. Premium add-ons like rubbing, waxing, or interior dry cleaning may take 2–3 hours. Monthly package washes are scheduled for 1–2 hours per visit.",
+    a: "A standard car wash & care service takes 1–2 hours depending on car size and service type. Complete car care services like rubbing, waxing, or interior dry cleaning may take 2–3 hours. Monthly package washes are scheduled for 1–2 hours per visit.",
   },
   {
     q: "Is CleanCruisers eco-friendly?",
