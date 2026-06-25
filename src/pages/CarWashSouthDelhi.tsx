@@ -179,7 +179,7 @@ const DoorstepCarWashSouthDelhi = () => {
           name="keywords"
           content="car wash services in south delhi, doorstep car wash south delhi, doorstep car wash near me, car washing near me, home car wash south delhi, car cleaning services south delhi, steam car wash, snow foam wash, cleancruisers"
         />
-        <link rel="canonical" href="https://cleancruisers.in/doorstep-car-wash-services-in-south-delhi/" />
+        {/* <link rel="canonical" href="https://cleancruisers.in/doorstep-car-wash-services-in-south-delhi/" /> */}
         <meta property="og:title" content="Doorstep Car Wash Services in South Delhi | CleanCruisers" />
         <meta property="og:description" content="Professional doorstep car wash service in South Delhi, Delhi. Book CleanCruisers today." />
         <meta property="og:url" content="https://cleancruisers.in/doorstep-car-wash-services-in-south-delhi/" />

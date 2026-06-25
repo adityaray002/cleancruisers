@@ -71,7 +71,7 @@ const CarWashJanakpuri = () => {
         <title>Car Wash Services in Janakpuri | CleanCruisers Delhi</title>
         <meta name="description" content="Get reliable car wash services in Janakpuri by CleanCruisers. Affordable doorstep cleaning in West Delhi. Book your car wash today!" />
         <meta name="keywords" content="car wash in Janakpuri, car wash services Janakpuri, doorstep car wash Janakpuri, car cleaning Janakpuri West Delhi, monthly car wash Janakpuri, car detailing Janakpuri, CleanCruisers" />
-        <link rel="canonical" href="https://cleancruisers.in/car-wash-services-in-janakpuri" />
+        {/* <link rel="canonical" href="https://cleancruisers.in/car-wash-services-in-janakpuri" /> */}
       </Helmet>
 
       <Header />

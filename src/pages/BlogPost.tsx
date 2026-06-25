@@ -34,7 +34,7 @@ const BlogPost: React.FC = () => {
      <Helmet>
   <title>{post.metaTitle || post.title}</title>
   <meta name="description" content={post.metaDescription || post.excerpt} />
-  <link rel="canonical" href={`https://cleancruisers.in/blog/${post.id}`} />
+  {/* <link rel="canonical" href={`https://cleancruisers.in/blog/${post.id}`} /> */}
 
   {/* Open Graph (for sharing) */}
   <meta property="og:title" content={post.metaTitle || post.title} />

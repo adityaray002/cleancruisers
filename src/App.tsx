@@ -15,6 +15,7 @@ import { HelmetProvider } from "react-helmet-async";
 import CarWashDwarka from "./pages/CarWashDwarka";
 import CarWashJanakpuri from "./pages/CarWashJanakpuri";
 import CarWashSouthDelhi from "./pages/CarWashSouthDelhi";
+import CarWashEastDelhi from "./pages/CarWashEastDelhi";
 
 const queryClient = new QueryClient();
 
@@ -45,6 +46,7 @@ return (
           <Route path="/car-wash-in-dwarka" element={<CarWashDwarka />} />
           <Route path="/car-wash-services-in-janakpuri" element={<CarWashJanakpuri />} />
           <Route path="/doorstep-car-wash-services-in-south-delhi/" element={<CarWashSouthDelhi/>} />
+          <Route path="/doorstep-car-wash-services-in-east-delhi/" element={<CarWashEastDelhi/>} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>

@@ -50,6 +50,9 @@ const SeoContentSection = () => {
     // "Najafgarh", "Nangloi"
     { name: "Punjabi Bagh", link: null },
     { name: "South Delhi", link: "/doorstep-car-wash-services-in-south-delhi" },
+    { name: "North Delhi", link: null },
+    { name: "East Delhi", link: "/doorstep-car-wash-services-in-east-delhi" },
+    { name: "West Delhi", link: null },
     { name: "Rajouri Garden", link: null },
     { name: "Paschim Vihar", link: null },
     { name: "Janakpuri", link: "/car-wash-services-in-janakpuri" },

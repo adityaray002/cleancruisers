@@ -65,7 +65,7 @@ const CarWashDwarka = () => {
           name="keywords"
           content="car wash in Dwarka, car wash near me Dwarka, car cleaning Dwarka Delhi, doorstep car wash Dwarka, car wash at home Dwarka, Clean Cruisers"
         />
-        <link rel="canonical" href="https://cleancruisers.in/car-wash-in-dwarka" />
+        {/* <link rel="canonical" href="https://cleancruisers.in/car-wash-in-dwarka" /> */}
         <meta property="og:title" content="Car Wash in Dwarka | Doorstep Car Cleaning" />
         <meta property="og:description" content="Professional doorstep car wash service in Dwarka, Delhi. Book CleanCruisers today." />
         <meta property="og:url" content="https://cleancruisers.in/car-wash-in-dwarka" />
