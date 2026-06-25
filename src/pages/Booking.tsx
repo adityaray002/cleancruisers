@@ -8,11 +8,20 @@ import CustomerDetails from "@/components/CustomerDetails";
 import CompleteCarePlan from "@/components/CompleteCarePlan";
 import BookingProgress from "@/components/BookingProgress";
 import ServiceTypeSelection from "@/components/ServiceTypeSelection";
+import WashAddons from "@/components/WashAddons";
 import { Button } from "@/components/ui/button";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import BookingSummary from "@/components/BookingSummary";
-import { getPlanPrice, getAddonPrice, COMPLETE_CARE_PRICING } from "@/lib/pricing";
+import {
+  getPlanPrice,
+  getAddonPrice,
+  getWashAddonTotal,
+  COMPLETE_CARE_PRICING,
+  WASH_ADDON_NAMES,
+  WASH_ADDON_PRICING,
+  type WashAddonItem,
+} from "@/lib/pricing";
 
 const Booking = () => {
   const [currentStep, setCurrentStep] = useState(0); // Start at 0 for service type selection
@@ -22,6 +31,7 @@ const Booking = () => {
   const [selectedServiceType, setSelectedServiceType] = useState("");
   const [selectedPlan, setSelectedPlan] = useState("");
   const [selectedServices, setSelectedServices] = useState<string[]>([]);
+  const [washAddons, setWashAddons] = useState<WashAddonItem[]>([]);
   const [customerDetails, setCustomerDetails] = useState<{
     name: string;
     phone: string;
@@ -77,6 +87,8 @@ useEffect(() => {
   // No service type yet: 1 step (just show service type selection)
   const getTotalSteps = () => {
     if (!selectedServiceType) return 1;
+    // One-time / waterless: extra Extras step makes it 5
+    if (isOneTime) return 5;
     return 4;
   };
 
@@ -86,11 +98,11 @@ useEffect(() => {
     if (isPremiumAddons) {
       return ["Service Type", "Car Type", "Select Add-ons", "Your Details", "Confirm Booking"];
     } else if (isOneTime) {
-      return ["Service Type", "Car Type", "Choose Package", "Your Details", "Confirm Booking"];
+      return ["Service Type", "Car Type", "Choose Package", "Extra Services", "Your Details", "Confirm Booking"];
     }else if (isCompleteCare) {
       return ["Service Type", "Car Type", "Package Details", "Your Details", "Confirm Booking"];
     }
-    return ["Service Type", "Car Type", "Choose Package", "Your Details", "Confirm Booking"];
+    return ["Service Type", "Car Type", "Choose Package", "Extra Services", "Your Details", "Confirm Booking"];
   };
 
   const nextStep = () => {
@@ -119,12 +131,14 @@ useEffect(() => {
     // Reset dependent selections when service type changes
     setSelectedPlan("");
     setSelectedServices([]);
+    setWashAddons([]);
   };
 
   const resetServiceType = () => {
     setSelectedServiceType("");
     setSelectedPlan("");
     setSelectedServices([]);
+    setWashAddons([]);
     sessionStorage.removeItem('selectedServiceType');
     setCurrentStep(0);
     setCompletedSteps([]);
@@ -153,11 +167,13 @@ useEffect(() => {
         default: return false;
       }
     } else {
+      // one-time / waterless: Car(1) → Package(2) → Extras(3) → Details(4) → Confirm(5)
       switch (currentStep) {
         case 1: return selectedCar !== "";
         case 2: return selectedPlan !== "";
-        case 3: return detailsValid;
-        case 4: return true;
+        case 3: return true; // extras are optional
+        case 4: return detailsValid;
+        case 5: return true;
         default: return false;
       }
     }
@@ -201,16 +217,37 @@ useEffect(() => {
         default: return null;
       }
     } else {
-      // One-time / Waterless flow: Car -> Package -> Details -> Confirm
+      // One-time / Waterless flow: Car(1) → Package(2) → Extras(3) → Details(4) → Confirm(5)
       switch (currentStep) {
         case 1:
-         return <CarSelection selectedCar={selectedCar} onCarSelect={setSelectedCar} onAutoAdvance={nextStep} />;
+          return <CarSelection selectedCar={selectedCar} onCarSelect={setSelectedCar} onAutoAdvance={nextStep} />;
         case 2:
-         return <OneTimePricingPlans selectedPlan={selectedPlan} onPlanSelect={setSelectedPlan} selectedCar={selectedCar} onAutoAdvance={nextStep} />;
+          return <OneTimePricingPlans selectedPlan={selectedPlan} onPlanSelect={setSelectedPlan} selectedCar={selectedCar} onAutoAdvance={nextStep} />;
         case 3:
-         return <CustomerDetails customerDetails={customerDetails} onDetailsChange={setCustomerDetails} onAutoAdvance={nextStep} />;
+          return (
+            <WashAddons
+              washAddons={washAddons}
+              onChange={setWashAddons}
+              onNext={nextStep}
+            />
+          );
         case 4:
-          return <BookingSummary selectedServiceType={selectedServiceType} selectedCar={selectedCar} selectedPlan={selectedPlan} selectedServices={selectedServices} customerName={customerDetails.name} customerPhone={customerDetails.phone} customerLocation={customerDetails.location} customerLocationText={customerDetails.locationText} onEditStep={(step) => setCurrentStep(step)} />;
+          return <CustomerDetails customerDetails={customerDetails} onDetailsChange={setCustomerDetails} onAutoAdvance={nextStep} />;
+        case 5:
+          return (
+            <BookingSummary
+              selectedServiceType={selectedServiceType}
+              selectedCar={selectedCar}
+              selectedPlan={selectedPlan}
+              selectedServices={selectedServices}
+              washAddons={washAddons}
+              customerName={customerDetails.name}
+              customerPhone={customerDetails.phone}
+              customerLocation={customerDetails.location}
+              customerLocationText={customerDetails.locationText}
+              onEditStep={(step) => setCurrentStep(step)}
+            />
+          );
         default: return null;
       }
     }
@@ -268,6 +305,7 @@ useEffect(() => {
           return { title: "", subtitle: "", tip: "" };
       }
     } else {
+      // one-time / waterless 5-step flow
       switch (currentStep) {
         case 1:
           return {
@@ -283,11 +321,17 @@ useEffect(() => {
           };
         case 3:
           return {
+            title: "Want to Add Extra Services?",
+            subtitle: "Enhance your wash with optional add-ons — or skip and continue",
+            tip: "Tip: You can always skip this step"
+          };
+        case 4:
+          return {
             title: "Your Details",
             subtitle: "We need your name to complete the booking",
             tip: "Tip: Enter the name for booking confirmation"
           };
-        case 4:
+        case 5:
           return {
             title: "Review Your Booking",
             subtitle: "Please confirm your selections before booking",
@@ -300,13 +344,14 @@ useEffect(() => {
   };
 
   const stepInfo = getStepInfo();
-  const isLastStep = currentStep === 4;
+  const isLastStep = currentStep === (isOneTime ? 5 : 4);
 
   const calculateBookingPrice = (): number => {
     if (isCompleteCare) return COMPLETE_CARE_PRICING[selectedCar] || 1399;
     const base = getPlanPrice(selectedCar, selectedPlan?.toLowerCase().trim() || "");
     const addons = selectedServices.reduce((sum, id) => sum + getAddonPrice(id), 0);
-    return base + addons;
+    const washExtras = getWashAddonTotal(washAddons);
+    return base + addons + washExtras;
   };
 
   const handleBookNow = () => {
@@ -328,6 +373,16 @@ useEffect(() => {
     if (selectedServices.length > 0) {
       message += `➕ *Add-ons:* ${selectedServices.join(", ")}%0A`;
     }
+    if (washAddons.length > 0) {
+      const washLines = washAddons
+        .map((a) => {
+          const name = WASH_ADDON_NAMES[a.id] ?? a.id;
+          const price = WASH_ADDON_PRICING[a.id] ?? 0;
+          return a.qty > 1 ? `${name} ×${a.qty} (₹${price * a.qty})` : `${name} (₹${price})`;
+        })
+        .join(", ");
+      message += `🧴 *Extra Services:* ${washLines}%0A`;
+    }
     if (price > 0) {
       message += `━━━━━━━━━━━━━━━━━━%0A`;
       message += `💰 *Total: ₹${price}*%0A`;
@@ -346,6 +401,9 @@ useEffect(() => {
       selectedCar ? `${selectedCar} car` : "",
       isCompleteCare ? "Complete Care (3× Premium Wash)" : selectedPlan ? `Plan: ${selectedPlan}` : "",
       selectedServices.length > 0 ? `Add-ons: ${selectedServices.join(", ")}` : "",
+      washAddons.length > 0
+        ? `Extras: ${washAddons.map((a) => `${WASH_ADDON_NAMES[a.id] ?? a.id}${a.qty > 1 ? ` ×${a.qty}` : ""}`).join(", ")}`
+        : "",
     ].filter(Boolean).join(" | ");
 
     const locationNote = customerDetails.location?.lat

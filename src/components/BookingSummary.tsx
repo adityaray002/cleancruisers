@@ -1,5 +1,13 @@
 import React, { ReactNode } from "react";
-import { getPlanPrice, getAddonPrice, COMPLETE_CARE_PRICING } from "@/lib/pricing";
+import {
+  getPlanPrice,
+  getAddonPrice,
+  COMPLETE_CARE_PRICING,
+  getWashAddonTotal,
+  WASH_ADDON_NAMES,
+  WASH_ADDON_PRICING,
+  type WashAddonItem,
+} from "@/lib/pricing";
 
 const Row = ({ label, value }: { label: string; value: ReactNode }) => (
   <div className="flex items-start justify-between gap-3">
@@ -13,6 +21,7 @@ interface BookingSummaryProps {
   selectedCar: string;
   selectedPlan: string;
   selectedServices: string[];
+  washAddons?: WashAddonItem[];
   customerName: string;
   customerPhone?: string;
   customerLocation?: { lat: number; lng: number } | null;
@@ -70,12 +79,15 @@ const BookingSummary = ({
   selectedCar,
   selectedPlan,
   selectedServices,
+  washAddons = [],
   customerName,
   customerPhone,
   customerLocation,
   customerLocationText,
   onEditStep,
 }: BookingSummaryProps) => {
+  const isOneTime = selectedServiceType === "one-time" || selectedServiceType === "waterless";
+
   const calculateTotal = () => {
     let total = 0;
     let basePrice = 0;
@@ -95,12 +107,18 @@ const BookingSummary = ({
       total += servicePrice;
     });
 
-    return { total, basePrice, addonsTotal };
+    const washAddonTotal = getWashAddonTotal(washAddons);
+    total += washAddonTotal;
+
+    return { total, basePrice, addonsTotal, washAddonTotal };
   };
 
-  const { total, basePrice, addonsTotal } = calculateTotal();
+  const { total, basePrice, washAddonTotal } = calculateTotal();
 
-  const detailsStep = selectedServiceType === "premium-addons" ? 3 : 3;
+  // Details step number differs by service type
+  const detailsStep = selectedServiceType === "premium-addons" ? 3 : 4;
+  // Extras step for one-time flow
+  const extrasStep = 3;
 
   return (
     <div className="max-w-md mx-auto space-y-3 text-white">
@@ -133,12 +151,12 @@ const BookingSummary = ({
           )}
         </div>
 
-        {/* Add-ons */}
+        {/* Premium add-ons (premium-addons flow) */}
         {selectedServices.length > 0 && (
           <div className="border-t border-gray-700 px-4 py-3">
             <div className="flex items-center justify-between mb-2">
               <span className="text-xs text-gray-400 font-medium">Add-on Services</span>
-              <button onClick={() => onEditStep(selectedServiceType === "premium-addons" ? 2 : 4)}
+              <button onClick={() => onEditStep(selectedServiceType === "premium-addons" ? 2 : extrasStep)}
                 className="text-green-400 text-xs hover:underline">Edit Add-ons</button>
             </div>
             <div className="space-y-1.5">
@@ -151,6 +169,40 @@ const BookingSummary = ({
                   </div>
                 );
               })}
+            </div>
+          </div>
+        )}
+
+        {/* Wash add-ons (one-time / waterless flow) */}
+        {isOneTime && washAddons.length > 0 && (
+          <div className="border-t border-gray-700 px-4 py-3">
+            <div className="flex items-center justify-between mb-2">
+              <span className="text-xs text-gray-400 font-medium">Extra Services</span>
+              <button onClick={() => onEditStep(extrasStep)}
+                className="text-green-400 text-xs hover:underline">Edit</button>
+            </div>
+            <div className="space-y-1.5">
+              {washAddons.map((a) => {
+                const unitPrice = WASH_ADDON_PRICING[a.id] ?? 0;
+                const lineTotal = unitPrice * a.qty;
+                return (
+                  <div key={a.id} className="flex justify-between items-center">
+                    <span className="text-sm text-gray-300">
+                      {WASH_ADDON_NAMES[a.id] ?? a.id}
+                      {a.qty > 1 && (
+                        <span className="text-gray-500 text-xs ml-1">× {a.qty}</span>
+                      )}
+                    </span>
+                    <span className="text-green-400 text-sm font-semibold">₹{lineTotal}</span>
+                  </div>
+                );
+              })}
+              {washAddonTotal > 0 && (
+                <div className="flex justify-between items-center pt-1 border-t border-gray-700/50 mt-1">
+                  <span className="text-xs text-gray-500">Extra services subtotal</span>
+                  <span className="text-green-400 text-xs font-semibold">+₹{washAddonTotal}</span>
+                </div>
+              )}
             </div>
           </div>
         )}

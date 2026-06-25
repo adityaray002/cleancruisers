@@ -61,3 +61,23 @@ export const ADDON_PRICING: Record<string, number> = {
 };
 
 export const getAddonPrice = (serviceId: string): number => ADDON_PRICING[serviceId] ?? 0;
+
+// ─── Wash Add-ons (shown after package selection in one-time / waterless flow) ─
+export type WashAddonItem = { id: string; qty: number };
+
+export const WASH_ADDON_PRICING: Record<string, number> = {
+  "seat-cleaning":          100, // per seat
+  "roof-cleaning":          200,
+  "door-dashboard-shampoo": 250,
+  "ac-vent-cleaning":       250,
+};
+
+export const WASH_ADDON_NAMES: Record<string, string> = {
+  "seat-cleaning":          "Seat Cleaning",
+  "roof-cleaning":          "Roof Cleaning",
+  "door-dashboard-shampoo": "Door & Dashboard Shampoo Cleaning",
+  "ac-vent-cleaning":       "AC Vent & Foam Cleaning",
+};
+
+export const getWashAddonTotal = (items: WashAddonItem[]): number =>
+  items.reduce((sum, a) => sum + (WASH_ADDON_PRICING[a.id] ?? 0) * a.qty, 0);

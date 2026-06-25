@@ -1,4 +1,4 @@
-import { Check, Car, Package, Sparkles, User, ClipboardCheck } from "lucide-react";
+import { Check, Car, Package, Sparkles, User, ClipboardCheck, PlusCircle } from "lucide-react";
 import { motion } from "framer-motion";
 
 interface Step {
@@ -28,12 +28,13 @@ const BookingProgress = ({ currentStep, totalSteps, selectedServiceType, complet
         { number: 4, title: "Confirm", icon: <ClipboardCheck className="w-4 h-4" />, description: "Review & book" },
       ];
     } else {
-      // One-time wash flow
+      // One-time / waterless flow — 5 steps with Extras step
       return [
         { number: 1, title: "Car Type", icon: <Car className="w-4 h-4" />, description: "Select your vehicle" },
-        { number: 2, title: "Package", icon: <Package className="w-4 h-4" />, description: "Choose plan" },
-        { number: 3, title: "Details", icon: <User className="w-4 h-4" />, description: "Your information" },
-        { number: 4, title: "Confirm", icon: <ClipboardCheck className="w-4 h-4" />, description: "Review & book" },
+        { number: 2, title: "Package",  icon: <Package className="w-4 h-4" />, description: "Choose plan" },
+        { number: 3, title: "Extras",   icon: <PlusCircle className="w-4 h-4" />, description: "Add-on services" },
+        { number: 4, title: "Details",  icon: <User className="w-4 h-4" />, description: "Your information" },
+        { number: 5, title: "Confirm",  icon: <ClipboardCheck className="w-4 h-4" />, description: "Review & book" },
       ];
     }
   };
