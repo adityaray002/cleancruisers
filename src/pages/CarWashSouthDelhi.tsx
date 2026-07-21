@@ -16,18 +16,13 @@ import {
   Users,
   Snowflake,
   Wind,
-  Waves,
-  Wrench,
   Leaf,
-  Headphones,
-  Calendar,
+  Star,
+  Wrench,
   Search,
   ClipboardCheck,
-  ThumbsUp,
 } from "lucide-react";
 import { motion } from "framer-motion";
-
-console.log("DoorstepCarWashSouthDelhi rendered");
 
 const DoorstepCarWashSouthDelhi = () => {
   const navigate = useNavigate();
@@ -35,130 +30,190 @@ const DoorstepCarWashSouthDelhi = () => {
   const services = [
     {
       icon: Car,
-      name: "Internal Car Cleaning",
-      desc: "Makes your cabin feel fresh, clean, and comfortable again.",
-      points: [
-        "Full vacuuming of seats, carpets, boot, and hard‑to‑reach corners",
-        "Dashboard cleaning for a clean, non‑sticky finish",
-        "Seat cleaning for fabric or leather, as per your car’s upholstery",
-        "Floor mat washing and drying to remove mud, dust, and odours",
-        "Interior sanitization of high‑touch areas like steering, gear, door handles, and switches",
-      ],
+      name: "Interior Deep Cleaning",
+      desc: "Deep cleaning, sanitary treatment for seats and carpets, dashboard sanitizing, a cleaning of the door panels and boot area Ideal for families battling on, pet loving-cls managing dogs (and their hair and smell), and everyday commuters who find the inside of their cabins accumulating more dirt than they think.",
     },
     {
       icon: Droplets,
-      name: "External Car Cleaning",
-      desc: "Designed to be gentle on paint and tough on dirt.",
-      points: [
-        "Body wash using paint‑safe shampoo and soft microfiber cloths",
-        "Glass cleaning inside and out for clear, streak‑free visibility",
-        "Tyre cleaning to remove road grime and restore a deep black look",
-        "Alloy wheel cleaning to get rid of brake dust and tough deposits",
-        "Use of paint‑safe products to reduce swirl marks and micro‑scratches",
-      ],
-    },
-    {
-      icon: Snowflake,
-      name: "Snow Foam Wash",
-      desc: "A thick foam blankets your car, soaks in, and gently lifts dust and road film before rinse.",
-      points: [
-        "Softer, safer contact with the paint",
-        "Reduced swirl marks and micro‑scratches",
-        "A smoother, glossier finish compared to basic washing",
-      ],
+      name: "Exterior Car Wash",
+      desc: "Panel-by-panel washing using clean, dedicated microfiber towels - not one sponge doing the whole car. Wheels, arches, and trims get separate treatment since they carry different grime than body paint.",
     },
     {
       icon: Wind,
       name: "Steam Wash",
-      desc: "High‑temperature steam cleans and sanitizes while using very little water.",
-      points: [
-        "Deep cleaning tight gaps and trims",
-        "Reducing germs and odours inside the car",
-        "Removing stubborn dirt without harsh chemicals",
-      ],
+      desc: "Targeted to interior touchpoints and certain exterior areas where it can safely extract even the toughest grime without moister. Great for the hygiene-based cleanings around switches, vents, and crevices.",
     },
     {
-      icon: Waves,
-      name: "Underbody Cleaning",
-      desc: "Protects the underbody from mud, water, and road contaminants that cause rust.",
-      points: [
-        "Washes away stuck mud and deposits",
-        "Helps prevent corrosion and rust",
-        "Protects critical metal parts and joints",
-      ],
+      icon: Snowflake,
+      name: "Snow Foam Wash",
+      desc: "A pre-wash stage that loosens dirt before any cloth touches the car. This single step is why some washes leave fewer scratches than others - less rubbing means less risk to paint.",
+    },
+    {
+      icon: Sparkles,
+      name: "Car Dry Cleaning",
+      desc: "For upholstery and carpet situations where a wet wash isn't ideal - stains, odour, or fabric that needs careful handling without soaking.",
+    },
+    {
+      icon: Shield,
+      name: "Premium Doorstep Car Care",
+      desc: "The complete package - interior and exterior combined, tailored to vehicle type and current condition, done at your home or office parking spot.",
     },
   ];
 
-  const whyChooseUs = [
-    { icon: MapPin, title: "Doorstep convenience", text: "We come to your home, office, or society parking with the required tools and products." },
-    { icon: Users, title: "Trained professionals", text: "Experienced staff that handle different car types with care and follow a proper cleaning process." },
-    { icon: Leaf, title: "Eco‑friendly approach", text: "Modern methods like controlled water usage, foam wash, and steam wash to reduce waste." },
-    { icon: Wrench, title: "Modern equipment", text: "Professional pressure washers, vacuums, and cleaning tools for consistent results." },
-    { icon: Clock, title: "Flexible scheduling", text: "Book slots that suit your routine, including busy weekdays and weekends." },
-    { icon: Headphones, title: "Responsive support", text: "Need help choosing services or rescheduling? We’re easy to reach and quick to assist." },
-    { icon: CheckCircle2, title: "Quality‑first mindset", text: "Every job ends with a final check so your car leaves your parking spot looking fresh and clean." },
-  ];
-
-  const areas = [
-    "Greater Kailash and Greater Kailash 2",
-    "Saket and Malviya Nagar",
-    "Hauz Khas and Green Park",
-    "Vasant Kunj and nearby colonies",
-    "Defence Colony and Lajpat Nagar",
-    "Chittaranjan Park (CR Park) and Kalkaji",
-    "Nehru Place and surrounding business hubs",
-    "Panchsheel Park and nearby premium societies",
-  ];
-
-  const process = [
-    { icon: Calendar, step: "Step 1", title: "Book Appointment", desc: "You contact us, share your car details, choose the service, and confirm your South Delhi location and time slot." },
-    { icon: Car, step: "Step 2", title: "Technician Arrives", desc: "Our technician reaches your home, office, or society parking with all required cleaning equipment and products." },
-    { icon: Search, step: "Step 3", title: "Vehicle Inspection", desc: "We quickly inspect your car’s exterior and interior condition to note specific spots that need attention." },
-    { icon: Sparkles, step: "Step 4", title: "Professional Cleaning", desc: "We carry out the booked services – exterior wash, interior cleaning, snow foam wash, steam wash, or underbody cleaning – following our standard process." },
-    { icon: ClipboardCheck, step: "Step 5", title: "Final Quality Check", desc: "The technician verifies overall cleanliness, shine, glass clarity, wheels, and interiors to ensure nothing is missed." },
-    { icon: ThumbsUp, step: "Step 6", title: "Customer Satisfaction Confirmation", desc: "We show you the results, take your feedback, and close the job only when you are satisfied." },
+  const problems = [
+    "Dust settling into AC vents within days of a wash",
+    "Bird droppings and tree sap left untreated, slowly damaging clear coat",
+    "Seats and mats holding onto odours from food, kids, or pets",
+    "Roadside washes that leave swirl marks from reused, dirty cloths",
+    "No real cleaning of door jambs, boot corners, or under-seat areas",
+    "Monsoon mud that stains fabric and leaves a musty smell for weeks",
   ];
 
   const benefits = [
-    { icon: Clock, title: "Time saved", text: "No need to drive to a washing centre or stand in long queues; your car is cleaned where it is parked." },
-    { icon: Users, title: "No waiting lines", text: "Your slot is dedicated, so the technician works only on your vehicle during that time." },
-    { icon: Sparkles, title: "Professional finish", text: "Trained staff, systematic cleaning, and proper tools usually deliver better results than quick local washes." },
-    { icon: Shield, title: "Comfort and convenience", text: "Get a clean car at home or office, while you continue your work, relax, or spend time with family." },
+    "Paint that holds its gloss longer because it isn't scrubbed with the wrong materials",
+    "Cabin air that doesn't carry old food or damp-mat smells",
+    "Leather that stays supple instead of cracking from dryness",
+    "Fewer swirl marks because towels and technique are surface-appropriate",
+    "A cabin that's genuinely safe for kids to sit in without breathing in dust",
+    "A car that looks presentable before a client meeting or family trip, without last-minute scrambling",
+  ];
+
+  const process = [
+    {
+      icon: Search,
+      step: "Step 1",
+      title: "Inspection",
+      desc: "Before we begin, we inspect the paint condition, stain severity and type of upholstery.",
+    },
+    {
+      icon: Droplets,
+      step: "Step 2",
+      title: "Pre-wash",
+      desc: "Pre-wash / Snow foam where needed to minimise paint friction.",
+    },
+    {
+      icon: Sparkles,
+      step: "Step 3",
+      title: "Surface Specific Cleaning",
+      desc: "Special products for glass, alloys, plastics and fabric.",
+    },
+    {
+      icon: Wrench,
+      step: "Step 4",
+      title: "Manual Labor",
+      desc: "Vents, door jams, seat gaps, and badges are hand cleaned.",
+    },
+    {
+      icon: ClipboardCheck,
+      step: "Step 5",
+      title: "Quick Inspection",
+      desc: "A little examination before we delivered the job.",
+    },
+  ];
+
+  const areas = [
+    "Greater Kailash (GK-1 and GK-2)",
+    "Defence Colony",
+    "Saket",
+    "Malviya Nagar",
+    "Hauz Khas",
+    "Green Park",
+    "Panchsheel Park",
+    "Kalkaji",
+    "Nehru Place",
+    "Lajpat Nagar",
+    "Vasant Kunj",
+    "Chittaranjan Park",
+    "South Extension",
+    "New Friends Colony",
+  ];
+
+
+  const frequency = [
+    { service: "Exterior wash", freq: "Every 1- 2 weeks" },
+    { service: "Interior deep clean", freq: "Every months" },
+    { service: "Steam/sanitization", freq: "Every 3 - 4 weeks (families, pet owners)" },
+    { service: "Snow foam wash", freq: "With each exterior wash for best results" },
   ];
 
   const faqs = [
     {
-      q: "Do you provide doorstep car wash services in South Delhi?",
-      a: "Yes, CleanCruisers offers doorstep car wash services across South Delhi, including Greater Kailash, Saket, Malviya Nagar, Hauz Khas, Green Park, Vasant Kunj, Defence Colony, CR Park, Kalkaji, Nehru Place, Panchsheel Park, and Lajpat Nagar.",
+      q: "Do you offer car wash at home in South Delhi?",
+      a: "Yes, CleanCruisers provides doorstep car wash and cleaning services across major South Delhi localities.",
     },
     {
-      q: "What is a doorstep car wash?",
-      a: "A doorstep car wash is a service where car cleaning professionals visit your home, office, or society parking with equipment and products to wash and clean your car on‑site, so you don’t have to drive anywhere.",
+      q: "Is this a daily subscription wash service?",
+      a: "No. We focus on professional, occasional deep cleaning rather than daily quick washes.",
     },
     {
-      q: "How does home car washing work with CleanCruisers?",
-      a: "You book a time, and then our technician comes to your South Delhi place, checks the vehicle, does the selected services like interior, exterior foam, steam, or underbody, and after that runs a final quality check before closing everything out.",
+      q: "Can you safely clean luxury cars like BMW or Mercedes?",
+      a: "Yes. Our technicians use paint-safe products and adjust technique for premium interiors and finishes.",
     },
     {
-      q: "Is steam car washing safe?",
-      a: "Yes, when handled by trained technicians, steam car washing is safe and effective. It uses minimal water, helps sanitize surfaces, and is suitable for many interior and exterior areas when applied correctly.",
+      q: "What's included in interior deep cleaning?",
+      a: "Vacuuming, seat and carpet cleaning, dashboard detailing, door panels, and boot area cleaning.",
     },
     {
-      q: "What is included in interior car cleaning?",
-      a: "Interior car cleaning includes full vacuuming, dashboard cleaning, seat and floor mat cleaning, and sanitization of high‑touch surfaces like steering, gear knob, and door handles.",
+      q: "How long does a full car cleaning take?",
+      a: "It varies by vehicle size and service scope - a full interior-exterior package takes longer than a basic wash.",
     },
     {
-      q: "Why choose CleanCruisers over traditional car washes?",
-      a: "CleanCruisers saves you time, cuts out travel and waiting, brings trained staff plus modern equipment right to your location, and keeps it eco friendly, quality driven car care, at your doorstep.",
+      q: "Can stains be fully removed from seats?",
+      a: "Most common stains improve significantly, though results depend on stain age, type, and fabric.",
+    },
+    {
+      q: "Is leather seat cleaning safe?",
+      a: "Yes, we use conditioning-based products suited to leather rather than harsh soap.",
+    },
+    {
+      q: "What is snow foam wash used for?",
+      a: "It loosens surface dirt before contact washing, reducing scratch risk during the wash itself.",
+    },
+    {
+      q: "Is steam cleaning safe for car interiors?",
+      a: "Yes, when used correctly on suitable surfaces, avoiding excess moisture near electronics.",
+    },
+    {
+      q: "Do you clean SUVs and larger vehicles?",
+      a: "Yes, including SUVs, sedans, and premium vehicles, with pricing adjusted for size.",
+    },
+    {
+      q: "Can I book cleaning at my office instead of home?",
+      a: "Yes, subject to parking availability at the location.",
+    },
+    {
+      q: "Do you bring your own water and equipment?",
+      a: "Yes, our technicians carry the required tools and materials for each service.",
+    },
+    {
+      q: "How often should I clean my car's interior?",
+      a: "Every 3 - 6 months generally, sooner if you have kids, pets, or a daily commute.",
+    },
+    {
+      q: "Will washing remove scratches from my car?",
+      a: "No, washing cleans surface dirt but doesn't repair scratches - that needs separate paint correction.",
+    },
+    {
+      q: "Do you use eco-friendly cleaning products?",
+      a: "We prioritize products that are effective yet minimise unnecessary chemical exposure.",
+    },
+    {
+      q: "Can you sanitize high-touch areas like steering and gear knob?",
+      a: "Yes, sanitization covers frequently touched interior points on request.",
+    },
+    {
+      q: "How do I get exact pricing for my car?",
+      a: "Share your car model, locality, and required service - we'll confirm pricing accordingly.",
+    },
+    {
+      q: "Do you serve areas outside the listed South Delhi localities?",
+      a: "Often yes - mention your area when booking and we'll confirm availability.",
     },
   ];
 
   const containerVariants = {
     hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: { staggerChildren: 0.1 },
-    },
+    visible: { opacity: 1, transition: { staggerChildren: 0.1 } },
   };
 
   const itemVariants = {
@@ -169,28 +224,25 @@ const DoorstepCarWashSouthDelhi = () => {
   return (
     <div className="min-h-screen bg-black text-white">
       <Helmet>
-        <title>Doorstep Car Wash Services in South Delhi | CleanCruisers</title>
+        <title>Car Wash in South Delhi | Professional Doorstep Car Cleaning Services</title>
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <meta
           name="description"
-          content="Book professional doorstep car wash services in South Delhi. Interior cleaning, exterior wash, steam wash, snow foam wash, and home car cleaning by CleanCruisers."
+          content="Professional car wash in South Delhi by CleanCruisers. Book doorstep car cleaning, interior deep cleaning, steam wash & snow foam wash for your home or office today."
         />
         <meta
           name="keywords"
-          content="car wash services in south delhi, doorstep car wash south delhi, doorstep car wash near me, car washing near me, home car wash south delhi, car cleaning services south delhi, steam car wash, snow foam wash, cleancruisers"
+          content="car wash in south delhi, doorstep car wash south delhi, car cleaning services south delhi, interior deep cleaning, steam wash, snow foam wash, cleancruisers"
         />
-        {/* <link rel="canonical" href="https://cleancruisers.in/doorstep-car-wash-services-in-south-delhi/" /> */}
-        <meta property="og:title" content="Doorstep Car Wash Services in South Delhi | CleanCruisers" />
-        <meta property="og:description" content="Professional doorstep car wash service in South Delhi, Delhi. Book CleanCruisers today." />
-        <meta property="og:url" content="https://cleancruisers.in/doorstep-car-wash-services-in-south-delhi/" />
+        <meta property="og:title" content="Car Wash in South Delhi | Professional Doorstep Car Cleaning Services" />
+        <meta property="og:description" content="Professional car wash in South Delhi by CleanCruisers. Book doorstep car cleaning, interior deep cleaning, steam wash & snow foam wash for your home or office today." />
+        <meta property="og:url" content="https://cleancruisers.in/car-wash-in-south-delhi/" />
         <meta property="og:type" content="website" />
         <meta property="og:image" content="https://cleancruisers.in/LOGOFINAL.png" />
-
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Doorstep Car Wash Services in South Delhi | CleanCruisers" />
-        <meta name="twitter:description" content="Professional doorstep car wash service in South Delhi." />
+        <meta name="twitter:title" content="Car Wash in South Delhi | Professional Doorstep Car Cleaning Services" />
+        <meta name="twitter:description" content="Professional car wash in South Delhi by CleanCruisers." />
         <meta name="twitter:image" content="https://cleancruisers.in/LOGOFINAL.png" />
-
         <script type="application/ld+json">
           {`
           {
@@ -239,15 +291,20 @@ const DoorstepCarWashSouthDelhi = () => {
             </motion.div>
 
             <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6 leading-tight">
-              Doorstep Car Wash in South Delhi
-              <span className="block text-green-400 mt-2">Professional Car Cleaning by CleanCruisers</span>
+              Car Wash in South Delhi
+              <span className="block text-green-400 mt-2">Professional Doorstep Cleaning by CleanCruisers</span>
             </h1>
 
             <p className="text-gray-400 text-base sm:text-lg max-w-3xl mx-auto leading-relaxed mb-8">
-              Life in South Delhi moves fast – between office runs, school drops, client meetings, and family time,
-              taking your car to a service station often slips to “later”. A doorstep car wash fixes that by sending
-              trained professionals, equipment, and eco friendly products straight to your parking spot –{" "}
-              <span className="text-white font-medium">CleanCruisers</span> cleans your car while you keep going with your day.
+              Ask any car owner in South Delhi how quickly their vehicle collects dust, and you'll get the same answer: faster than they'd like. Between construction dust near Nehru Place, tree cover in Green Park, and daily commutes through Lajpat Nagar and Kalkaji, cars here work hard just sitting parked.
+            </p>
+            <p className="text-gray-400 text-base sm:text-lg max-w-3xl mx-auto leading-relaxed mb-4">
+              And this is handled by <span className="text-white font-medium">CleanCruisers</span> with their{" "}
+              <a href="https://cleancruisers.in/" className="text-green-400 hover:underline">professional car cleaning at your door</a>
+              {" "}- coincidentally not a rinse but an actual offering tailored around the status of your own automobile. Our skills apply to south-extension sedans, Vasant-Kunj SUVs and high-pairs in Defence Colony: paint-safe items, prepared hands and a procedure that never makes do for any of them.
+            </p>
+            <p className="text-gray-400 text-base sm:text-lg max-w-3xl mx-auto leading-relaxed mb-8">
+              If you want a car wash down the street from you that treats your vehicle as an asset to be cared for, rather than just another job in the lineup waiting to be finished, this is made for it.
             </p>
 
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
@@ -255,7 +312,7 @@ const DoorstepCarWashSouthDelhi = () => {
                 onClick={() => navigate("/booking")}
                 className="w-full sm:w-auto bg-green-500 hover:bg-green-400 text-black font-bold px-8 py-6 text-base rounded-xl shadow-lg shadow-green-500/25"
               >
-                BOOK NOW
+                Book Your Car Wash
                 <ArrowRight className="w-5 h-5 ml-2" />
               </Button>
               <a
@@ -270,206 +327,48 @@ const DoorstepCarWashSouthDelhi = () => {
         </div>
       </section>
 
-      {/* Why Regular Car Washing is Important */}
+      {/* Why Professional Car Cleaning Actually Matters */}
       <section className="py-16 md:py-20 px-4 bg-gradient-to-b from-black to-gray-900/50">
         <div className="max-w-5xl mx-auto">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="grid md:grid-cols-2 gap-10 items-center"
           >
-            <div>
-              <span className="text-green-400 text-sm font-semibold uppercase tracking-wider">Why It Matters</span>
-              <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-white mt-2 mb-6">
-                Why Regular Car Washing is Important in South Delhi
-              </h2>
-              <div className="space-y-4 text-gray-400 text-sm sm:text-base leading-relaxed">
-                <p>
-                  If you live in South Delhi, you’ve probably noticed how fast dust, pollution, bird droppings,
-                  and everyday traffic mess up your car’s looks. CleanCruisers gives trusted doorstep car wash
-                  services in Delhi – foam wash, interior vacuuming, all handled with modern equipment right at
-                  the customers’ homes.
-                </p>
-                <p>
-                  Now we bring the same professional, hassle‑free home car wash experience to South Delhi,
-                  designed for people searching for reliable{" "}
-                  <span className="text-green-400">car wash services in South Delhi</span> without wasting a single
-                  extra minute in traffic.
-                </p>
-              </div>
+            <span className="text-green-400 text-sm font-semibold uppercase tracking-wider">Why It Matters</span>
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-white mt-2 mb-6">
+              Why Professional Car Cleaning Actually Matters
+            </h2>
+            <div className="space-y-4 text-gray-400 text-sm sm:text-base leading-relaxed">
+              <p>
+                A car isn't just metal and glass - it's leather or fabric seats, sensitive electronics, plastic trims that scratch easily, and paint that reacts differently to different chemicals. Treating all of that with one generic wash routine is how cars end up looking tired faster than they should.
+              </p>
+              <p>
+                Professional cleaning means understanding which surface needs which product. Dashboard plastics need UV protection, not silicone sprays that attract more dust. Leather needs conditioning, not soap-heavy scrubbing. Alloy wheels need pH-balanced cleaners, not whatever's fastest.
+              </p>
+              <p>
+                This is the difference between a wash that looks fine for a day and one that actually protects your car's condition over months.
+              </p>
             </div>
-
-            <motion.div
-              initial={{ opacity: 0, scale: 0.95 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              viewport={{ once: true }}
-              className="relative p-8 bg-gradient-to-br from-green-500/10 to-transparent border border-green-500/20 rounded-3xl"
-            >
-              <div className="absolute top-0 right-0 w-32 h-32 bg-green-400/10 rounded-full blur-3xl" />
-              <div className="relative space-y-6">
-                <div className="flex items-center gap-4">
-                  <div className="w-12 h-12 rounded-full bg-green-500/20 flex items-center justify-center">
-                    <Sparkles className="w-6 h-6 text-green-400" />
-                  </div>
-                  <div>
-                    <p className="text-2xl font-bold text-white">Showroom‑Fresh Car</p>
-                    <p className="text-gray-500 text-sm">Without leaving home</p>
-                  </div>
-                </div>
-                <p className="text-gray-400 text-sm italic border-l-2 border-green-500/50 pl-4">
-                  Ready for a showroom‑fresh car without leaving home? Book your doorstep car wash in South Delhi
-                  with CleanCruisers today.
-                </p>
-              </div>
-            </motion.div>
           </motion.div>
         </div>
       </section>
 
-      {/* Services Section */}
+      {/* Problems South Delhi Car Owners Face */}
       <section className="py-16 md:py-20 px-4" style={{ backgroundColor: "#0a0f0f" }}>
         <div className="max-w-5xl mx-auto">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="text-center mb-12"
+            className="mb-8"
           >
-            <span className="text-green-400 text-sm font-semibold uppercase tracking-wider">What We Offer</span>
+            <span className="text-green-400 text-sm font-semibold uppercase tracking-wider">Real Problems</span>
             <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-white mt-2 mb-4">
-              Our Car Cleaning Services in South Delhi
+              Problems South Delhi Car Owners Actually Face
             </h2>
-            <p className="text-gray-400 max-w-2xl mx-auto">
-              Complete car cleaning services in South Delhi at your doorstep – from quick freshening to detailed
-              deep cleaning, all done in your society, home, or office parking.
-            </p>
-          </motion.div>
-
-          <motion.div
-            variants={containerVariants}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-            className="grid sm:grid-cols-2 gap-4"
-          >
-            {services.map((service, index) => (
-              <motion.div
-                key={index}
-                variants={itemVariants}
-                whileHover={{ y: -5, scale: 1.02 }}
-                className="group relative p-6 bg-gradient-to-br from-gray-900/80 to-gray-900/40 border border-gray-800 rounded-2xl hover:border-green-500/40 transition-all"
-              >
-                <div className="absolute inset-0 bg-gradient-to-br from-green-500/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity rounded-2xl" />
-                <div className="relative">
-                  <div className="flex items-start gap-4 mb-4">
-                    <div className="w-14 h-14 rounded-xl bg-green-500/10 flex items-center justify-center flex-shrink-0 group-hover:bg-green-500/20 transition-colors">
-                      <service.icon className="w-7 h-7 text-green-400" />
-                    </div>
-                    <div>
-                      <h3 className="text-white font-semibold text-lg mb-1">{service.name}</h3>
-                      <p className="text-gray-500 text-sm">{service.desc}</p>
-                    </div>
-                  </div>
-                  <ul className="space-y-2">
-                    {service.points.map((point, i) => (
-                      <li key={i} className="flex items-start gap-2 text-gray-400 text-sm">
-                        <CheckCircle2 className="w-4 h-4 text-green-400 flex-shrink-0 mt-0.5" />
-                        <span>{point}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              </motion.div>
-            ))}
-          </motion.div>
-
-          <motion.p
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            viewport={{ once: true }}
-            className="text-center text-gray-400 text-sm mt-8 p-4 bg-gray-900/50 border border-gray-800 rounded-xl max-w-2xl mx-auto"
-          >
-            Love that “just detailed” look? Snow foam and steam washing give you the{" "}
-            <a href="https://cleancruisers.in/" className="text-green-400 font-medium underline">
-              best car wash in Delhi
-            </a>{" "}
-            experience right at your doorstep.
-          </motion.p>
-        </div>
-      </section>
-
-      {/* Why Choose Us */}
-      <section className="py-16 md:py-20 px-4 bg-gradient-to-b from-gray-900/50 to-black">
-        <div className="max-w-5xl mx-auto">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="text-center mb-12"
-          >
-            <span className="text-green-400 text-sm font-semibold uppercase tracking-wider">Why Us?</span>
-            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-white mt-2 mb-4">
-              Why Choose CleanCruisers?
-            </h2>
-            <p className="text-gray-400 max-w-2xl mx-auto">
-              Here’s why CleanCruisers is the right choice for professional car wash in South Delhi.
-            </p>
-          </motion.div>
-
-          <motion.div
-            variants={containerVariants}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-            className="grid sm:grid-cols-2 gap-4 mb-8"
-          >
-            {whyChooseUs.map((item, index) => (
-              <motion.div
-                key={index}
-                variants={itemVariants}
-                whileHover={{ x: 5 }}
-                className="flex items-start gap-4 p-5 bg-gray-900/60 border border-gray-800 rounded-xl hover:border-green-500/30 transition-all"
-              >
-                <div className="w-12 h-12 rounded-lg bg-green-500/10 flex items-center justify-center flex-shrink-0">
-                  <item.icon className="w-6 h-6 text-green-400" />
-                </div>
-                <div>
-                  <h3 className="text-white font-semibold text-sm sm:text-base mb-1">{item.title}</h3>
-                  <span className="text-gray-400 text-sm">{item.text}</span>
-                </div>
-              </motion.div>
-            ))}
-          </motion.div>
-
-          <motion.p
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            viewport={{ once: true }}
-            className="text-center text-gray-400 text-sm max-w-2xl mx-auto"
-          >
-            Don’t let dust and pollution steal your car’s shine. Book your CleanCruisers{" "}
-            <span className="text-green-400 font-medium">doorstep car wash in South Delhi</span> now.
-          </motion.p>
-        </div>
-      </section>
-
-      {/* Service Areas */}
-      <section className="py-16 md:py-20 px-4" style={{ backgroundColor: "#0a0f0f" }}>
-        <div className="max-w-5xl mx-auto">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="text-center mb-10"
-          >
-            <div className="flex items-center justify-center gap-3 mb-4">
-              <MapPin className="w-6 h-6 text-green-400" />
-              <h2 className="text-2xl sm:text-3xl font-bold text-white">Areas We Serve Across South Delhi</h2>
-            </div>
-            <p className="text-gray-400 max-w-2xl mx-auto">
-              We cover major residential and commercial pockets so that when you search “doorstep car wash near me”
-              or “car washing near me”, CleanCruisers is ready to serve you.
+            <p className="text-gray-400 text-sm sm:text-base leading-relaxed mb-6">
+              Talk to enough car owners across GK-1, Malviya Nagar, or Panchsheel Park, and a pattern shows up:
             </p>
           </motion.div>
 
@@ -480,14 +379,14 @@ const DoorstepCarWashSouthDelhi = () => {
             viewport={{ once: true }}
             className="grid sm:grid-cols-2 gap-3 mb-8"
           >
-            {areas.map((area, index) => (
+            {problems.map((problem, index) => (
               <motion.div
                 key={index}
                 variants={itemVariants}
-                className="flex items-center gap-3 p-4 bg-gradient-to-br from-gray-900/80 to-gray-900/40 border border-gray-800 rounded-xl hover:border-green-500/30 transition-all"
+                className="flex items-start gap-3 p-4 bg-gray-900/60 border border-gray-800 rounded-xl hover:border-red-500/30 transition-all"
               >
-                <CheckCircle2 className="w-5 h-5 text-green-400 flex-shrink-0" />
-                <span className="text-gray-300 text-sm sm:text-base">{area}</span>
+                <div className="w-2 h-2 rounded-full bg-red-400 flex-shrink-0 mt-2" />
+                <span className="text-gray-300 text-sm sm:text-base">{problem}</span>
               </motion.div>
             ))}
           </motion.div>
@@ -496,16 +395,75 @@ const DoorstepCarWashSouthDelhi = () => {
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
-            className="text-center text-gray-400 text-sm max-w-2xl mx-auto"
+            className="text-gray-400 text-sm sm:text-base leading-relaxed"
           >
-            Whether your car is parked in a basement, stilt parking, or open society parking, our team adapts to
-            your location and delivers a clean, ready‑to‑drive vehicle.
+            None of these are solved by a fast exterior rinse. They need a service designed around actual cleaning, not just visible shine.
           </motion.p>
         </div>
       </section>
 
-      {/* How It Works / Process */}
+      {/* Why Cars Get Dirty Faster Here */}
       <section className="py-16 md:py-20 px-4 bg-gradient-to-b from-gray-900/50 to-black">
+        <div className="max-w-5xl mx-auto">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+          >
+            <span className="text-green-400 text-sm font-semibold uppercase tracking-wider">Local Conditions</span>
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-white mt-2 mb-6">
+              Why Cars Get Dirty Faster Here
+            </h2>
+            <div className="space-y-4 text-gray-400 text-sm sm:text-base leading-relaxed">
+              <p>
+                The greenery in South Delhi, combined with heavy traffic results in a problem. More trees results in more pollen, sap and bird activity on parked cars - especially in areas such as Hauz Khas and CR Park. The diesel soot and road dust from busy commercial stretches like Nehru Place or South Extension compound matters.
+              </p>
+              <p>
+                Add Delhi's seasonal dust storms and monsoon splash-back, and a car parked outdoors can look noticeably dull within two to three weeks - even without being driven much.
+              </p>
+            </div>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* What Professional Cleaning Actually Gives You */}
+      <section className="py-16 md:py-20 px-4" style={{ backgroundColor: "#0a0f0f" }}>
+        <div className="max-w-5xl mx-auto">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="mb-8"
+          >
+            <span className="text-green-400 text-sm font-semibold uppercase tracking-wider">The Results</span>
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-white mt-2 mb-4">
+              What Professional Cleaning Actually Gives You
+            </h2>
+          </motion.div>
+
+          <motion.div
+            variants={containerVariants}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            className="grid sm:grid-cols-2 gap-3"
+          >
+            {benefits.map((benefit, index) => (
+              <motion.div
+                key={index}
+                variants={itemVariants}
+                className="flex items-start gap-3 p-4 bg-gray-900/60 border border-gray-800 rounded-xl hover:border-green-500/30 transition-all"
+              >
+                <CheckCircle2 className="w-5 h-5 text-green-400 flex-shrink-0 mt-0.5" />
+                <span className="text-gray-300 text-sm sm:text-base">{benefit}</span>
+              </motion.div>
+            ))}
+          </motion.div>
+        </div>
+      </section>
+
+      {/* Services Section */}
+      <section className="py-16 md:py-20 px-4 bg-gradient-to-b from-black to-gray-900/50">
         <div className="max-w-5xl mx-auto">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -513,13 +471,56 @@ const DoorstepCarWashSouthDelhi = () => {
             viewport={{ once: true }}
             className="text-center mb-12"
           >
-            <span className="text-green-400 text-sm font-semibold uppercase tracking-wider">Simple Process</span>
+            <span className="text-green-400 text-sm font-semibold uppercase tracking-wider">What We Offer</span>
             <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-white mt-2 mb-4">
-              How Our Doorstep Car Wash Process Works
+              Our Car Wash & Cleaning Services in South Delhi
             </h2>
             <p className="text-gray-400 max-w-2xl mx-auto">
-              Simple, transparent and hassle‑free – here’s how a doorstep car wash with CleanCruisers typically works.
+              Complete car cleaning services in South Delhi at your doorstep – from quick freshening to detailed deep cleaning.
             </p>
+          </motion.div>
+
+          <motion.div
+            variants={containerVariants}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4"
+          >
+            {services.map((service, index) => (
+              <motion.div
+                key={index}
+                variants={itemVariants}
+                whileHover={{ y: -5, scale: 1.02 }}
+                className="group relative p-6 bg-gradient-to-br from-gray-900/80 to-gray-900/40 border border-gray-800 rounded-2xl hover:border-green-500/40 transition-all"
+              >
+                <div className="absolute inset-0 bg-gradient-to-br from-green-500/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity rounded-2xl" />
+                <div className="relative">
+                  <div className="w-12 h-12 rounded-xl bg-green-500/10 flex items-center justify-center mb-4 group-hover:bg-green-500/20 transition-colors">
+                    <service.icon className="w-6 h-6 text-green-400" />
+                  </div>
+                  <h3 className="text-white font-semibold text-base mb-2">{service.name}</h3>
+                  <p className="text-gray-500 text-sm leading-relaxed">{service.desc}</p>
+                </div>
+              </motion.div>
+            ))}
+          </motion.div>
+        </div>
+      </section>
+
+      {/* Cleaning Process */}
+      <section className="py-16 md:py-20 px-4" style={{ backgroundColor: "#0a0f0f" }}>
+        <div className="max-w-5xl mx-auto">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="text-center mb-12"
+          >
+            <span className="text-green-400 text-sm font-semibold uppercase tracking-wider">How We Work</span>
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-white mt-2 mb-4">
+              Our Cleaning Process
+            </h2>
           </motion.div>
 
           <motion.div
@@ -537,34 +538,62 @@ const DoorstepCarWashSouthDelhi = () => {
                 className="relative p-6 bg-gradient-to-br from-gray-900/80 to-gray-900/40 border border-gray-800 rounded-2xl hover:border-green-500/40 transition-all"
               >
                 <div className="flex items-center gap-3 mb-3">
-                  <div className="w-12 h-12 rounded-xl bg-green-500/10 flex items-center justify-center flex-shrink-0">
-                    <item.icon className="w-6 h-6 text-green-400" />
+                  <div className="w-10 h-10 rounded-xl bg-green-500/10 flex items-center justify-center flex-shrink-0">
+                    <item.icon className="w-5 h-5 text-green-400" />
                   </div>
                   <span className="text-green-400 text-xs font-semibold uppercase tracking-wider">{item.step}</span>
                 </div>
                 <h3 className="text-white font-semibold text-base mb-2">{item.title}</h3>
-                <p className="text-gray-500 text-sm">{item.desc}</p>
+                <p className="text-gray-500 text-sm leading-relaxed">{item.desc}</p>
               </motion.div>
             ))}
           </motion.div>
         </div>
       </section>
 
-      {/* Benefits */}
+      {/* Why Luxury Car Owners Trust CleanCruisers */}
+      <section className="py-16 md:py-20 px-4 bg-gradient-to-b from-gray-900/50 to-black">
+        <div className="max-w-5xl mx-auto">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="mb-8"
+          >
+            <div className="flex items-center gap-3 mb-2">
+              <Star className="w-5 h-5 text-green-400" />
+              <span className="text-green-400 text-sm font-semibold uppercase tracking-wider">Premium Care</span>
+            </div>
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-white mt-2 mb-6">
+              Why Luxury Car Owners Trust CleanCruisers
+            </h2>
+            <div className="space-y-4 text-gray-400 text-sm sm:text-base leading-relaxed">
+              <p>
+                A Mercedes-Benz in Defence Colony doesn't get cleaned the same way as a daily-use hatchback, and it shouldn't. Premium interiors often use softer leather, piano-black trims that scratch visibly, and sensors that can't handle high-pressure water carelessly.
+              </p>
+              <p>
+                Whether it's a BMW in Greater Kailash, an Audi in Vasant Kunj, a Range Rover in Panchsheel Park, or a Toyota Fortuner handling school runs and highway trips alike, our technicians adjust technique based on the vehicle - not the other way around. The same care extends to Volvo, Skoda Superb, Hyundai Tucson, Kia Carnival, Jeep Meridian, and MG Gloster owners across South Delhi.
+              </p>
+            </div>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* Areas We Serve */}
       <section className="py-16 md:py-20 px-4" style={{ backgroundColor: "#0a0f0f" }}>
         <div className="max-w-5xl mx-auto">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="text-center mb-12"
+            className="text-center mb-10"
           >
-            <span className="text-green-400 text-sm font-semibold uppercase tracking-wider">The Advantages</span>
-            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-white mt-2 mb-4">
-              Benefits of Choosing a Doorstep Car Wash Near You
-            </h2>
+            <div className="flex items-center justify-center gap-3 mb-4">
+              <MapPin className="w-6 h-6 text-green-400" />
+              <h2 className="text-2xl sm:text-3xl font-bold text-white">Areas We Serve in South Delhi</h2>
+            </div>
             <p className="text-gray-400 max-w-2xl mx-auto">
-              Opting for a doorstep car wash near you offers clear advantages.
+              CleanCruiser has just started serving these South Delhi localities. If your locality doesn't appear, please state it in a booking - we are regularly expanding our coverage area with demand.
             </p>
           </motion.div>
 
@@ -573,30 +602,128 @@ const DoorstepCarWashSouthDelhi = () => {
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true }}
-            className="grid sm:grid-cols-2 gap-4"
+            className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3 mb-8"
           >
-            {benefits.map((item, index) => (
+            {areas.map((area, index) => (
               <motion.div
                 key={index}
                 variants={itemVariants}
-                whileHover={{ y: -5 }}
-                className="flex items-start gap-4 p-6 bg-gradient-to-br from-gray-900/80 to-gray-900/40 border border-gray-800 rounded-2xl hover:border-green-500/40 transition-all"
+                className="flex items-center gap-2 p-3 bg-gradient-to-br from-gray-900/80 to-gray-900/40 border border-gray-800 rounded-xl hover:border-green-500/30 transition-all"
               >
-                <div className="w-12 h-12 rounded-lg bg-green-500/10 flex items-center justify-center flex-shrink-0">
-                  <item.icon className="w-6 h-6 text-green-400" />
-                </div>
-                <div>
-                  <h3 className="text-white font-semibold text-base mb-1">{item.title}</h3>
-                  <p className="text-gray-500 text-sm">{item.text}</p>
-                </div>
+                <CheckCircle2 className="w-4 h-4 text-green-400 flex-shrink-0" />
+                <span className="text-gray-300 text-sm">{area}</span>
               </motion.div>
             ))}
+          </motion.div>
+
+          <motion.p
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true }}
+            className="text-gray-400 text-sm sm:text-base leading-relaxed text-center mt-4"
+          >
+            Ready to give your vehicle the care it deserves?{" "}
+            <a href="/booking" onClick={() => navigate("/booking")} className="text-green-400 hover:underline">
+              Book Your Car Wash
+            </a>
+            {" "}today and schedule a convenient doorstep service with CleanCruisers.
+          </motion.p>
+        </div>
+      </section>
+
+      {/* How Often Should You Get Your Car Professionally Cleaned */}
+      <section className="py-16 md:py-20 px-4 bg-gradient-to-b from-black to-gray-900/50">
+        <div className="max-w-4xl mx-auto">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="mb-8"
+          >
+            <span className="text-green-400 text-sm font-semibold uppercase tracking-wider">Cleaning Schedule</span>
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-white mt-2 mb-4">
+              How Often Should You Get Your Car Professionally Cleaned?
+            </h2>
+            <p className="text-gray-400 text-sm sm:text-base leading-relaxed mb-6">
+              As a general guide:
+            </p>
+          </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="overflow-x-auto rounded-2xl border border-gray-800 mb-6"
+          >
+            <table className="w-full text-sm">
+              <thead>
+                <tr className="bg-green-500/10 border-b border-gray-800">
+                  <th className="text-left text-green-400 font-semibold px-6 py-4">Service Type</th>
+                  <th className="text-left text-green-400 font-semibold px-6 py-4">Suggested Frequency</th>
+                </tr>
+              </thead>
+              <tbody>
+                {frequency.map((row, index) => (
+                  <tr
+                    key={index}
+                    className={`border-b border-gray-800/50 hover:bg-gray-900/40 transition-colors ${
+                      index === frequency.length - 1 ? "border-b-0" : ""
+                    }`}
+                  >
+                    <td className="px-6 py-4 text-gray-300">{row.service}</td>
+                    <td className="px-6 py-4 text-gray-400">{row.freq}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </motion.div>
+
+          <motion.p
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true }}
+            className="text-gray-400 text-sm sm:text-base leading-relaxed"
+          >
+            Cars parked outdoors, used for daily office commutes, or carrying kids and pets regularly tend to need cleaning on the shorter end of these windows.
+          </motion.p>
+        </div>
+      </section>
+
+      {/* Car Wash Prices */}
+      <section className="py-16 md:py-20 px-4" style={{ backgroundColor: "#0a0f0f" }}>
+        <div className="max-w-5xl mx-auto">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+          >
+            <span className="text-green-400 text-sm font-semibold uppercase tracking-wider">Pricing</span>
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-white mt-2 mb-6">
+              Car Wash Prices in South Delhi
+            </h2>
+            <div className="p-6 bg-gray-900/60 border border-gray-800 rounded-2xl">
+              <p className="text-gray-400 text-sm sm:text-base leading-relaxed mb-4">
+                Pricing depends on vehicle size, current condition, and the specific service chosen. A hatchback needing a basic exterior wash costs differently than an SUV requiring full interior deep cleaning with stain treatment.
+              </p>
+              <p className="text-gray-400 text-sm sm:text-base leading-relaxed">
+                Rather than quoting a flat number that doesn't reflect your actual car, we recommend sharing your vehicle model, locality, and specific concern - dust buildup, odour, pet hair, or a complete refresh - so we can suggest the right service and fair pricing for it.
+              </p>
+              <div className="mt-6">
+                <Button
+                  onClick={() => navigate("/booking")}
+                  className="bg-green-500 hover:bg-green-400 text-black font-bold px-6 py-3 rounded-xl"
+                >
+                  Get a Price for Your Car
+                  <ArrowRight className="w-4 h-4 ml-2" />
+                </Button>
+              </div>
+            </div>
           </motion.div>
         </div>
       </section>
 
       {/* FAQ */}
-      <section className="py-16 md:py-20 px-4 bg-gradient-to-b from-black to-gray-900/50">
+      <section className="py-16 md:py-20 px-4 bg-gradient-to-b from-gray-900/50 to-black">
         <div className="max-w-4xl mx-auto">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -621,21 +748,21 @@ const DoorstepCarWashSouthDelhi = () => {
               <motion.div
                 key={index}
                 variants={itemVariants}
-                className="p-6 bg-gray-900/60 border border-gray-800 rounded-2xl hover:border-green-500/30 transition-all"
+                className="p-5 bg-gray-900/60 border border-gray-800 rounded-2xl hover:border-green-500/30 transition-all"
               >
-                <h3 className="text-white font-semibold text-base sm:text-lg mb-2 flex items-start gap-3">
-                  <span className="text-green-400">{index + 1}.</span>
+                <h3 className="text-white font-semibold text-sm sm:text-base mb-2 flex items-start gap-3">
+                  <span className="text-green-400 shrink-0">{index + 1}.</span>
                   {faq.q}
                 </h3>
-                <p className="text-gray-400 text-sm sm:text-base leading-relaxed pl-7">{faq.a}</p>
+                <p className="text-gray-400 text-sm leading-relaxed pl-7">{faq.a}</p>
               </motion.div>
             ))}
           </motion.div>
         </div>
       </section>
 
-      {/* CTA Section */}
-      <section className="py-16 md:py-24 px-4 bg-gradient-to-b from-gray-900/50 to-black">
+      {/* CTA */}
+      <section className="py-16 md:py-24 px-4 bg-gradient-to-b from-black to-gray-900/50">
         <div className="max-w-4xl mx-auto">
           <motion.div
             initial={{ opacity: 0, scale: 0.95 }}
@@ -659,13 +786,11 @@ const DoorstepCarWashSouthDelhi = () => {
               </motion.div>
 
               <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-white mb-4">
-                Book Your Doorstep Car Wash in South Delhi
+                Book Your Car Wash in South Delhi Today
               </h2>
 
               <p className="text-gray-300 text-sm sm:text-base mb-8 max-w-xl mx-auto">
-                Your car carries you through South Delhi’s traffic, heat, markets, and meetings every day. It deserves
-                more than a rushed bucket wash. With CleanCruisers, you get professional car wash services in South
-                Delhi, done right at your home or office, by people who treat your car with the same care you do.
+                Your car spends more time in South Delhi's dust and traffic than most people realise. Give it the kind of cleaning that actually accounts for that - not a rushed wash, but a proper service from CleanCruisers.
               </p>
 
               <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
@@ -673,7 +798,7 @@ const DoorstepCarWashSouthDelhi = () => {
                   onClick={() => navigate("/booking")}
                   className="w-full sm:w-auto bg-green-500 hover:bg-green-400 text-black font-bold px-8 py-6 text-base rounded-xl shadow-lg shadow-green-500/25"
                 >
-                  BOOK NOW
+                  Book Now
                   <ArrowRight className="w-5 h-5 ml-2" />
                 </Button>
                 <a
