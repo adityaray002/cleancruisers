@@ -17,6 +17,7 @@ import CarWashJanakpuri from "./pages/CarWashJanakpuri";
 import CarWashSouthDelhi from "./pages/CarWashSouthDelhi";
 import CarWashSouthDelhiNew from "./pages/CarWashSouthDelhiNew";
 import CarWashEastDelhi from "./pages/CarWashEastDelhi";
+import CarWashNewDelhi from "./pages/CarWashNewDelhi";
 
 const queryClient = new QueryClient();
 
@@ -46,9 +47,10 @@ return (
           <Route path="/blog/:id" element={<BlogPost />} />
           <Route path="/car-wash-in-dwarka" element={<CarWashDwarka />} />
           <Route path="/car-wash-services-in-janakpuri" element={<CarWashJanakpuri />} />
-          <Route path="/doorstep-car-wash-services-in-south-delhi/" element={<CarWashSouthDelhi/>} />
-          <Route path="/car-wash-in-south-delhi/" element={<CarWashSouthDelhiNew/>} />
+          <Route path="/doorstep-car-wash-services-in-south-delhi/" element={<CarWashSouthDelhiNew/>} />
+          <Route path="/car-wash-in-south-delhi/" element={<CarWashSouthDelhi/>} />
           <Route path="/doorstep-car-wash-services-in-east-delhi/" element={<CarWashEastDelhi/>} />
+          <Route path="/car-wash-in-new-delhi/" element={<CarWashNewDelhi/>} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>

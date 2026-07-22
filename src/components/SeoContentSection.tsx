@@ -51,6 +51,7 @@ const SeoContentSection = () => {
     { name: "Punjabi Bagh", link: null },
     { name: "South Delhi", link: "/doorstep-car-wash-services-in-south-delhi" },
     { name: "North Delhi", link: null },
+    { name: "New Delhi", link: "/car-wash-in-new-delhi/" },
     { name: "East Delhi", link: "/doorstep-car-wash-services-in-east-delhi" },
     { name: "West Delhi", link: null },
     { name: "Rajouri Garden", link: null },
