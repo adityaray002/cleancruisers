@@ -3,7 +3,7 @@ import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route, Outlet } from "react-router-dom";
 import Index from "./pages/Index";
 import Booking from "./pages/Booking";
 import Auth from "./pages/Auth";
@@ -18,6 +18,11 @@ import CarWashSouthDelhi from "./pages/CarWashSouthDelhi";
 import CarWashSouthDelhiNew from "./pages/CarWashSouthDelhiNew";
 import CarWashEastDelhi from "./pages/CarWashEastDelhi";
 import CarWashNewDelhi from "./pages/CarWashNewDelhi";
+import { AdminAuthProvider } from "./context/AdminAuthContext";
+import ProtectedRoute from "./components/admin/ProtectedRoute";
+import AdminLogin from "./pages/admin/AdminLogin";
+import AdminDashboard from "./pages/admin/AdminDashboard";
+import AdminPostEditor from "./pages/admin/AdminPostEditor";
 
 const queryClient = new QueryClient();
 
@@ -51,6 +56,14 @@ return (
           <Route path="/car-wash-in-south-delhi/" element={<CarWashSouthDelhi/>} />
           <Route path="/doorstep-car-wash-services-in-east-delhi/" element={<CarWashEastDelhi/>} />
           <Route path="/car-wash-in-new-delhi/" element={<CarWashNewDelhi/>} />
+
+          <Route path="/admin/*" element={<AdminAuthProvider><Outlet /></AdminAuthProvider>}>
+            <Route path="login" element={<AdminLogin />} />
+            <Route index element={<ProtectedRoute><AdminDashboard /></ProtectedRoute>} />
+            <Route path="new" element={<ProtectedRoute><AdminPostEditor /></ProtectedRoute>} />
+            <Route path="edit/:slug" element={<ProtectedRoute><AdminPostEditor /></ProtectedRoute>} />
+          </Route>
+
           <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>

@@ -1,19 +1,55 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { useParams, Link, Navigate } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import BlogCard from "@/components/BlogCard";
-import { getPostById, getRelatedPosts } from "@/data/blogPosts";
-import { Calendar, Clock, ArrowLeft, Share2, Facebook, Twitter } from "lucide-react";
+import { BlogPost as BlogPostType } from "@/data/blogPosts";
+import { listPublishedPosts, getPublishedPostBySlug } from "@/lib/blogApi";
+import { Calendar, Clock, ArrowLeft, Share2, Facebook, Twitter, Loader2 } from "lucide-react";
 import { FaWhatsapp } from "react-icons/fa6";
 import ReactMarkdown from "react-markdown";
 const BlogPost: React.FC = () => {
   const { id } = useParams<{ id: string }>();
-  const post = id ? getPostById(id) : undefined;
-  const relatedPosts = id ? getRelatedPosts(id, 3) : [];
+  const [post, setPost] = useState<BlogPostType | null>(null);
+  const [relatedPosts, setRelatedPosts] = useState<BlogPostType[]>([]);
+  const [loading, setLoading] = useState(true);
+  const [notFound, setNotFound] = useState(false);
 
-  if (!post) {
+  useEffect(() => {
+    if (!id) return;
+    setLoading(true);
+    setNotFound(false);
+    (async () => {
+      try {
+        const [found, allPosts] = await Promise.all([
+          getPublishedPostBySlug(id),
+          listPublishedPosts(),
+        ]);
+        if (!found) {
+          setNotFound(true);
+          return;
+        }
+        setPost(found);
+        setRelatedPosts(allPosts.filter((p) => p.id !== id).slice(0, 3));
+      } catch (e) {
+        console.error("Failed to load blog post", e);
+        setNotFound(true);
+      } finally {
+        setLoading(false);
+      }
+    })();
+  }, [id]);
+
+  if (loading) {
+    return (
+      <div className="min-h-screen bg-neutral-950 flex items-center justify-center text-neutral-400">
+        <Loader2 className="w-6 h-6 animate-spin mr-2" /> Loading...
+      </div>
+    );
+  }
+
+  if (notFound || !post) {
     return <Navigate to="/blog" replace />;
   }
 

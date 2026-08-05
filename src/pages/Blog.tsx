@@ -1,14 +1,25 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Helmet } from "react-helmet-async";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import BlogCard from "@/components/BlogCard";
-import { blogPosts } from "@/data/blogPosts";
-import { BookOpen } from "lucide-react";
+import { BlogPost } from "@/data/blogPosts";
+import { listPublishedPosts } from "@/lib/blogApi";
+import { BookOpen, Loader2 } from "lucide-react";
 
 const Blog: React.FC = () => {
-  const featuredPost = blogPosts[0];
-  const otherPosts = blogPosts.slice(1);
+  const [posts, setPosts] = useState<BlogPost[]>([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    listPublishedPosts()
+      .then(setPosts)
+      .catch((e) => console.error("Failed to load blog posts", e))
+      .finally(() => setLoading(false));
+  }, []);
+
+  const featuredPost = posts[0];
+  const otherPosts = posts.slice(1);
 
   return (
     <>
@@ -50,30 +61,46 @@ const Blog: React.FC = () => {
           </div>
         </section>
 
-        {/* Featured Post */}
-        <section className="pb-12 md:pb-16">
-          <div className="container mx-auto px-4">
-            <BlogCard post={featuredPost} featured />
+        {loading && (
+          <div className="flex items-center justify-center py-20 text-neutral-400">
+            <Loader2 className="w-5 h-5 animate-spin mr-2" /> Loading articles...
           </div>
-        </section>
+        )}
 
-        {/* All Posts Grid */}
-        <section className="pb-20 md:pb-28">
-          <div className="container mx-auto px-4">
-            <div className="flex items-center justify-between mb-8">
-              <h2 className="text-2xl md:text-3xl font-bold text-white">
-                Latest Articles
-              </h2>
-              <div className="h-px flex-grow ml-6 bg-gradient-to-r from-neutral-700 to-transparent" />
-            </div>
-            
-            <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-              {otherPosts.map((post) => (
-                <BlogCard key={post.id} post={post} />
-              ))}
-            </div>
-          </div>
-        </section>
+        {!loading && posts.length === 0 && (
+          <div className="text-center py-20 text-neutral-400">No articles published yet. Check back soon.</div>
+        )}
+
+        {!loading && featuredPost && (
+          <>
+            {/* Featured Post */}
+            <section className="pb-12 md:pb-16">
+              <div className="container mx-auto px-4">
+                <BlogCard post={featuredPost} featured />
+              </div>
+            </section>
+
+            {/* All Posts Grid */}
+            {otherPosts.length > 0 && (
+              <section className="pb-20 md:pb-28">
+                <div className="container mx-auto px-4">
+                  <div className="flex items-center justify-between mb-8">
+                    <h2 className="text-2xl md:text-3xl font-bold text-white">
+                      Latest Articles
+                    </h2>
+                    <div className="h-px flex-grow ml-6 bg-gradient-to-r from-neutral-700 to-transparent" />
+                  </div>
+
+                  <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                    {otherPosts.map((post) => (
+                      <BlogCard key={post.id} post={post} />
+                    ))}
+                  </div>
+                </div>
+              </section>
+            )}
+          </>
+        )}
 
         {/* CTA Section */}
         <section className="pb-20 md:pb-28">
