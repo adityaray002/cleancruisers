@@ -18,6 +18,7 @@ import CarWashSouthDelhi from "./pages/CarWashSouthDelhi";
 import CarWashSouthDelhiNew from "./pages/CarWashSouthDelhiNew";
 import CarWashEastDelhi from "./pages/CarWashEastDelhi";
 import CarWashNewDelhi from "./pages/CarWashNewDelhi";
+import CarWashPriceCalculator from "./pages/CarWashPriceCalculator";
 import { AdminAuthProvider } from "./context/AdminAuthContext";
 import ProtectedRoute from "./components/admin/ProtectedRoute";
 import AdminLogin from "./pages/admin/AdminLogin";
@@ -56,6 +57,8 @@ return (
           <Route path="/car-wash-in-south-delhi/" element={<CarWashSouthDelhi/>} />
           <Route path="/doorstep-car-wash-services-in-east-delhi/" element={<CarWashEastDelhi/>} />
           <Route path="/car-wash-in-new-delhi/" element={<CarWashNewDelhi/>} />
+          {/* Not linked from header/homepage yet — direct URL only, per request. Link it in once approved. */}
+          <Route path="/car-wash-price-calculator" element={<CarWashPriceCalculator />} />
 
           <Route path="/admin/*" element={<AdminAuthProvider><Outlet /></AdminAuthProvider>}>
             <Route path="login" element={<AdminLogin />} />

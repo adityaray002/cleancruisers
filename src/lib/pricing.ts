@@ -48,6 +48,14 @@ export const COMPLETE_CARE_PRICING: Record<string, number> = {
   Luxury:    1599,
 };
 
+// Monthly Doorstep Plan pricing (26 sessions/month) — mirrors MonthlyPricing.tsx
+export const MONTHLY_PRICING: Record<string, number> = {
+  Hatchback: 799,
+  Sedan:     799,
+  SUV:       999,
+  Luxury:    1199,
+};
+
 // Add-on pricing
 export const ADDON_PRICING: Record<string, number> = {
   "rubbing-foam-hatchback":   1599, "rubbing-foam-sedan":   1599, "rubbing-foam-suv":   1799, "rubbing-foam-luxury":   1899,
