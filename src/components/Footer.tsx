@@ -52,6 +52,17 @@ const Footer = () => {
               window.location.href = '/booking';
             }} className="text-gray-400 hover:text-white text-sm">Complete Car Care</button></li>
           </ul>
+
+          <h4 className="text-green-400 font-semibold mt-6 mb-4 text-base">Areas We Serve</h4>
+          <ul className="space-y-2">
+            <li><a href="/car-wash-in-dwarka" className="text-gray-400 hover:text-white text-sm">Car Wash in Dwarka</a></li>
+            <li><a href="/car-wash-services-in-janakpuri" className="text-gray-400 hover:text-white text-sm">Car Wash in Janakpuri</a></li>
+            <li><a href="/car-wash-in-south-delhi/" className="text-gray-400 hover:text-white text-sm">Car Wash in South Delhi</a></li>
+            <li><a href="/car-wash-in-new-delhi/" className="text-gray-400 hover:text-white text-sm">Car Wash in New Delhi</a></li>
+            <li><a href="/doorstep-car-wash-services-in-east-delhi/" className="text-gray-400 hover:text-white text-sm">Car Wash in East Delhi</a></li>
+            <li><a href="/car-wash-in-noida/" className="text-gray-400 hover:text-white text-sm">Car Wash in Noida</a></li>
+            <li><a href="/car-wash-in-gurgaon/" className="text-gray-400 hover:text-white text-sm">Car Wash in Gurgaon</a></li>
+          </ul>
         </div>
 
         {/* Contact */}

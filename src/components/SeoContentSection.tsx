@@ -70,7 +70,9 @@ const SeoContentSection = () => {
     { name: "Uttam Nagar", link: null },
     { name: "Dwarka", link: "/car-wash-in-dwarka" },
     { name: "Najafgarh", link: null },
-    { name: "Nangloi", link: null }
+    { name: "Nangloi", link: null },
+    { name: "Noida", link: "/car-wash-in-noida/" },
+    { name: "Gurgaon", link: "/car-wash-in-gurgaon/" },
   ];
 
   const containerVariants = {
