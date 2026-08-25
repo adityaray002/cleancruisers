@@ -20,6 +20,7 @@ import CarWashEastDelhi from "./pages/CarWashEastDelhi";
 import CarWashNewDelhi from "./pages/CarWashNewDelhi";
 import CarWashNoida from "./pages/CarWashNoida";
 import CarWashGurgaon from "./pages/CarWashGurgaon";
+import CarWashPunjabiBagh from "./pages/CarWashPunjabiBagh";
 import CarWashPriceCalculator from "./pages/CarWashPriceCalculator";
 import { AdminAuthProvider } from "./context/AdminAuthContext";
 import ProtectedRoute from "./components/admin/ProtectedRoute";
@@ -61,6 +62,7 @@ return (
           <Route path="/car-wash-in-new-delhi/" element={<CarWashNewDelhi/>} />
           <Route path="/car-wash-in-noida/" element={<CarWashNoida />} />
           <Route path="/car-wash-in-gurgaon/" element={<CarWashGurgaon />} />
+          <Route path="/car-wash-in-punjabi-bagh/" element={<CarWashPunjabiBagh />} />
           {/* Not linked from header/homepage yet — direct URL only, per request. Link it in once approved. */}
           <Route path="/car-wash-price-calculator" element={<CarWashPriceCalculator />} />
 

@@ -62,6 +62,7 @@ const Footer = () => {
             <li><a href="/doorstep-car-wash-services-in-east-delhi/" className="text-gray-400 hover:text-white text-sm">Car Wash in East Delhi</a></li>
             <li><a href="/car-wash-in-noida/" className="text-gray-400 hover:text-white text-sm">Car Wash in Noida</a></li>
             <li><a href="/car-wash-in-gurgaon/" className="text-gray-400 hover:text-white text-sm">Car Wash in Gurgaon</a></li>
+            <li><a href="/car-wash-in-punjabi-bagh/" className="text-gray-400 hover:text-white text-sm">Car Wash in Punjabi Bagh</a></li>
           </ul>
         </div>
 
