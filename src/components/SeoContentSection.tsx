@@ -58,7 +58,7 @@ const SeoContentSection = () => {
     { name: "Paschim Vihar", link: null },
     { name: "Janakpuri", link: "/car-wash-services-in-janakpuri" },
     { name: "Vikaspuri", link: null },
-    { name: "Tilak Nagar", link: null },
+    { name: "Tilak Nagar", link: "/car-wash-in-tilak-nagar/" },
     { name: "Hari Nagar", link: null },
     { name: "Subhash Nagar", link: null },
     { name: "Kirti Nagar", link: null },
