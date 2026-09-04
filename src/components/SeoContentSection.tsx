@@ -54,7 +54,7 @@ const SeoContentSection = () => {
     { name: "New Delhi", link: "/car-wash-in-new-delhi/" },
     { name: "East Delhi", link: "/doorstep-car-wash-services-in-east-delhi" },
     { name: "West Delhi", link: null },
-    { name: "Rajouri Garden", link: null },
+    { name: "Rajouri Garden", link: "/car-wash-in-rajouri-garden/" },
     { name: "Paschim Vihar", link: null },
     { name: "Janakpuri", link: "/car-wash-services-in-janakpuri" },
     { name: "Vikaspuri", link: null },

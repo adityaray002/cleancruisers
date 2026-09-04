@@ -3,7 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { useAdminAuth } from "@/context/AdminAuthContext";
 import { listAllPostsForAdmin, deletePost, AdminBlogPost } from "@/lib/blogApi";
 import { Button } from "@/components/ui/button";
-import { Plus, Pencil, Trash2, LogOut, Loader2, ExternalLink } from "lucide-react";
+import { Plus, Pencil, Trash2, LogOut, Loader2, ExternalLink, MapPin } from "lucide-react";
 
 const AdminDashboard = () => {
   const { signOut } = useAdminAuth();
@@ -57,6 +57,13 @@ const AdminDashboard = () => {
             <p className="text-neutral-500 text-xs">{posts.length} post{posts.length !== 1 ? "s" : ""}</p>
           </div>
           <div className="flex items-center gap-2">
+            <Button
+              onClick={() => navigate("/admin/locations")}
+              variant="outline"
+              className="border-neutral-700 text-neutral-300 hover:text-white font-semibold gap-2"
+            >
+              <MapPin className="w-4 h-4 text-green-400" /> Location Pages
+            </Button>
             <Button
               onClick={() => navigate("/admin/new")}
               className="bg-green-400 hover:bg-green-500 text-black font-semibold gap-2"
