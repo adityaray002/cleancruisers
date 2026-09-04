@@ -638,7 +638,8 @@ const AdminLocationEditor = () => {
           <AddSectionMenu onAdd={addSection} />
 
           <p className="text-xs text-neutral-700 mt-3">
-            Tip: use <code className="text-neutral-500">{"{city}"}</code> anywhere in headings or body text — it gets replaced with the city name on the live page.
+            Tip: use <code className="text-neutral-500">{"{city}"}</code> for city name placeholder.
+            For links write: <code className="text-neutral-500">[link text](https://url.com)</code> — it becomes a clickable green link on the live page.
           </p>
         </section>
 

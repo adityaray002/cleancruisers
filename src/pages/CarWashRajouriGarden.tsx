@@ -252,7 +252,7 @@ const CarWashRajouriGarden = () => {
               <a href="https://cleancruisers.in/car-wash-in-new-delhi/" className="hover:text-green-400 transition-colors">Interior Car Cleaning</a> in Rajouri Garden
             </h2>
             <p className="text-gray-400 text-sm leading-relaxed mb-4">
-              The inside of a car needs a different kind of care. Dust collects on the dashboard, AC vents and door panels. Food crumbs can get under the seats. Fabric seats can hold stains and smells. Leather needs suitable cleaning rather than harsh scrubbing. For interior car cleaning, we can focus on:
+              The inside of a car needs a different kind of care. Dust collects on the dashboard, AC vents and door panels. Food crumbs can get under the seats. Fabric seats can hold stains and smells. Leather needs suitable cleaning rather than harsh scrubbing. For <a href="https://cleancruisers.in/car-wash-in-new-delhi/" className="text-green-400 hover:underline font-medium">interior car cleaning in Delhi</a>, we can focus on:
             </p>
             <div className="space-y-2">
               {["Vacuum cleaning", "Dashboard", "Door panels", "Floor mats", "Seats", "Carpets", "AC vents", "Seat gaps", "Boot area", "Interior glass"].map((item, i) => (

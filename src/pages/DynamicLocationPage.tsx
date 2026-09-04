@@ -34,6 +34,39 @@ const sectionClass = (i: number) =>
 const sectionStyle = (i: number): React.CSSProperties | undefined =>
   i % 2 !== 0 ? { backgroundColor: "#0a0f0f" } : undefined;
 
+// ── RichText: renders [link text](url) as clickable <a> tags ────────────────
+const parseLinks = (line: string): React.ReactNode[] => {
+  const result: React.ReactNode[] = [];
+  const re = /\[([^\]]+)\]\(([^)]+)\)/g;
+  let last = 0, match: RegExpExecArray | null;
+  while ((match = re.exec(line)) !== null) {
+    if (match.index > last) result.push(line.slice(last, match.index));
+    result.push(
+      <a key={match.index} href={match[2]} className="text-green-400 hover:underline font-medium">
+        {match[1]}
+      </a>
+    );
+    last = match.index + match[0].length;
+  }
+  if (last < line.length) result.push(line.slice(last));
+  return result.length ? result : [line];
+};
+
+const RichText = ({ text, className }: { text?: string; className?: string }) => {
+  if (!text) return null;
+  const lines = text.split("\n");
+  return (
+    <span className={className}>
+      {lines.map((line, i) => (
+        <span key={i}>
+          {parseLinks(line)}
+          {i < lines.length - 1 && <br />}
+        </span>
+      ))}
+    </span>
+  );
+};
+
 // ── Shared sub-components ────────────────────────────────────────────────────
 const Eyebrow = ({ t }: { t?: string }) =>
   t ? <span className="text-green-400 text-sm font-semibold uppercase tracking-wider">{t}</span> : null;
@@ -67,7 +100,7 @@ const FaqItem = ({ q, a }: { q: string; a: string }) => {
       </div>
       {open && (
         <div className="px-5 pb-5 border-t border-gray-800">
-          <p className="text-gray-400 text-sm leading-relaxed pt-4">{a}</p>
+          <p className="text-gray-400 text-sm leading-relaxed pt-4"><RichText text={a} /></p>
         </div>
       )}
     </div>
@@ -88,7 +121,7 @@ const renderSection = (s: PageSection, i: number, city: string) => {
         <Wrap key={key} i={i}>
           <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}>
             {eyebrow}{h2}
-            <p className="text-gray-400 text-sm sm:text-base leading-relaxed whitespace-pre-line">{sub(s.body)}</p>
+            <p className="text-gray-400 text-sm sm:text-base leading-relaxed"><RichText text={sub(s.body)} /></p>
           </motion.div>
         </Wrap>
       );
@@ -104,14 +137,14 @@ const renderSection = (s: PageSection, i: number, city: string) => {
             {(s.items || []).map((item, j) => (
               <motion.li key={j} variants={IV} className="flex items-start gap-3">
                 <CheckCircle2 className="w-5 h-5 text-green-400 flex-shrink-0 mt-0.5" />
-                <span className="text-gray-400 text-sm sm:text-base">{item}</span>
+                <span className="text-gray-400 text-sm sm:text-base"><RichText text={item} /></span>
               </motion.li>
             ))}
           </motion.ul>
           {s.note && (
             <div className="p-5 bg-yellow-500/5 border border-yellow-500/20 rounded-xl">
               <p className="text-gray-300 text-sm leading-relaxed">
-                <span className="text-yellow-400 font-semibold">Note: </span>{s.note}
+                <span className="text-yellow-400 font-semibold">Note: </span><RichText text={s.note} />
               </p>
             </div>
           )}
@@ -138,7 +171,7 @@ const renderSection = (s: PageSection, i: number, city: string) => {
                       <Icon className="w-6 h-6 text-green-400" />
                     </div>
                     <h3 className="text-white font-semibold text-base mb-2">{card.name}</h3>
-                    <p className="text-gray-500 text-sm leading-relaxed">{card.desc}</p>
+                    <p className="text-gray-500 text-sm leading-relaxed"><RichText text={card.desc} /></p>
                   </div>
                 </motion.div>
               );
@@ -163,7 +196,7 @@ const renderSection = (s: PageSection, i: number, city: string) => {
                 </span>
                 <div>
                   <h3 className="text-white font-semibold text-base mb-1">{step.title}</h3>
-                  <p className="text-gray-400 text-sm leading-relaxed">{step.desc}</p>
+                  <p className="text-gray-400 text-sm leading-relaxed"><RichText text={step.desc} /></p>
                 </div>
               </motion.div>
             ))}
@@ -187,7 +220,7 @@ const renderSection = (s: PageSection, i: number, city: string) => {
                   <div className="w-12 h-12 rounded-lg bg-green-500/10 flex items-center justify-center flex-shrink-0">
                     <Icon className="w-6 h-6 text-green-400" />
                   </div>
-                  <span className="text-gray-200 text-sm sm:text-base">{pt.text}</span>
+                  <span className="text-gray-200 text-sm sm:text-base"><RichText text={pt.text} /></span>
                 </motion.div>
               );
             })}
@@ -251,7 +284,7 @@ const renderSection = (s: PageSection, i: number, city: string) => {
         <Wrap key={key} i={i}>
           <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="max-w-3xl">
             {eyebrow}{h2}
-            <p className="text-gray-400 text-sm sm:text-base leading-relaxed whitespace-pre-line">{sub(s.body)}</p>
+            <p className="text-gray-400 text-sm sm:text-base leading-relaxed"><RichText text={sub(s.body)} /></p>
           </motion.div>
         </Wrap>
       );
@@ -266,11 +299,11 @@ const renderSection = (s: PageSection, i: number, city: string) => {
           <div className="grid sm:grid-cols-2 gap-6 mt-6">
             <div className="p-6 bg-gray-900/60 border border-gray-800 rounded-2xl">
               {s.left_heading && <h3 className="text-white font-bold text-base mb-3">{s.left_heading}</h3>}
-              <p className="text-gray-400 text-sm leading-relaxed whitespace-pre-line">{sub(s.left_body)}</p>
+              <p className="text-gray-400 text-sm leading-relaxed"><RichText text={sub(s.left_body)} /></p>
             </div>
             <div className="p-6 bg-gray-900/60 border border-gray-800 rounded-2xl">
               {s.right_heading && <h3 className="text-white font-bold text-base mb-3">{s.right_heading}</h3>}
-              <p className="text-gray-400 text-sm leading-relaxed whitespace-pre-line">{sub(s.right_body)}</p>
+              <p className="text-gray-400 text-sm leading-relaxed"><RichText text={sub(s.right_body)} /></p>
             </div>
           </div>
         </Wrap>
@@ -283,7 +316,7 @@ const renderSection = (s: PageSection, i: number, city: string) => {
           <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}>
             <div className="p-5 bg-yellow-500/5 border border-yellow-500/20 rounded-xl">
               {s.heading && <p className="text-yellow-400 font-semibold text-sm mb-2">{s.heading}</p>}
-              {s.body && <p className="text-gray-300 text-sm leading-relaxed whitespace-pre-line">{s.body}</p>}
+              {s.body && <p className="text-gray-300 text-sm leading-relaxed"><RichText text={s.body} /></p>}
             </div>
           </motion.div>
         </Wrap>
@@ -384,8 +417,8 @@ const DynamicLocationPage = () => {
               {page.hero_title || `Car Wash in ${page.city_name} — Doorstep Car Cleaning at Your Location`}
             </h1>
             {page.hero_intro && (
-              <p className="text-gray-400 text-base sm:text-lg max-w-3xl mx-auto leading-relaxed mb-8 whitespace-pre-line">
-                {page.hero_intro}
+              <p className="text-gray-400 text-base sm:text-lg max-w-3xl mx-auto leading-relaxed mb-8">
+                <RichText text={page.hero_intro} />
               </p>
             )}
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
