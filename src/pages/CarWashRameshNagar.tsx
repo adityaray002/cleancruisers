@@ -6,7 +6,7 @@ import Footer from "@/components/Footer";
 import { Button } from "@/components/ui/button";
 import {
   MapPin, Phone, ArrowRight, Car, CheckCircle2,
-  Droplets, Wind, Layers, Sparkles, Shield, Users, Zap,
+  Droplets, Wind, Layers, Sparkles, Shield,
 } from "lucide-react";
 import { motion } from "framer-motion";
 
@@ -47,76 +47,6 @@ const FaqItem = ({ q, a }: { q: string; a: React.ReactNode }) => {
 const CarWashRameshNagar = () => {
   const navigate = useNavigate();
 
-  const services = [
-    {
-      icon: Car,
-      name: "Exterior Car Wash",
-      desc: "Panel-by-panel exterior cleaning with separate attention to wheels, tyres, trims and areas where road dirt collects. The aim is proper pre-cleaning and careful washing — not just making the car look wet and shiny.",
-    },
-    {
-      icon: Layers,
-      name: "Snow Foam Wash",
-      desc: "Snow foam is used as a pre-wash step to loosen surface dirt before contact cleaning — particularly useful when the car has accumulated dust from regular West Delhi driving.",
-    },
-    {
-      icon: Sparkles,
-      name: "Interior Cleaning",
-      desc: "Interior cleaned according to its condition: dashboard, seats, floor, mats, door panels, boot area, vents and frequently touched surfaces. We work around the actual state of the cabin, not a fixed checklist.",
-    },
-    {
-      icon: Wind,
-      name: "Steam Cleaning",
-      desc: "Steam works well for selected interior areas and hard-to-reach locations. We take care around electronics, switches and materials that should not receive excessive moisture.",
-    },
-    {
-      icon: Droplets,
-      name: "Car Seat & Carpet Cleaning",
-      desc: "Seats and carpets can gather dirt, food particles, stains and odours over time. The cleaning method depends on the fabric, condition and type of stain.",
-    },
-    {
-      icon: Shield,
-      name: "Complete Car Care",
-      desc: "For a car that needs more than a basic wash, we combine exterior and interior cleaning according to its condition — adjusted for your vehicle type and what it actually needs.",
-    },
-  ];
-
-  const steps = [
-    {
-      num: "01",
-      title: "Vehicle Inspection",
-      desc: "We first look at the condition of the exterior and interior before deciding how to clean.",
-    },
-    {
-      num: "02",
-      title: "Pre-Wash",
-      desc: "Loose dirt is removed before contact cleaning. Snow foam can be used where appropriate.",
-    },
-    {
-      num: "03",
-      title: "Surface-Specific Cleaning",
-      desc: "Different materials need different cleaning methods. Glass, paint, plastic, fabric, leather and wheels should not all be treated the same way.",
-    },
-    {
-      num: "04",
-      title: "Detailed Cleaning",
-      desc: "Door jambs, seat gaps, vents, badges and corners receive additional attention — the areas most quick washes skip.",
-    },
-    {
-      num: "05",
-      title: "Final Check",
-      desc: "Before completing the service, we check the vehicle to make sure the main areas have been cleaned properly.",
-    },
-  ];
-
-  const whyChoose = [
-    "Car cleaning at your location — home, office or society parking",
-    "Cleaning equipment brought by our team",
-    "Interior and exterior cleaning options",
-    "Services for hatchbacks, sedans, SUVs and premium vehicles",
-    "Suitable cleaning methods for different surfaces",
-    "Flexible one-time and recurring cleaning options",
-  ];
-
   const westDelhiAreas = [
     { name: "Rajouri Garden", link: "/car-wash-in-rajouri-garden/" },
     { name: "Tilak Nagar", link: "/car-wash-in-tilak-nagar/" },
@@ -130,33 +60,6 @@ const CarWashRameshNagar = () => {
     { name: "Moti Nagar", link: "/car-wash-in-moti-nagar/" },
     { name: "Tagore Garden", link: "/car-wash-in-tagore-garden/" },
     { name: "Mayapuri", link: "/car-wash-in-mayapuri/" },
-  ];
-
-  const faqs = [
-    {
-      q: "Do you provide car wash at home in Ramesh Nagar?",
-      a: "Yes. CleanCruisers provides doorstep car cleaning in Ramesh Nagar and other West Delhi locations, subject to service availability.",
-    },
-    {
-      q: "Do I need to take my car somewhere?",
-      a: "No. Our doorstep service is designed so the cleaning can be carried out at your home, office or suitable parking location.",
-    },
-    {
-      q: "Do you clean SUVs?",
-      a: "Yes. We clean hatchbacks, sedans, SUVs and premium vehicles, with the service adjusted according to vehicle size and condition.",
-    },
-    {
-      q: "Can you clean the interior as well?",
-      a: "Yes. Interior cleaning can include vacuuming, seats, carpets, dashboard, door panels, boot area and other accessible areas depending on the selected service.",
-    },
-    {
-      q: "Can you remove scratches during a car wash?",
-      a: "No. Normal washing removes dirt and surface contamination but does not repair scratches. Paint correction is a separate service.",
-    },
-    {
-      q: "Do you serve areas outside Ramesh Nagar?",
-      a: "CleanCruisers serves several parts of West Delhi. If your locality is not listed, you can share your location while booking and confirm availability.",
-    },
   ];
 
   return (
@@ -224,11 +127,23 @@ const CarWashRameshNagar = () => {
             <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6 leading-tight">
               Best Car Wash at Home in Ramesh Nagar
             </h1>
-            <p className="text-gray-400 text-base sm:text-lg max-w-3xl mx-auto leading-relaxed mb-8">
-              Finding time to take your car to a washing centre is not always easy. Between office travel, traffic, family work and daily driving, car cleaning often gets delayed. CleanCruisers provides{" "}
-              <span className="text-green-400 font-medium">doorstep car cleaning in Ramesh Nagar</span> — our team comes to your home, office or parking location with the required cleaning equipment.
-            </p>
-            <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+            <div className="text-gray-400 text-base sm:text-lg max-w-3xl mx-auto leading-relaxed mb-4 text-left sm:text-center">
+              <p className="mb-4">
+                Finding time to take your car to a washing centre is not always easy. Between office travel, traffic, family work and daily driving, car cleaning often gets delayed.
+              </p>
+              <p className="mb-4">
+                That is where{" "}
+                <a href="https://cleancruisers.in/" className="text-green-400 hover:underline font-medium">
+                  CleanCruisers
+                </a>{" "}
+                provides doorstep car cleaning in Ramesh Nagar. Instead of taking your car outside, our team comes to your home, office or parking location with the required cleaning equipment.
+              </p>
+              <p className="mb-4">
+                If you are looking for the <strong className="text-white font-semibold">best car wash at home in Ramesh Nagar</strong>, our focus is simple — clean the car properly, pay attention to the areas that are usually missed and leave your parking area clean after the service.
+              </p>
+              <p>From regular cars to sedans and SUVs, we adjust the cleaning according to the vehicle and its condition.</p>
+            </div>
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mt-8">
               <Button
                 onClick={() => navigate("/booking")}
                 className="w-full sm:w-auto bg-green-500 hover:bg-green-400 text-black font-bold px-8 py-6 text-base rounded-xl shadow-lg shadow-green-500/25"
@@ -247,7 +162,7 @@ const CarWashRameshNagar = () => {
         </div>
       </section>
 
-      {/* ── Why Regular Cleaning Matters ── */}
+      {/* ── Why Regular Car Cleaning Matters ── */}
       <section className="py-16 md:py-20 px-4 bg-gradient-to-b from-black to-gray-900/50">
         <div className="max-w-5xl mx-auto">
           <motion.div
@@ -259,8 +174,11 @@ const CarWashRameshNagar = () => {
             <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-white mt-2 mb-4">
               Why Regular Car Cleaning Matters in Ramesh Nagar
             </h2>
+            <p className="text-gray-400 text-sm sm:text-base leading-relaxed mb-2">
+              Cars in West Delhi often deal with road dirt, pollutants, traffic dirt and outside parking.
+            </p>
             <p className="text-gray-400 text-sm sm:text-base leading-relaxed mb-6">
-              Cars in West Delhi often deal with road dirt, pollutants, traffic grime and outdoor parking. A quick rinse may remove visible dust, but it does not always address:
+              A quick rinse may additionally eliminate visible dust, however it does no longer constantly deal with:
             </p>
           </motion.div>
           <motion.ul
@@ -285,18 +203,22 @@ const CarWashRameshNagar = () => {
               </motion.li>
             ))}
           </motion.ul>
-          <motion.p
+          <motion.div
             initial={{ opacity: 0, y: 10 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="text-gray-400 text-sm sm:text-base leading-relaxed"
           >
-            Regular cleaning prevents this dirt from building up over time. Our method is to observe the actual condition of the vehicle before deciding how it should be cleaned.
-          </motion.p>
+            <p className="text-gray-400 text-sm sm:text-base leading-relaxed mb-2">
+              Regular cleaning prevents this dirt from building up over time.
+            </p>
+            <p className="text-gray-400 text-sm sm:text-base leading-relaxed">
+              Our method is to observe the actual circumstance of the automobile before finding out how it ought to be cleaned.
+            </p>
+          </motion.div>
         </div>
       </section>
 
-      {/* ── Car Wash for Everyday Cars ── */}
+      {/* ── Car Wash in West Delhi for Everyday Cars ── */}
       <section className="py-16 md:py-20 px-4" style={{ backgroundColor: "#0a0f0f" }}>
         <div className="max-w-5xl mx-auto">
           <motion.div
@@ -308,16 +230,24 @@ const CarWashRameshNagar = () => {
             <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-white mt-2 mb-4">
               Car Wash in West Delhi for Everyday Cars
             </h2>
-            <p className="text-gray-400 text-sm sm:text-base leading-relaxed mb-8">
-              CleanCruisers provides car wash in West Delhi for customers who want their vehicle cleaned at their own location. Whether your car is parked at home, inside a residential society or at your office, our team can carry out the required cleaning subject to suitable parking space.
+            <p className="text-gray-400 text-sm sm:text-base leading-relaxed mb-4">
+              CleanCruisers provides{" "}
+              <a href="https://cleancruisers.in/" className="text-green-400 hover:underline font-medium">
+                car wash in West Delhi
+              </a>{" "}
+              for customers who want their vehicle cleaned at their own location.
             </p>
+            <p className="text-gray-400 text-sm sm:text-base leading-relaxed mb-6">
+              Whether your car is parked at home, inside a residential society or at your office, our team can carry out the required cleaning subject to suitable parking space.
+            </p>
+            <p className="text-gray-400 text-sm sm:text-base font-medium mb-4">We work with:</p>
           </motion.div>
           <motion.div
             variants={containerVariants}
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true }}
-            className="grid grid-cols-2 sm:grid-cols-3 gap-3"
+            className="grid grid-cols-2 sm:grid-cols-3 gap-3 mb-6"
           >
             {["Hatchbacks", "Sedans", "SUVs", "Premium cars", "Family cars", "Daily-use vehicles"].map((type, i) => (
               <motion.div
@@ -331,17 +261,14 @@ const CarWashRameshNagar = () => {
               </motion.div>
             ))}
           </motion.div>
-          <motion.div
+          <motion.p
             initial={{ opacity: 0, y: 10 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="mt-6 p-5 bg-green-500/5 border border-green-500/20 rounded-xl"
+            className="text-gray-400 text-sm sm:text-base leading-relaxed"
           >
-            <p className="text-gray-300 text-sm leading-relaxed">
-              <span className="text-green-400 font-semibold">Note: </span>
-              A Mercedes or BMW may require different handling from a regular hatchback, especially around sensitive trims, leather interiors and glossy surfaces. The cleaning method should match the vehicle rather than using exactly the same process for every car.
-            </p>
-          </motion.div>
+            A Mercedes or BMW may require different handling from a regular hatchback, especially around sensitive trims, leather interiors and glossy surfaces. The cleaning method should match the vehicle rather than using exactly the same process for every car.
+          </motion.p>
         </div>
       </section>
 
@@ -355,7 +282,7 @@ const CarWashRameshNagar = () => {
             className="text-center mb-12"
           >
             <span className="text-green-400 text-sm font-semibold uppercase tracking-wider">What We Offer</span>
-            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-white mt-2 mb-4">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-white mt-2">
               Our Car Cleaning Services in Ramesh Nagar
             </h2>
           </motion.div>
@@ -366,7 +293,38 @@ const CarWashRameshNagar = () => {
             viewport={{ once: true }}
             className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4"
           >
-            {services.map((service, i) => (
+            {[
+              {
+                icon: Car,
+                name: "Exterior Car Wash",
+                desc: "We clean the exterior panel by panel, with separate attention to wheels, tyres, trims and areas where road dirt collects. The aim is not simply to make the car look wet and shiny. Proper pre-cleaning and careful washing help reduce unnecessary rubbing against the paint.",
+              },
+              {
+                icon: Layers,
+                name: "Snow Foam Wash",
+                desc: "Snow foam is used as a pre-wash step to loosen surface dirt before contact cleaning. This is particularly useful when the car has accumulated dust from regular West Delhi driving.",
+              },
+              {
+                icon: Sparkles,
+                name: "Interior Cleaning",
+                desc: "The interior is cleaned according to its condition, including areas such as: Dashboard, Seats, Floor, Mats, Door panels, Boot area, Vents and Frequently touched surfaces.",
+              },
+              {
+                icon: Wind,
+                name: "Steam Cleaning",
+                desc: "Steam may be useful for selected indoors areas and tough-to-attain locations while applied correctly. We take care around electronics, switches and materials that should now not receive excessive moisture.",
+              },
+              {
+                icon: Droplets,
+                name: "Car Seat & Carpet Cleaning",
+                desc: "Seats and carpets can gather dirt, food particles, stains and odours through the years. The cleansing approach depends on the fabric, condition and sort of stain.",
+              },
+              {
+                icon: Shield,
+                name: "Complete Car Care",
+                desc: "For a car that needs more than a basic wash, we can combine exterior and interior cleaning according to its condition.",
+              },
+            ].map((service, i) => (
               <motion.div
                 key={i}
                 variants={itemVariants}
@@ -408,14 +366,20 @@ const CarWashRameshNagar = () => {
             viewport={{ once: true }}
             className="space-y-4"
           >
-            {steps.map((step, i) => (
+            {[
+              { num: "1", title: "Vehicle Inspection", desc: "We first look at the condition of the exterior and interior." },
+              { num: "2", title: "Pre-Wash", desc: "Loose dirt is removed before contact cleaning. Snow foam can be used where appropriate." },
+              { num: "3", title: "Surface-Specific Cleaning", desc: "Different materials need one of a kind cleansing methods. Glass, paint, plastic, cloth, leather-based and wheels must not all be treated within the equal way." },
+              { num: "4", title: "Detailed Cleaning", desc: "Areas such as door jambs, seat gaps, vents, badges and corners receive additional attention." },
+              { num: "5", title: "Final Check", desc: "Before completing the service, we check the vehicle to make sure the main areas have been cleaned properly." },
+            ].map((step, i) => (
               <motion.div
                 key={i}
                 variants={itemVariants}
                 className="flex items-start gap-6 p-5 bg-gray-900/60 border border-gray-800 rounded-xl hover:border-green-500/30 transition-all"
               >
                 <span className="text-green-400 font-bold text-2xl tabular-nums flex-shrink-0 leading-none mt-0.5">
-                  {step.num}
+                  0{step.num}
                 </span>
                 <div>
                   <h3 className="text-white font-semibold text-base mb-1">{step.title}</h3>
@@ -439,18 +403,27 @@ const CarWashRameshNagar = () => {
             <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-white mt-2 mb-4">
               Why Choose CleanCruisers for Car Wash in West Delhi?
             </h2>
-            <p className="text-gray-400 text-sm sm:text-base leading-relaxed mb-6">
-              Our doorstep model is built around making car cleaning easier for people who don't want to spend their time driving to a washing centre and waiting there. What you get:
+            <p className="text-gray-400 text-sm sm:text-base leading-relaxed mb-2">
+              Our doorstep model is built around making car cleaning easier for people who don't want to spend their time driving to a washing centre and waiting there.
             </p>
+            <p className="text-gray-400 text-sm sm:text-base font-medium mb-4">What you get:</p>
           </motion.div>
           <motion.ul
             variants={containerVariants}
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true }}
-            className="grid sm:grid-cols-2 gap-3"
+            className="grid sm:grid-cols-2 gap-3 mb-8"
           >
-            {whyChoose.map((item, i) => (
+            {[
+              "Car cleaning at your location",
+              "Home or office service",
+              "Cleaning equipment brought by our team",
+              "Interior and exterior cleaning options",
+              "Services for hatchbacks, sedans and SUVs",
+              "Suitable cleaning methods for different surfaces",
+              "Flexible one-time and recurring cleaning options",
+            ].map((item, i) => (
               <motion.li
                 key={i}
                 variants={itemVariants}
@@ -464,25 +437,15 @@ const CarWashRameshNagar = () => {
               </motion.li>
             ))}
           </motion.ul>
-        </div>
-      </section>
 
-      {/* ── West Delhi Coverage ── */}
-      <section className="py-16 md:py-20 px-4" style={{ backgroundColor: "#0a0f0f" }}>
-        <div className="max-w-5xl mx-auto">
+          {/* West Delhi service areas */}
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 10 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
           >
-            <div className="flex items-center gap-3 mb-4">
-              <MapPin className="w-6 h-6 text-green-400" />
-              <h2 className="text-2xl sm:text-3xl font-bold text-white">
-                Doorstep Car Wash Across West Delhi
-              </h2>
-            </div>
-            <p className="text-gray-400 text-sm sm:text-base leading-relaxed mb-6">
-              Our current West Delhi service area includes Ramesh Nagar along with:
+            <p className="text-gray-400 text-sm sm:text-base leading-relaxed mb-4">
+              Our current West Delhi service area includes Ramesh Nagar along with areas such as:
             </p>
             <div className="flex flex-wrap gap-2">
               {westDelhiAreas.map((area, i) => (
@@ -491,7 +454,7 @@ const CarWashRameshNagar = () => {
                   href={area.link}
                   className="px-4 py-2 bg-green-500/10 border border-green-500/30 rounded-full text-green-400 text-sm hover:bg-green-500/20 transition-all font-medium"
                 >
-                  Car Wash in {area.name}
+                  {area.name}
                 </a>
               ))}
             </div>
@@ -500,70 +463,34 @@ const CarWashRameshNagar = () => {
       </section>
 
       {/* ── How Often ── */}
-      <section className="py-16 md:py-20 px-4 bg-gradient-to-b from-black to-gray-900/50">
-        <div className="max-w-5xl mx-auto">
+      <section className="py-16 md:py-20 px-4" style={{ backgroundColor: "#0a0f0f" }}>
+        <div className="max-w-3xl mx-auto">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
           >
             <span className="text-green-400 text-sm font-semibold uppercase tracking-wider">Cleaning Frequency</span>
-            <h2 className="text-2xl sm:text-3xl font-bold text-white mt-2 mb-4">
+            <h2 className="text-2xl sm:text-3xl font-bold text-white mt-2 mb-6">
               How Often Should You Wash Your Car?
             </h2>
-            <p className="text-gray-400 text-sm sm:text-base leading-relaxed mb-6">
-              There is no single schedule that works for every vehicle.
-            </p>
+            <div className="space-y-4 text-gray-400 text-sm sm:text-base leading-relaxed">
+              <p>There is no single schedule that works for every vehicle.</p>
+              <p>
+                For a car parked outdoors and used regularly, an exterior wash every{" "}
+                <strong className="text-white">1–2 weeks</strong> can be a practical starting point. Interior deep cleaning can be done less frequently, depending on usage.
+              </p>
+              <p>
+                Cars carrying children or pets, or vehicles used for daily commuting, may need interior cleaning more often.
+              </p>
+              <p>The important thing is not to wait until dirt, stains and odours have become difficult to deal with.</p>
+            </div>
           </motion.div>
-          <motion.div
-            variants={containerVariants}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-            className="grid sm:grid-cols-2 gap-4 mb-6"
-          >
-            {[
-              {
-                label: "Exterior wash",
-                freq: "Every 1–2 weeks",
-                note: "Practical starting point for a car parked outdoors and used regularly in West Delhi",
-              },
-              {
-                label: "Interior deep clean",
-                freq: "Every 3–6 months",
-                note: "More often for cars carrying children, pets or daily food and drinks",
-              },
-              {
-                label: "Seat & carpet cleaning",
-                freq: "As needed",
-                note: "Depends on fabric, condition and type of stains or odours",
-              },
-              {
-                label: "Complete car care",
-                freq: "Every 2–3 months",
-                note: "For a full reset — exterior and interior combined in one session",
-              },
-            ].map((item, i) => (
-              <motion.div key={i} variants={itemVariants} className="p-5 bg-gray-900/60 border border-gray-800 rounded-xl">
-                <p className="text-green-400 text-xs font-semibold uppercase tracking-wider mb-1">{item.label}</p>
-                <p className="text-white font-semibold text-base mb-1">{item.freq}</p>
-                <p className="text-gray-500 text-sm">{item.note}</p>
-              </motion.div>
-            ))}
-          </motion.div>
-          <motion.p
-            initial={{ opacity: 0, y: 10 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="text-gray-400 text-sm leading-relaxed"
-          >
-            The important thing is not to wait until dirt, stains and odours have become difficult to deal with.
-          </motion.p>
         </div>
       </section>
 
       {/* ── FAQ ── */}
-      <section className="py-16 md:py-20 px-4" style={{ backgroundColor: "#0a0f0f" }}>
+      <section className="py-16 md:py-20 px-4 bg-gradient-to-b from-black to-gray-900/50">
         <div className="max-w-3xl mx-auto">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -573,7 +500,7 @@ const CarWashRameshNagar = () => {
           >
             <span className="text-green-400 text-sm font-semibold uppercase tracking-wider">FAQ</span>
             <h2 className="text-2xl sm:text-3xl font-bold text-white mt-2">
-              Frequently Asked Questions — Car Wash in Ramesh Nagar
+              Frequently Asked Questions
             </h2>
           </motion.div>
           <motion.div
@@ -582,7 +509,32 @@ const CarWashRameshNagar = () => {
             viewport={{ once: true }}
             className="space-y-3"
           >
-            {faqs.map((faq, i) => (
+            {[
+              {
+                q: "Do you provide car wash at home in Ramesh Nagar?",
+                a: "Yes. CleanCruisers provides doorstep car cleaning in Ramesh Nagar and other West Delhi locations, subject to service availability.",
+              },
+              {
+                q: "Do I need to take my car somewhere?",
+                a: "No. Our doorstep service is designed so the cleaning can be carried out at your home, office or suitable parking location.",
+              },
+              {
+                q: "Do you clean SUVs?",
+                a: "Yes. We clean hatchbacks, sedans, SUVs and premium vehicles, with the service adjusted according to vehicle size and condition.",
+              },
+              {
+                q: "Can you clean the interior also?",
+                a: "Yes. Interior cleaning can include vacuuming, seats, carpets, dashboard, door panels, boot area and other accessible areas depending on the selected service.",
+              },
+              {
+                q: "Can you remove scratches during a car wash?",
+                a: "No. Normal washing removes dirt and surface contamination but does not repair scratches. Paint correction is a separate service.",
+              },
+              {
+                q: "Do you serve areas outside Ramesh Nagar?",
+                a: "CleanCruisers serves several parts of West Delhi. If your locality is not listed, you can share your location while booking and confirm availability.",
+              },
+            ].map((faq, i) => (
               <FaqItem key={i} q={faq.q} a={faq.a} />
             ))}
           </motion.div>
@@ -590,7 +542,7 @@ const CarWashRameshNagar = () => {
       </section>
 
       {/* ── CTA ── */}
-      <section className="py-16 md:py-24 px-4 bg-gradient-to-b from-black to-gray-900/50">
+      <section className="py-16 md:py-24 px-4" style={{ backgroundColor: "#0a0f0f" }}>
         <div className="max-w-4xl mx-auto">
           <motion.div
             initial={{ opacity: 0, scale: 0.95 }}
@@ -614,9 +566,12 @@ const CarWashRameshNagar = () => {
               <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-white mb-4">
                 Book Car Wash at Home in Ramesh Nagar
               </h2>
-              <p className="text-gray-300 text-sm sm:text-base mb-8 max-w-xl mx-auto">
-                Your car does not always need to be taken to a washing centre for proper cleaning. CleanCruisers can come to your home, office or suitable parking location and carry out the required car cleaning.
-              </p>
+              <div className="text-gray-300 text-sm sm:text-base mb-8 max-w-xl mx-auto space-y-2">
+                <p>Your car does not always need to be taken to a washing centre for proper cleaning.</p>
+                <p>
+                  If you are looking for the <strong className="text-white">best car wash at home in Ramesh Nagar</strong>, CleanCruisers can come to your home, office or suitable parking location and carry out the required car cleaning.
+                </p>
+              </div>
               <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
                 <Button
                   onClick={() => navigate("/booking")}
