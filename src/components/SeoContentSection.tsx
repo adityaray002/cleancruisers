@@ -65,7 +65,7 @@ const SeoContentSection = () => {
     { name: "Moti Nagar", link: null },
     { name: "Shivaji Enclave", link: null },
     { name: "Tagore Garden", link: null },
-    { name: "Ramesh Nagar", link: null },
+    { name: "Ramesh Nagar", link: "/car-wash-in-ramesh-nagar/" },
     { name: "Mayapuri Phase", link: null },
     { name: "Uttam Nagar", link: null },
     { name: "Dwarka", link: "/car-wash-in-dwarka" },

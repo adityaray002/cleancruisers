@@ -23,6 +23,7 @@ import CarWashGurgaon from "./pages/CarWashGurgaon";
 import CarWashPunjabiBagh from "./pages/CarWashPunjabiBagh";
 import CarWashTilakNagar from "./pages/CarWashTilakNagar";
 import CarWashRajouriGarden from "./pages/CarWashRajouriGarden";
+import CarWashRameshNagar from "./pages/CarWashRameshNagar";
 import DynamicLocationPage from "./pages/DynamicLocationPage";
 import AdminLocationList from "./pages/admin/AdminLocationList";
 import AdminLocationEditor from "./pages/admin/AdminLocationEditor";
@@ -70,6 +71,7 @@ return (
           <Route path="/car-wash-in-punjabi-bagh/" element={<CarWashPunjabiBagh />} />
           <Route path="/car-wash-in-tilak-nagar/" element={<CarWashTilakNagar />} />
           <Route path="/car-wash-in-rajouri-garden/" element={<CarWashRajouriGarden />} />
+          <Route path="/car-wash-in-ramesh-nagar/" element={<CarWashRameshNagar />} />
           {/* Dynamic location pages — matches any /car-wash-in-:city/ not matched above */}
           <Route path="/car-wash-in-:city/" element={<DynamicLocationPage />} />
           {/* Not linked from header/homepage yet — direct URL only, per request. Link it in once approved. */}
