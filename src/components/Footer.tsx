@@ -51,6 +51,7 @@ const Footer = () => {
               sessionStorage.setItem('selectedServiceType', 'premium-addons');
               window.location.href = '/booking';
             }} className="text-gray-400 hover:text-white text-sm">Complete Car Care</button></li>
+            <li><a href="/car-interior-cleaning/" className="text-gray-400 hover:text-white text-sm">Car Interior Cleaning</a></li>
           </ul>
 
           <h4 className="text-green-400 font-semibold mt-6 mb-4 text-base">Areas We Serve</h4>
