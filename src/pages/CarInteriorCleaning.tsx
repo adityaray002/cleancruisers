@@ -142,36 +142,43 @@ const CarInteriorCleaning = () => {
     {
       icon: Car,
       name: "Car Seat Cleaning",
+      id: "car-seat-cleaning",
       desc: "Seats are one of the most frequently used parts of your car. Dust, stains and everyday marks can build up over time. Appropriate cleaning is selected according to the seat material and condition.",
     },
     {
       icon: Layers,
       name: "Carpet Cleaning",
+      id: "carpet-cleaning",
       desc: "Car carpets can collect dust, mud, food particles and other debris. Proper cleaning helps refresh these high-use areas.",
     },
     {
       icon: Droplets,
       name: "Floor Mat Cleaning",
+      id: "floor-mat-cleaning",
       desc: "Floor mats are exposed to dirt and mud every day. Cleaning them regularly helps keep the interior looking cleaner.",
     },
     {
       icon: Sparkles,
       name: "Dashboard Cleaning",
+      id: "dashboard-cleaning",
       desc: "The dashboard and other accessible interior surfaces are cleaned carefully to remove everyday dust and grime.",
     },
     {
       icon: Shield,
       name: "Door Panel Cleaning",
+      id: "door-panel-cleaning",
       desc: "Door panels, handles and other frequently touched areas can accumulate dust and marks. These areas receive attention during interior cleaning.",
     },
     {
       icon: Wind,
       name: "Interior Vacuuming",
+      id: "interior-vacuuming",
       desc: "Vacuuming helps remove loose dust, crumbs, hair and debris from appropriate interior areas.",
     },
     {
       icon: Star,
       name: "Detail Cleaning",
+      id: "detail-cleaning",
       desc: "Accessible corners, gaps and frequently used areas can collect dirt that is easy to overlook during a quick clean.",
     },
   ];
@@ -298,7 +305,7 @@ const CarInteriorCleaning = () => {
             <div className="text-gray-400 text-base sm:text-lg max-w-3xl mx-auto leading-relaxed mb-4 text-left sm:text-center space-y-4">
               <p>
                 While a car can look good from the outside, it should be fresh and comfortable inside.{" "}
-                <strong className="text-white">Car interior cleaning</strong> helps remove accumulated dust, food crumbs, stains, dirt, hair and everyday grime from the areas you use most.
+                <a href="/car-interior-cleaning/" className="text-green-400 hover:underline font-semibold">Car interior cleaning</a> helps remove accumulated dust, food crumbs, stains, dirt, hair and everyday grime from the areas you use most.
               </p>
               <p>
                 CleanCruisers is a provider of car interior cleaning services in Delhi. Our team comes to your home, office or applicable society parking location, making it easier to maintain your car without spending time driving to a cleaning centre.
@@ -401,6 +408,33 @@ const CarInteriorCleaning = () => {
             <p className="text-gray-400 text-sm sm:text-base mt-3 max-w-2xl mx-auto">
               At CleanCruisers, the service can be tailored according to your vehicle's interior condition and the cleaning package you select.
             </p>
+            {/* Anchor navigation — Seats → upholstery → carpets → ... */}
+            <div className="flex flex-wrap justify-center gap-2 mt-6">
+              {[
+                { label: "Seats", id: "car-seat-cleaning" },
+                { label: "Upholstery", id: "car-seat-cleaning" },
+                { label: "Carpets", id: "carpet-cleaning" },
+                { label: "Mats", id: "floor-mat-cleaning" },
+                { label: "Dashboard", id: "dashboard-cleaning" },
+                { label: "Door Panels", id: "door-panel-cleaning" },
+                { label: "Vacuuming", id: "interior-vacuuming" },
+                { label: "Stains", id: "car-seat-cleaning" },
+                { label: "Odour", id: "interior-vacuuming" },
+                { label: "Interior Cleaning Process", id: "cleaning-process" },
+              ].map((item, i, arr) => (
+                <React.Fragment key={i}>
+                  <a
+                    href={`#${item.id}`}
+                    className="text-green-400 hover:underline text-xs sm:text-sm font-medium"
+                  >
+                    {item.label}
+                  </a>
+                  {i < arr.length - 1 && (
+                    <span className="text-gray-600 text-xs sm:text-sm">→</span>
+                  )}
+                </React.Fragment>
+              ))}
+            </div>
           </motion.div>
           <motion.div
             variants={containerVariants}
@@ -412,6 +446,7 @@ const CarInteriorCleaning = () => {
             {services.map((s, i) => (
               <motion.div
                 key={i}
+                id={s.id}
                 variants={itemVariants}
                 whileHover={{ y: -5, scale: 1.02 }}
                 className="group relative p-6 bg-gradient-to-br from-gray-900/80 to-gray-900/40 border border-gray-800 rounded-2xl hover:border-green-500/40 transition-all"
@@ -490,7 +525,7 @@ const CarInteriorCleaning = () => {
             className="text-center mb-12"
           >
             <span className="text-green-400 text-sm font-semibold uppercase tracking-wider">How We Work</span>
-            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-white mt-2">
+            <h2 id="cleaning-process" className="text-2xl sm:text-3xl md:text-4xl font-bold text-white mt-2">
               Our Professional Car Interior Cleaning Process
             </h2>
             <p className="text-gray-400 text-sm sm:text-base mt-3 max-w-2xl mx-auto">
@@ -927,6 +962,13 @@ const CarInteriorCleaning = () => {
               <a href="/booking" className="text-green-400 hover:underline font-medium">
                 car wash at home service
               </a>.
+            </p>
+            <p>
+              For deeper vehicle care, explore our{" "}
+              <a href="/booking" className="text-green-400 hover:underline font-medium">
+                car detailing service
+              </a>{" "}
+              if available.
             </p>
           </motion.div>
         </div>
