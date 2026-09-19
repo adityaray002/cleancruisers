@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useRef, useCallback, useEffect } from "react";
 import { Helmet } from "react-helmet-async";
 import { useNavigate } from "react-router-dom";
 import Header from "@/components/Header";
@@ -40,6 +40,97 @@ const FaqItem = ({ q, a }: { q: string; a: React.ReactNode }) => {
           <p className="text-gray-400 text-sm leading-relaxed pt-4">{a}</p>
         </div>
       )}
+    </div>
+  );
+};
+
+const BeforeAfterSlider = ({
+  before,
+  after,
+  beforeLabel = "Before",
+  afterLabel = "After",
+}: {
+  before: string;
+  after: string;
+  beforeLabel?: string;
+  afterLabel?: string;
+}) => {
+  const [position, setPosition] = useState(50);
+  const containerRef = useRef<HTMLDivElement>(null);
+  const isDragging = useRef(false);
+
+  const updatePosition = useCallback((clientX: number) => {
+    if (!containerRef.current) return;
+    const rect = containerRef.current.getBoundingClientRect();
+    const pct = Math.max(2, Math.min(98, ((clientX - rect.left) / rect.width) * 100));
+    setPosition(pct);
+  }, []);
+
+  useEffect(() => {
+    const onMouseMove = (e: MouseEvent) => {
+      if (isDragging.current) updatePosition(e.clientX);
+    };
+    const onMouseUp = () => { isDragging.current = false; };
+    window.addEventListener("mousemove", onMouseMove);
+    window.addEventListener("mouseup", onMouseUp);
+    return () => {
+      window.removeEventListener("mousemove", onMouseMove);
+      window.removeEventListener("mouseup", onMouseUp);
+    };
+  }, [updatePosition]);
+
+  return (
+    <div
+      ref={containerRef}
+      className="relative w-full overflow-hidden rounded-2xl select-none"
+      style={{ aspectRatio: "16/9", cursor: "col-resize", touchAction: "none" }}
+      onMouseDown={(e) => { isDragging.current = true; updatePosition(e.clientX); }}
+      onTouchStart={(e) => updatePosition(e.touches[0].clientX)}
+      onTouchMove={(e) => { e.preventDefault(); updatePosition(e.touches[0].clientX); }}
+    >
+      {/* Before image — always full width underneath */}
+      <img
+        src={before}
+        alt={beforeLabel}
+        className="absolute inset-0 w-full h-full object-cover"
+        draggable={false}
+      />
+
+      {/* After image — clipped from right by clip-path */}
+      <img
+        src={after}
+        alt={afterLabel}
+        className="absolute inset-0 w-full h-full object-cover"
+        style={{ clipPath: `inset(0 ${100 - position}% 0 0)` }}
+        draggable={false}
+      />
+
+      {/* Divider line */}
+      <div
+        className="absolute top-0 bottom-0 w-0.5 bg-white shadow-[0_0_8px_rgba(255,255,255,0.8)]"
+        style={{ left: `${position}%`, transform: "translateX(-50%)" }}
+      />
+
+      {/* Drag handle circle */}
+      <div
+        className="absolute top-1/2 flex items-center justify-center w-11 h-11 rounded-full bg-white shadow-xl z-10"
+        style={{ left: `${position}%`, transform: "translate(-50%, -50%)" }}
+      >
+        <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+          <path d="M6 10L2 10M2 10L5 7M2 10L5 13" stroke="#111" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+          <path d="M14 10L18 10M18 10L15 7M18 10L15 13" stroke="#111" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+        </svg>
+      </div>
+
+      {/* Before label */}
+      <div className="absolute top-4 left-4 px-3 py-1 bg-black/60 backdrop-blur-sm rounded-full text-white text-xs font-semibold uppercase tracking-wider">
+        {beforeLabel}
+      </div>
+
+      {/* After label */}
+      <div className="absolute top-4 right-4 px-3 py-1 bg-green-500/90 backdrop-blur-sm rounded-full text-black text-xs font-semibold uppercase tracking-wider">
+        {afterLabel}
+      </div>
     </div>
   );
 };
@@ -444,14 +535,14 @@ const CarInteriorCleaning = () => {
         </div>
       </section>
 
-      {/* ── Testimonials ── */}
+      {/* ── Before/After + Testimonials ── */}
       <section className="py-16 md:py-20 px-4 bg-gradient-to-b from-black to-gray-900/50">
         <div className="max-w-5xl mx-auto">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="text-center mb-12"
+            className="text-center mb-10"
           >
             <span className="text-green-400 text-sm font-semibold uppercase tracking-wider">Real Results</span>
             <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-white mt-2">
@@ -461,6 +552,25 @@ const CarInteriorCleaning = () => {
               Real before-and-after results from a CleanCruisers interior cleaning service in Delhi.
             </p>
           </motion.div>
+
+          {/* Before / After Slider */}
+          <motion.div
+            initial={{ opacity: 0, y: 24 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="mb-6"
+          >
+            <BeforeAfterSlider
+              before="/interior-before.webp"
+              after="/interior-after.webp"
+              beforeLabel="Before"
+              afterLabel="After"
+            />
+            <p className="text-gray-500 text-xs text-center mt-3">
+              Drag the slider to reveal the transformation — real results, at your doorstep.
+            </p>
+          </motion.div>
+
           <motion.div
             variants={containerVariants}
             initial="hidden"
