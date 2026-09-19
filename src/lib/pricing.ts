@@ -56,16 +56,16 @@ export const MONTHLY_PRICING: Record<string, number> = {
   Luxury:    1199,
 };
 
-// Add-on pricing
+// Add-on pricing — must match the prices shown in ServiceSelection.tsx cards
 export const ADDON_PRICING: Record<string, number> = {
-  "rubbing-foam-hatchback":   1599, "rubbing-foam-sedan":   1599, "rubbing-foam-suv":   1799, "rubbing-foam-luxury":   1899,
-  "3m-wax-foam-hatchback":     649, "3m-wax-foam-sedan":     649, "3m-wax-foam-suv":     749, "3m-wax-foam-luxury":     949,
-  "rubbing-wax-foam-hatchback": 1699, "rubbing-wax-foam-sedan": 1699, "rubbing-wax-foam-suv": 1899, "rubbing-wax-foam-luxury": 1999,
-  "full-package-hatchback":   2499, "full-package-sedan":   2499, "full-package-suv":   2699, "full-package-luxury":   2799,
-  "rubbing-dry-foam-hatchback": 2199, "rubbing-dry-foam-sedan": 2199, "rubbing-dry-foam-suv": 2399, "rubbing-dry-foam-luxury": 2499,
-  "dry-wax-foam-hatchback":   1499, "dry-wax-foam-sedan":   1499, "dry-wax-foam-suv":   1699, "dry-wax-foam-luxury":   1799,
-  "dry-cleaning-hatchback":    999, "dry-cleaning-sedan":    999, "dry-cleaning-suv":   1099, "dry-cleaning-luxury":   1099,
-  "air-freshener-hatchback":   149, "air-freshener-sedan":   149, "air-freshener-suv":   149, "air-freshener-luxury":   149,
+  "rubbing-foam-hatchback":     1299, "rubbing-foam-sedan":     1299, "rubbing-foam-suv":     1499, "rubbing-foam-luxury":     1499,
+  "3m-wax-foam-hatchback":       649, "3m-wax-foam-sedan":       649, "3m-wax-foam-suv":       699, "3m-wax-foam-luxury":       699,
+  "rubbing-wax-foam-hatchback": 1449, "rubbing-wax-foam-sedan": 1449, "rubbing-wax-foam-suv": 1599, "rubbing-wax-foam-luxury": 1599,
+  "full-package-hatchback":     1999, "full-package-sedan":     1999, "full-package-suv":     2199, "full-package-luxury":     2199,
+  "rubbing-dry-foam-hatchback": 1799, "rubbing-dry-foam-sedan": 1799, "rubbing-dry-foam-suv": 1899, "rubbing-dry-foam-luxury": 1899,
+  "dry-wax-foam-hatchback":     1199, "dry-wax-foam-sedan":     1199, "dry-wax-foam-suv":     1499, "dry-wax-foam-luxury":     1499,
+  "dry-cleaning-hatchback":      799, "dry-cleaning-sedan":      799, "dry-cleaning-suv":      899, "dry-cleaning-luxury":      899,
+  "air-freshener-hatchback":     149, "air-freshener-sedan":     149, "air-freshener-suv":     149, "air-freshener-luxury":     149,
 };
 
 export const getAddonPrice = (serviceId: string): number => ADDON_PRICING[serviceId] ?? 0;

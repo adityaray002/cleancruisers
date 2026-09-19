@@ -33,6 +33,9 @@ const serviceTypeLabels: Record<string, string> = {
   "one-time": "One-time Wash",
   "monthly": "Monthly Wash",
   "daily-car-wash": "Daily Car Wash",
+  "complete-care": "Complete Care Package",
+  "premium-addons": "Complete Car Care",
+  "waterless": "Waterless Eco Clean",
 };
 
 const getServiceDisplayName = (serviceId: string) => {
@@ -87,8 +90,15 @@ const BookingSummary = ({
   onEditStep,
 }: BookingSummaryProps) => {
   const isOneTime = selectedServiceType === "one-time" || selectedServiceType === "waterless";
+  const isCompleteCare = selectedServiceType === "complete-care";
 
   const calculateTotal = () => {
+    // Fixed price for complete-care package
+    if (isCompleteCare) {
+      const fixedPrice = COMPLETE_CARE_PRICING[selectedCar?.trim()] || 1399;
+      return { total: fixedPrice, basePrice: fixedPrice, addonsTotal: 0, washAddonTotal: 0 };
+    }
+
     let total = 0;
     let basePrice = 0;
     let addonsTotal = 0;

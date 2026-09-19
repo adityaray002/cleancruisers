@@ -47,10 +47,7 @@ const Footer = () => {
           <h4 className="text-green-400 font-semibold mb-4 text-base">Services</h4>
           <ul className="space-y-2">
             <li><button onClick={() => scrollToSection('services')} className="text-gray-400 hover:text-white text-sm">Premium Doorstep Car Wash</button></li>
-            <li><button onClick={() => {
-              sessionStorage.setItem('selectedServiceType', 'premium-addons');
-              window.location.href = '/booking';
-            }} className="text-gray-400 hover:text-white text-sm">Complete Car Care</button></li>
+            <li><a href="/booking?service=complete-care" className="text-gray-400 hover:text-white text-sm">Complete Car Care</a></li>
             <li><a href="/car-interior-cleaning/" className="text-gray-400 hover:text-white text-sm">Car Interior Cleaning</a></li>
           </ul>
 
